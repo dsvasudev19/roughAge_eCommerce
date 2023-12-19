@@ -1,0 +1,593 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+#root{
+  max-width: 100%;
+  /* overflow: hidden; */
+}
+.mainpage {
+  background-image: url("../public/carousel4.jpeg");
+  background-position: center;
+  background-size: cover;
+  width: 99vw;
+  height: 80vh;
+  object-fit: cover;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 100px;
+  /* margin-top: 100px; */
+}
+#special {
+  color: rgb(241, 121, 34);
+  font-size: xx-large;
+  font-weight: bolder;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+#nature,
+#blood,
+#dna {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#head {
+  background-image: url("./_c28b5ce6-88c2-4b6e-a1dc-a935af8e6a93.jpg");
+  background-position: center;
+  background-size: cover;
+  font-size: 70px;
+  font-weight: 900;
+  background-clip: text;
+  color: transparent;
+}
+#similarhead{
+  background-image: radial-gradient(pink,violet,green,red,orange,blue);
+  background-color: linear-gradient(green,orange,yello,red);
+  /* background-image: circular-gradient(pink,violet,red,orange,blue); */
+  background-position: center;
+  background-size: cover;
+  font-size: 70px;
+  font-weight: 900;
+  background-clip: text;
+  color: transparent;
+}
+.navbar {
+  /* -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px); */
+  padding-top: 10px;
+  z-index: 10;
+}
+
+.brand {
+  margin-bottom: 0;
+  margin-right: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+/* .card {
+  width: 25% !important; 
+
+ margin-top: 5px;
+  margin-bottom: 5px; 
+} */
+#addToCartButton {
+  width: 35%;
+  transition: width 0.5s ease-in-out; /* Moved the transition property here */
+}
+
+#addToCartButton:hover {
+  box-shadow: 5px 5px 5px rgb(202, 198, 198);
+  width: 90%;
+  /*transition-delay: 1s;  Add a 1s delay before the width transition starts */
+}
+/* .cardImage {
+  width: 100%;
+  height: 65%;
+  box-shadow: 2px 1px 5px rgb(97, 96, 96);
+} */
+
+
+
+.active {
+  background-color: green;
+  color: white;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: x-large;
+  /* border: 1px solid black; */
+}
+.emptyCartContainer {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.gifImage {
+  object-fit: contain;
+  width: 35%;
+  height: 80%;
+  border: 3px solid black;
+  overflow: hidden;
+}
+.aboutCompany {
+  width: 55%;
+  height: 80%;
+  border: 3px solid black;
+}
+.marq {
+  /* width: 90%; */
+  height: 10vh;
+  /* background-color: #FFB000; */
+  color: #004225;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 6rem;
+  border-radius: 15px;
+  font-weight: bolder;
+
+  margin-top: 20px;
+  /* position: relative; */
+}
+
+.naturality {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#naturality {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  font-size: 100px;
+  display: flex;
+  font-family: Lora, serif;
+  font-weight: 700;
+  background: linear-gradient(-150deg, #6194aa, #eaf1e5, #816b53);
+  color: transparent;
+  background-clip: text;
+}
+
+.trust {
+  display: flex;
+  height: 20vh;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+.trust div {
+  /* background-image:linear-gradient(-45deg,#64CCC5,#EEEEEE); */
+  /* width: 25%; */
+  background: linear-gradient(150deg, #0894e6, rgb(184, 20, 20));
+  /* color: #072541; */
+  color: transparent;
+  background-clip: text;
+}
+.faq {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: -webkit-linear-gradient(#7c81ad, white);
+}
+.subject,
+.questions {
+  width: 100%;
+
+  border-radius: 15px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: auto;
+}
+#faqSubject {
+  font-size: 6rem;
+}
+
+.footer {
+  height: 30vh;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #176b87;
+  color: white;
+  font-size: 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+.socialHandle {
+  justify-content: space-around;
+  text-align: center;
+}
+.footer a {
+  text-decoration: none;
+  color: white;
+}
+.footer a:hover {
+  color: rgb(104, 132, 104);
+}
+.dna {
+  color: orange;
+  font-size: 2rem;
+}
+.About {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.sec{
+  margin: 0 50px 45px 0;
+  position: relative;
+  top: -50px;
+}
+.organicProduct {
+  /* margin: 100px; */
+  /* border: 3px solid green; */
+  margin: 0px 50px 45px 0;
+  display: flex;
+  /* width: 10%; */
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  /* border: 3px solid black; */
+  /* overflow: hidden; */
+}
+#brand {
+  font-size: 20px;
+}
+.imageClass {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.imageClass #organicImage {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3/4;
+  /* border: 3px dashed black; */
+}
+.detailsClass {
+  /* width: %; */
+  width: 50%;
+  /* border: 3px solid orange; */
+  padding: 20px;
+  margin: 10px;
+  display: block;
+  margin-left: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  line-height: 2.2;
+}
+.detailsClass th {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+}
+.detailsClass .data {
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+#namethis {
+  width: 98%;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 15px;
+}
+#addMe{
+  /* border: 3px solid red; */
+}
+#addMe button{
+  /* border: 3px solid black; */
+  width: 100%;
+}
+/* #addMe{
+  width: 100%;
+  cursor: grab;
+} */
+@media (min-width: 600px) {
+  .impItem {
+    display: flex;
+  }
+  
+}
+.showProducts {
+  display: flex;
+  justify-content: space-around;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.showProducts::-webkit-scrollbar {
+  /* For Chrome, Safari and Opera */
+  display: none;
+  /* background:#176B87; */
+}
+.showCaseProduct {
+  width: 400px;
+  height: 300px;
+}
+.showCaseProduct:hover {
+  overflow: none;
+  transform: scale(1.1);
+  /* This will slightly enlarge the item on hover */
+  transition: transform 0.39s ease-in-out;
+  /* This will animate the transformation */
+}
+.productImage {
+  justify-content: center;
+  object-fit: cover;
+}
+/* .original{
+    width: 80%;
+} */
+.subTotal {
+  width: max-content;
+  position: relative;
+  border: 3px solid rgb(255, 187, 0);
+  min-height: 10vh;
+  margin-right: 100px;
+  border-radius: 15px;
+  /* display: flex; */
+}
+
+.checkout-button {
+  position: absolute;
+  top: 90%;
+  left: 20%;
+}
+
+.checkoutPage {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 500px;
+  border: 3px solid black;
+}
+.co-form {
+  margin: 0 50px 50px 50px;
+  padding: 30px;
+  width: 60%;
+  position: relative;
+  left: 20%;
+  border: 3px solid black;
+}
+
+.productReg {
+  display: flex;
+  margin: 80px;
+  padding: 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+.productDetails {
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 40%;
+}
+.imagePreview {
+  width: 50%;
+  overflow: hidden;
+  object-position: center;
+  /* border: 3px solid black; */
+}
+.imagePreview img {
+  object-fit: contain;
+  width: 80%;
+  height: 80%;
+  aspect-ratio: 4/3;
+}
+
+#productDesc {
+  color: rgb(37, 37, 37);
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.loginPage {
+  /* background-image: url("../public/Gallery/a2.png"); */
+  /* background-position: center; */
+  display: flex;
+  width: 90%;
+  min-height: 80vh;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+.loginPageBody {
+  display: flex;
+  width: 100%;
+  padding-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+}
+.loginPageImage {
+  padding: 50px;
+  width: 50%;
+  overflow: hidden;
+  justify-content: center;
+}
+.loginPageImage img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  object-position: center;
+}
+.loginPageForm {
+  /* margin: 50px; */
+  /* border: 1px solid black; */
+  background: transparent;
+  /* backdrop-filter: blur(5px); */
+  padding: 50px;
+  width: 50%;
+}
+.login > Form {
+  width: 90%;
+  height: 90%;
+}
+#logoImage {
+  position: relative;
+  left: 25%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+#forminput {
+  width: 80%;
+  /* border: 2px solid rgba(0, 128, 0, 0.486); */
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.galleryImages {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+.galleryImages img {
+  object-fit: cover;
+  width: 380px;
+  height: 400px;
+  padding: 20px;
+  aspect-ratio: 4/3;
+}
+.galleryHead {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: larger;
+}
+#testimonialHead {
+  margin: 20px;
+  background-image: url("../public/Gallery/galleryPicOne.jpg");
+  color: transparent;
+  background-clip: text;
+  font-size: 60px;
+  font-weight: 600;
+  background-position: center;
+}
+
+.testimonials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.test img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  justify-content: center;
+}
+.testimonialsBody {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.test {
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-left: 20px;
+  padding: 20px;
+  width: 25%;
+}
+.testBody {
+  padding: 20px;
+  justify-content: center;
+  text-align: start;
+}
+
+
+@media (max-width: 480px) {
+  
+  .galleryImages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .testimonialsBody {
+    display: inline-block;
+  }
+  .test {
+    width: 75%;
+  }
+  .mainpage{
+    width: 100vw !important;
+    height: 40vh !important;
+  }
+  .faq{
+    display: block !important;
+  }
+  
+}
+@media screen and (max-width:480px) {
+  #head{
+    font-size: 25px !important;
+  }
+  .organicProduct{
+    display: block;
+  }
+  
+}
+@media screen  and (max-width:1000px) {
+  .footer{
+    display: block !important;
+    height: max-content !important;
+  }
+  .organicProduct{
+    height: max-content !important;
+    display: block !important;
+  }
+  .imageClass{
+    width: 100%;
+    height: 55vh;
+  }
+  .detailsClass{
+    margin-left: 25px !important;
+  }
+  #naturality{
+    font-size: 50px;
+  }
+
+}
+@media screen and (min-width:600px) {
+  .brand{
+    font-size: 30px !important;
+  }
+  
+}
