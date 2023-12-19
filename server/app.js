@@ -46,7 +46,7 @@ conn()
         console.log( `mongodb server started successfully...` )
 
     ).then(
-        app.listen( process.env.PORT, function ( req, res ) {
+        app.listen( process.env.PORT||3001, function ( req, res ) {
             console.log( `server started on port number ${ process.env.PORT }` );
         } )
         // server.listen( PORT_NUM, () => {
