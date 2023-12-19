@@ -40,7 +40,7 @@ function Checkout() {
     cartData=JSON.parse(cartData);
     const userAddressAndData = userData;
     console.log(userAddressAndData);
-    const response = await fetch("http://localhost:3001/api/setUser", {
+    const response = await fetch("https://roughage-api.vercel.app/api/setUser", {
       method: "post",
       headers: {
         "content-type": "application/json",

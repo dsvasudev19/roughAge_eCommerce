@@ -22,7 +22,7 @@ var similarProducts = [
 
 function Home() {
   async function establishSession(){
-    const response = await fetch('http://localhost:3001/api/establishSession')
+    const response = await fetch('https://roughage-api.vercel.app/api/establishSession')
     .then(async response=>{
       if(response.status===202){
         const dataParsed=await response.json();

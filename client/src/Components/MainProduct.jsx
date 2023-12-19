@@ -25,7 +25,7 @@ function MainProduct() {
     // const [productDetails,setProductDetails]=useState();
     async function handleCart( e ) {
         const id = productId;
-        await fetch( `http://localhost:3001/api/addToCart/${ id }`, {
+        await fetch( `https://roughage-api.vercel.app/api/addToCart/${ id }`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -40,7 +40,7 @@ function MainProduct() {
         } )
     }
     async function fetchProductDetails() {
-        await fetch( `http://localhost:3001/api/getProductDetails/${ product.productID }` ).then(
+        await fetch( `https://roughage-api.vercel.app/api/getProductDetails/${ product.productID }` ).then(
             async response => {
                 if ( response.status === 202 ) {
                     const parsedData = await response.json();
@@ -60,7 +60,7 @@ function MainProduct() {
     async function fetchSimilarProducts() {
         console.log(productDetails.category)
         console.log(typeof(productDetails.category))
-        const response=await fetch( 'http://localhost:3001/api/getSimilarCategoryProducts', {
+        const response = await fetch( 'https://roughage-api.vercel.app/api/getSimilarCategoryProducts', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

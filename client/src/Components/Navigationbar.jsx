@@ -22,7 +22,7 @@ function Navigationbar() {
   useEffect( () => {
     const fetchLength = async () => {
       try {
-        const data = await fetch( 'http://localhost:3001/api/getCart' )
+        const data = await fetch( 'https://roughage-api.vercel.app/api/getCart' )
         const parsedData = await data.json();
         const totalCount = parsedData.reduce( ( acc, curr ) => {
           return acc + curr.count;
