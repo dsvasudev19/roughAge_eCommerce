@@ -144,8 +144,8 @@ function Cart(){
     useEffect(()=>{
         const fetchData = async ()=>{
             try{
-                await axios.get('https://roughage-api.vercel.app/api/getCart').then(cartitems=>{
-                    var cartData=cartitems.data;
+                await axios.get('https://roughage-api.vercel.app/api/getCart').then(async cartitems=>{
+                    var cartData= await cartitems.data;
                     // setProducts(cartitems.data);
                     setProducts( cartData );
                     console.log( "cart data : " );

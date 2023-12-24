@@ -84,13 +84,23 @@ body {
   margin-bottom: 5px; 
 } */
 #addToCartButton {
-  width: 35%;
+  background-color: white;
+  color: green;
+  border-radius: 50%;
+  width: 10%;
+  height: max-content;
+  overflow: hidden;
   transition: width 0.5s ease-in-out; /* Moved the transition property here */
 }
 
 #addToCartButton:hover {
+  background-color: rgba(2, 110, 2, 0.788);
+  color: white;
+  height: 35px;
+  border-radius: 15px;
+  overflow: hidden;
   box-shadow: 5px 5px 5px rgb(202, 198, 198);
-  width: 90%;
+  width: 35%;
   /*transition-delay: 1s;  Add a 1s delay before the width transition starts */
 }
 /* .cardImage {

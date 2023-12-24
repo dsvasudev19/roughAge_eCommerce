@@ -36,6 +36,12 @@
 /* .cardText{
     align-items: end;
 } */
+.cardButtonClass{
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+
+}
 .allProducts{
     padding: 20px;
     row-gap: 30px;

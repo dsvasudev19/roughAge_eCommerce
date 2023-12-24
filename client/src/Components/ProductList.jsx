@@ -35,6 +35,15 @@ async function handleEvent(e) {
 }
 
 function Product(props) {
+  const [ buttonContent, setButtonContent ] = useState( '+' );
+  function showFullContent(e){
+    
+    setButtonContent("Quick Add")
+  }
+  function showLessContent(e){
+    setButtonContent("+");
+
+  }
   return (
     <>
       <NavLink
@@ -53,16 +62,22 @@ function Product(props) {
             <div className="cardText">
               <text id="price">Starting Price @ {props.cost}</text>
             </div>
-            <Button
-              variant="success"
-              value={props.id}
-              id="addToCartButton"
-              onClick={(e) => {
-                handleEvent(e);
-              }}
-            >
-              Quick Add
-            </Button>
+            <div className="cardButtonClass">
+              <Button
+                onMouseOver={(e)=>showFullContent(e)}
+                onMouseOut={ ( e ) => showLessContent( e ) }
+                name={props.productName}
+                variant="success"
+                value={ props.id }
+                className="addToCartButton"
+                id="addToCartButton"
+                onClick={ ( e ) => {
+                  handleEvent( e );
+                } }
+              >
+                { buttonContent }
+              </Button>
+            </div>
           </div>
         </div>
       </NavLink>

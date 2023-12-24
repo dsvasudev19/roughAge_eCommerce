@@ -56,7 +56,7 @@ async function addToCartProductId( req, res ) {
         Product.findOne( { productID: id } ).then(product=>{
             if(product){
                 product.quantityAvailable = undefined;
-                let cartProduct = { ...product._doc, count: 1 }
+                let cartProduct = { ...product._doc, count: quantity }
                 cart.push( cartProduct );
                 res.status(202).json({msg:"Successfully added."});
             }
@@ -78,7 +78,7 @@ async function addToCartProductId( req, res ) {
         } else {
             Product.findOne( { productID: id } ).then( product => {
                 if ( product ) {
-                    let cartProduct = { ...product._doc, count: 1 }
+                    let cartProduct = { ...product._doc, count: quantity }
                     cart.push( cartProduct )
                     res.status(202).json({msg:"Successfully added"})
                 }
