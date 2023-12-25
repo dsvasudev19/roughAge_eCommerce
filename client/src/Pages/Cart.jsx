@@ -91,7 +91,7 @@ function Cart(){
                                 body:JSON.stringify({id})
                             }).then(async data=>{
                                 var parseData=await data.json();
-                                console.log(parseData);
+                                // console.log(parseData);
                                 setProducts(parseData);
                             })
                         } catch (error) {
@@ -144,19 +144,12 @@ function Cart(){
     useEffect(()=>{
         const fetchData = async ()=>{
             try{
-                await axios.get('https://roughage-api.vercel.app/api/getCart').then(async cartitems=>{
-                    var cartData= await cartitems.data;
-                    // setProducts(cartitems.data);
-                    setProducts( cartData );
-                    console.log( "cart data : " );
-                    console.log( cartData );
-                    const totalCost = cartData.reduce( ( acc, curr ) => {
-                        return acc + curr.price * curr.count;
-                    }, 0 );
-                    setTotalCost( totalCost )
+                const response = await fetch( 'https://roughage-api.vercel.app/api/getCart' )
+                .then(async response=>{
+                    const recievedData=await response.json();
+                    // console.log(recievedData);
+                    setProducts(recievedData);
                 })
-                // const data=await fetch('http://localhost:3001/api/getCart');
-                // const cartData=await data.json();
                 
             }catch(error){
                 console.log("cant fetch data");
@@ -190,6 +183,14 @@ function Cart(){
         sessionStorage.setItem("cart",JSON.stringify(products))
         navigate('/checkout')
     }
+    useEffect(()=>{
+            // console.log(products)
+            const totalCost = products.reduce( ( acc, curr ) => {
+                // console.log(curr.price,curr.count);
+                return acc + curr.price * curr.count;
+            }, 0 );
+            setTotalCost( totalCost )
+    })
     return (
         (products.length===0)?<EmptyCart />:
             <Row className="justify-content-md-center">
