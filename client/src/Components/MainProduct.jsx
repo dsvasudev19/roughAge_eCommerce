@@ -58,8 +58,8 @@ function MainProduct() {
 
     }
     async function fetchSimilarProducts() {
-        console.log(productDetails.category)
-        console.log(typeof(productDetails.category))
+        // console.log(productDetails.category)
+        // console.log(typeof(productDetails.category))
         const response = await fetch( 'https://roughage-api.vercel.app/api/getSimilarCategoryProducts', {
             method: 'post',
             headers: {
@@ -69,10 +69,10 @@ function MainProduct() {
         } ).then(async response => {
             if ( response.status === 202 ) {
                 const ParsedData=await response.json();
-                console.log(ParsedData)
+                // console.log(ParsedData)
                 const similarProductsFetched = ParsedData.products;
                 setSimilarProducts(similarProductsFetched)
-                console.log( similarProductsFetched );
+                // console.log( similarProductsFetched );
             }
         } ).catch( error => {
             console.log( error )
@@ -92,13 +92,13 @@ function MainProduct() {
     }, [ product.productID ] ); // Add product.productID as a dependency
     useEffect( () => {
         // console.log( productDetails );
-        console.log( productDetails )
+        // console.log( productDetails )
         fetchSimilarProducts();
 
     }, [ productDetails.productID]); 
     useEffect( () => {
-        console.log( productDetails )
-        console.log(similarProducts)
+        // console.log( productDetails )
+        // console.log(similarProducts)
         window.scrollTo( 0, 0 );
     }, [] );
     return (
