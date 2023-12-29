@@ -33,12 +33,13 @@ async function authenticateAdmin( req, res ) {
 
 }
 async function validateAdminAuthenctication( req, res ) {
-    const {token} = req.body;
-
-    jwt.verify( token, process.env.SECRET, ( err, result ) => {
+    // const {token} = req.body;
+    const {token} = req.header( 'Authorization' ).replace( 'Bearer ', '' );
+    jwt.verify( token, process.env.SECRET, async ( err, result ) => {
         if ( result ) {
             // console.log(result);
-            res.status( 205 ).json( { token: token, verification: "success" } )
+            const adminInformation=await Admin.findOne({adminId:result.adminId});
+            res.status( 205 ).json( { token: token, verification: "success" ,data:adminInformation} );
         } if ( err ) {
             res.status( 401 ).json( { message: "token Expired" } );
         }

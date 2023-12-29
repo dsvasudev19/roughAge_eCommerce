@@ -128,7 +128,7 @@ async function getProductDetails(req,res){
 
 async function getCart( req, res ) {
 
-    res.json( cart );
+    await res.json( cart );
 
 }
 async function updateCart( req, res ) {

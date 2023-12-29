@@ -1,63 +1,65 @@
-
-.cardS{
-    height: 450px;
-    /* width: 25%; */
-    overflow: hidden;
-    transition: 2s linear ease-in-out;
-    /* border: 1px solid white; */
-    box-shadow: 5px 5px 5px rgb(199, 198, 198);
-    /* margin-top: 100px; */
-    /* border: 3px solid black; */
+.cardS {
+  height: 450px;
+  /* width: 25%; */
+  overflow: hidden;
+  transition: 2s linear ease-in-out;
+  /* border: 1px solid white; */
+  box-shadow: 5px 5px 5px rgb(199, 198, 198);
+  /* margin-top: 100px; */
+  /* border: 3px solid black; */
 }
 
-.cardI{
-    height: 78%;
-    overflow: hidden;
-    
+.cardI {
+  height: 78%;
+  overflow: hidden;
 }
-.cardI #productImage{
-    /* border: 1px solid red; */
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    overflow: hidden;
+.cardI #productImage {
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  overflow: hidden;
 }
-.cardB{
-    color: black;
-    text-decoration: none;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+.cardB {
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
-.cardText,.cartT{
-    padding-left: 10px;
-    text-align: start;
+.cardText,
+.cartT {
+  padding-left: 10px;
+  text-align: start;
 }
 /* .cardText{
     align-items: end;
 } */
-.cardButtonClass{
-    padding-right: 10px;
-    display: flex;
-    justify-content: flex-end;
-
+.cardButtonClass {
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
 }
-.allProducts{
-    padding: 20px;
-    row-gap: 30px;
-    /* border: 3px solid black; */
-    height: max-content;
+.allProducts {
+  padding: 20px;
+  row-gap: 30px;
+  /* border: 3px solid black; */
+  height: max-content;
 }
-#name{
-    font-weight: bold;
-    font-size: 19px;
+#name {
+  font-weight: bold;
+  font-size: 19px;
 }
-#price{
-    font-size: 15px;
+#price {
+  font-size: 15px;
 }
-@media screen and (max-width:700px) {
-    .allProducts{
-        display: block;
-    }
-    
+@media screen and (max-width: 700px) {
+  .allProducts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cardS {
+    height: 250px;
+  }
+  
 }

@@ -86,6 +86,7 @@ body {
 #addToCartButton {
   background-color: white;
   color: green;
+  border:3px solid rgba(2, 110, 2, 0.788);
   border-radius: 50%;
   width: 10%;
   height: max-content;
@@ -94,6 +95,7 @@ body {
 }
 
 #addToCartButton:hover {
+  border:rgba(2, 110, 2, 0.788) ;
   background-color: rgba(2, 110, 2, 0.788);
   color: white;
   height: 35px;
