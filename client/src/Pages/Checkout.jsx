@@ -38,6 +38,7 @@ function Checkout() {
   const getUserData = async () => {
     // var cartData = sessionStorage.getItem( 'cart' );
     // cartData = JSON.parse( cartData );
+    var cartData=JSON.parse(localStorage.getItem("cart"))
     const userAddressAndData = userData;
     console.log( userAddressAndData );
     const response = await fetch( "http://localhost:3001/api/setUser", {
