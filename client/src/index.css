@@ -662,8 +662,13 @@ form>input{
   }
   .contactForm{
     width: 100%;
- 
   }
+  .contactIntro{
+  padding:10px;
+}
+form>input,#description{
+  width: 95%;
+}
   .faq{
     display: block !important;
   }
