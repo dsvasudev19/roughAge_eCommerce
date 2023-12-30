@@ -14,6 +14,7 @@ import AdminLoginpage from './Pages/AdminLoginPage.jsx';
 import Dashboard from './Pages/Dashboard.jsx';
 import Success from './Pages/Success.jsx';
 import NotFound from './Pages/NotFound.jsx';
+import Profile from './Pages/Profile.jsx';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='admin/registerProduct' element={<RegisterNewProduct />} />
         <Route path='/product/:productID' element={ <MainProduct />} />
         <Route path='/success' element={<Success /> } />
+        <Route path='/admin/Profile' element={<Profile />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

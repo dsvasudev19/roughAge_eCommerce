@@ -93,14 +93,43 @@ function Cart() {
         //         // return prevQuant;
         //     } )
         // }
+        // function decreamentCount() {
+        //     // alert( "decre" );
+        //     setItemCount( itemCount - 1 );
+        //     setQuant( prevQuant => {
+        //         if ( prevQuant > 1 ) {
+        //             var newQuant = prevQuant - 1;
+        //             var cart = JSON.parse( localStorage.getItem( "cart" ) );
+        //             var ind = cart.findIndex( cartItem => cartItem.productID === props.id );
+
+        //             if ( ind !== -1 ) {
+        //                 // Update the count of the product
+        //                 cart[ ind ].count -- ;
+        //                 setQuant(cart[ind].count);
+        //                 // Update localStorage with the modified cart
+        //                 localStorage.setItem( "cart", JSON.stringify( cart ) );
+
+        //                 // Update the state with the modified cart
+        //                 setProducts( [ ...cart ] ); // Using spread operator to create a new array
+        //             }
+        //             // return prevQuant;
+        //         }
+
+        //         // return newQuant;
+        //     } );
+        // }
         function decreamentCount() {
-            // alert( "decre" );
+            setItemCount( ( prevItemCount ) => prevItemCount - 1 ); // Ensure consistent state updates
+            setQuant(quant-1);
+        }
+        function decrementCount() {
+            // alert("decre");
             setItemCount( itemCount - 1 );
-            setQuant( prevQuant => {
+            setQuant( ( prevQuant ) => {
                 if ( prevQuant > 1 ) {
                     var newQuant = prevQuant - 1;
                     var cart = JSON.parse( localStorage.getItem( "cart" ) );
-                    var ind = cart.findIndex( cartItem => cartItem.productID === props.id );
+                    var ind = cart.findIndex( ( cartItem ) => cartItem.productID === props.id );
 
                     if ( ind !== -1 ) {
                         // Update the count of the product
@@ -112,10 +141,10 @@ function Cart() {
                         // Update the state with the modified cart
                         setProducts( [ ...cart ] ); // Using spread operator to create a new array
                     }
-                    return prevQuant;
+                    return newQuant;
                 }
 
-                return newQuant;
+                return prevQuant;
             } );
         }
         async function removeProduct() {

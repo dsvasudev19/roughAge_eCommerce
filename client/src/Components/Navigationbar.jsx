@@ -22,7 +22,7 @@ function Navigationbar() {
   useEffect( () => {
     const fetchLength = async () => {
       try {
-        const data = await fetch( 'https://roughage-api.vercel.app/api/getCart' )
+        const data = await fetch( 'http://localhost:3001/api/getCart' )
         const parsedData = await data.json();
         const totalCount = parsedData.reduce( ( acc, curr ) => {
           return acc + curr.count;
@@ -38,11 +38,11 @@ function Navigationbar() {
   }, [] )
   // className = "bg-body-tertiary"
   return (
-    <Navbar collapseOnSelect expand="lg" style={{
-          WebkitBackdropFilter:'blur(5px)',
-          backdropFilter:'blur(50px)'
+    <Navbar collapseOnSelect expand="lg" style={ {
+      WebkitBackdropFilter: 'blur(5px)',
+      backdropFilter: 'blur(50px)'
 
-        }} sticky='top'>
+    } } sticky='top'>
       <Container>
         <Navbar.Brand href="/" className='brand'><Image width={ 60 } height={ 60 } src={ figure }></Image></Navbar.Brand>
         <Navbar.Brand href="/" className='brand'>roughAge</Navbar.Brand>
@@ -67,14 +67,14 @@ function Navigationbar() {
           </Nav>
           <Nav>
             <Form className="d-flex">
-                 <Form.Control
-                   type="search"
-                   placeholder="Search"
-                   className="me-2"
-                   aria-label="Search"
-                 />
-                 <Button variant="outline-success">Search</Button>
-               </Form>
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Search</Button>
+            </Form>
           </Nav>
           {/* <Nav>
             <Nav.Link href="/admin">Admin</Nav.Link>
@@ -87,14 +87,14 @@ function Navigationbar() {
     </Navbar>
   );
   //   <>
-      
+
   //     <Navbar key={ false } expand="lg" sticky="top" className="mb-3" style={{
   //         WebkitBackdropFilter:'blur(5px)',
   //         backdropFilter:'blur(50px)'
   //         // backgroundColor:''
   //       }}>
   //         <Container fluid>
-            
+
   //           {/* <Navbar.Brand href="/" className='brand'><Image width={ 80 } height={ 80 } xs={ 6 } src={ figure }></Image></Navbar.Brand>
   //         <Navbar.Brand href="/" style={ {
   //           fontSize: '50px',
@@ -135,7 +135,7 @@ function Navigationbar() {
   //           </Navbar.Offcanvas>
   //         </Container>
   //       </Navbar>
-      
+
   //   </>
   // );
 }

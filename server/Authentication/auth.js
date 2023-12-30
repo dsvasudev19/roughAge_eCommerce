@@ -7,7 +7,7 @@ const cookie = require( 'cookie-parser' )
 async function authenticateAdmin( req, res ) {
 
     const { email, adminId, password } = req.body;
-    await Admin.findOne( { adminId } ).then( admin => {
+    await Admin.findOne( { adminId }).then( admin => {
         if ( admin.email === email ) {
             bcrypt.compare( password, admin.password )
                 .then( result => {
@@ -30,15 +30,15 @@ async function authenticateAdmin( req, res ) {
         }
     } )
 
-
 }
 async function validateAdminAuthenctication( req, res ) {
     // const {token} = req.body;
-    const {token} = req.header( 'Authorization' ).replace( 'Bearer ', '' );
+    console.log("validation function")
+    const {token} = req.body;
     jwt.verify( token, process.env.SECRET, async ( err, result ) => {
         if ( result ) {
-            // console.log(result);
-            const adminInformation=await Admin.findOne({adminId:result.adminId});
+            console.log(result);
+            
             res.status( 205 ).json( { token: token, verification: "success" ,data:adminInformation} );
         } if ( err ) {
             res.status( 401 ).json( { message: "token Expired" } );
@@ -50,7 +50,6 @@ async function logoutAdmin(req,res){
     const {token}=req.body;
     jwt.verify(token,process.env.SECRET,(err,result)=>{
         if(err){
-            console.log("ohhh");
             res.status(401).json({msg:"Invalid Authorization"});
         }else{
             var old_token = jwt.sign( { ...result, exp: Math.floor( Date.now() / 1000 ) - 30 },process.env.SECRET,{algorithm:'HS256'});

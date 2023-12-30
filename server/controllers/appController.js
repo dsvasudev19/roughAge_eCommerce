@@ -65,7 +65,7 @@ async function addToCartProductId( req, res ) {
             }
         }
         ).catch(error=>{
-            res.status(404).json();
+            res.status(404);
         })
     }
     else {
@@ -87,7 +87,7 @@ async function addToCartProductId( req, res ) {
                 }
             }
             ).catch( error => {
-                res.status( 404 ).json();
+                res.status( 404 );
             } )
         }
     }
@@ -145,8 +145,9 @@ async function updateCart( req, res ) {
 
 async function setCart( req, res ) {
     const cartData=req.body;
+    // console.log(cartData);
     req.cart=cartData;
-
+    
     res.status(202).json({msg:'success'});
 }
 

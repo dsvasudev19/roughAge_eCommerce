@@ -16,7 +16,7 @@ const RegisterNewProduct = () => {
   const [ base64, setBase64 ] = useState( "" );
   const [ validated, setValidated ] = useState( true );
   const [ token, setToken ] = useState( Cookies.get( "token" ) || "" );
-  const [ isAuthenticated, setIsAuthenticated ] = useState( Cookies.get("Authenticated"))
+  const [ isAuthenticated, setIsAuthenticated ] = useState( Cookies.get( "Authenticated" ) )
   const navigate = useNavigate();
   const location = useLocation();
   const [ count, setCount ] = useState( 0 )
@@ -36,36 +36,38 @@ const RegisterNewProduct = () => {
     async function validateToken() {
       var token = Cookies.get( "token" );
       console.log( token );
-      const response = await fetch( "https://roughage-api.vercel.app/api/auth/validateAdminAuthenctication", {
+      const response = await fetch( "http://localhost:3001/api/auth/validateAdminAuthenctication", {
         method: 'post',
         headers: {
-            
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify( { token } )
+
+          'content-type': 'application/json',
+          'Authorization':`Bearer ${token}`
+        }
       } ).then( async ( response ) => {
         if ( response.status === 205 ) {
-          Cookies.set('Authenticated',true);
+          Cookies.set( 'Authenticated', true );
           // localStorage.setItem("authenticated",true);
           // sessionStorage.setItem('authenticated',true);
-          setIsAuthenticated(true);
-        } else if(response.status === 401){
-          console.log("failure")
-          setIsAuthenticated(false);
-          Cookies.set('Authenticated',false);
+          setIsAuthenticated( true );
+        } else if ( response.status === 401 ) {
+          console.log(response);
+          console.log(await response.json());
+          console.log( "failure" )
+          setIsAuthenticated( false );
+          Cookies.set( 'Authenticated', false );
           // localStorage.setItem( "authenticated", false );
           // sessionStorage.setItem( 'authenticated', false );
-          <AdminLoginpage/>
+          <AdminLoginpage />
         }
 
       } )
     }
     validateToken();
-    console.log(isAuthenticated);
+    console.log( isAuthenticated );
   }, [ count ] )
-  useEffect(()=>{
-    console.log(isAuthenticated)
-  })
+  useEffect( () => {
+    console.log( isAuthenticated )
+  } )
   function convertToBase64( file ) {
     return new Promise( ( resolve, reject ) => {
       const reader = new FileReader();
@@ -117,7 +119,7 @@ const RegisterNewProduct = () => {
       } ).then( async ( result ) => {
         /* Read more about isConfirmed, isDenied below */
         if ( result.isConfirmed ) {
-          await fetch( "https://roughage-api.vercel.app/api/admin/registerProduct", {
+          await fetch( "http://localhost:3001/api/admin/registerProduct", {
             method: "post",
             headers: {
               "content-type": "application/json",
@@ -144,7 +146,7 @@ const RegisterNewProduct = () => {
   } )
   return isAuthenticated ? (
     <>
-      <AdminNavbar/>
+      <AdminNavbar />
       <div className="productReg">
         <div className="productDetails">
           <Form onSubmit={ handleSubmit }>

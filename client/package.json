@@ -15,6 +15,7 @@
     "bootstrap": "^5.3.2",
     "font-awesome-icons": "^1.6.0",
     "js-cookie": "^3.0.5",
+    "jwt-decode": "^4.0.0",
     "lucide": "^0.292.0",
     "lucide-react": "^0.298.0",
     "md5": "^2.3.0",
@@ -33,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://roughage.vercel.app/",
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",

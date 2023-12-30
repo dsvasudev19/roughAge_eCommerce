@@ -19,33 +19,33 @@ import Cookies from 'js-cookie';
 
 
 function AdminNavbar() {
-    const navigate=useNavigate();
-    async function logOutAdmin(){
-        
+    const navigate = useNavigate();
+    async function logOutAdmin() {
+
         // const token=sessionStorage.getItem("token")||"";
-        var token=Cookies.get('token') || "";
-        const response = await fetch('https://roughage-api.vercel.app/api/auth/logoutAdmin',{
-            method:'post',
-            headers:{
-                'content-type':'application/json'
+        var token = Cookies.get( 'token' ) || "";
+        const response = await fetch( 'http://localhost:3001/api/auth/logoutAdmin', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify({token})
-        }).then(async response=>{
-            const parsedData=response.json();
-            if(response.status === 206){
-                Cookies.set('Authenticated',false)
+            body: JSON.stringify( { token } )
+        } ).then( async response => {
+            const parsedData = response.json();
+            if ( response.status === 206 ) {
+                Cookies.set( 'Authenticated', false )
                 // localStorage.setItem("authenticated",false);
                 // sessionStorage.setItem("token","");
-                Cookies.set('token',"");
+                Cookies.set( 'token', "" );
                 // sessionStorage.setItem("authenticated",false);
-                Swal.fire("Successfully Logged Out","","success");
-                navigate("/admin",{replace:true});
-            }else{
-                Swal.fire(parsedData.msg,"","question");
+                Swal.fire( "Successfully Logged Out", "", "success" );
+                navigate( "/admin", { replace: true } );
+            } else {
+                Swal.fire( parsedData.msg, "", "question" );
             }
-        })
+        } )
     }
-    
+
 
     return (
         <>
@@ -73,9 +73,9 @@ function AdminNavbar() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/" id='nav-item'>Home</Nav.Link>
-                            <Nav.Link href="/about" id='nav-item'>Profile</Nav.Link>
-                            <Nav.Link href="/contact" id='nav-item'>Inventory</Nav.Link>
-                            <Nav.Link href="/Cart" id='nav-item'>Register New Product</Nav.Link>
+                            <Nav.Link href="/admin/Profile" id='nav-item'>Profile</Nav.Link>
+                            <Nav.Link href="/admin/Inventory" id='nav-item'>Inventory</Nav.Link>
+                            <Nav.Link href="/admin/RegisterProduct" id='nav-item'>Register New Product</Nav.Link>
                             {/* <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

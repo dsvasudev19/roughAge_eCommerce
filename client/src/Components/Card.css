@@ -55,11 +55,12 @@
 }
 @media screen and (max-width: 700px) {
   .allProducts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: block;
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr); */
   }
-  .cardS {
+  /* .cardS {
     height: 250px;
-  }
+  } */
   
 }

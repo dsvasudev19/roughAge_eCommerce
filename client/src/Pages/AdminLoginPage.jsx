@@ -10,15 +10,15 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 
 const AdminLoginpage = () => {
-  const [token, setToken] = useState("");
+  const [ token, setToken ] = useState( "" );
   const [ isAuthenticated, setIsAuthenticated ] = useState( Cookies.get( 'Authenticated' ) === 'true' );
   const navigate = useNavigate();
   // const history=useHistory();
-  const [adminCredentials, setAdminCredentials] = useState({
+  const [ adminCredentials, setAdminCredentials ] = useState( {
     email: null,
     adminId: null,
     password: null,
-  });
+  } );
   function validateCredentials() {
     if (
       adminCredentials.email &&
@@ -29,36 +29,35 @@ const AdminLoginpage = () => {
         adminCredentials.password.length < 10 &&
         adminCredentials.adminId.length < 8
       ) {
-        Swal.fire("Check your Login Credentials", "", "error");
+        Swal.fire( "Check your Login Credentials", "", "error" );
       } else {
         return true;
       }
     }
   }
-  async function handleSubmit(e) {
+  async function handleSubmit( e ) {
     e.preventDefault();
-    if (validateCredentials()) {
-      await fetch("https://roughage-api.vercel.app/api/auth/authenticateAdmin", {
+    if ( validateCredentials() ) {
+      await fetch( "http://localhost:3001/api/auth/authenticateAdmin", {
         method: "post",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(adminCredentials),
-      }).then(async (response) => {
+        body: JSON.stringify( adminCredentials ),
+      } ).then( async ( response ) => {
         const data = await response.json();
-        if (response.status === 200) {
-          setToken(data.token);
-          setIsAuthenticated(true);
-          Swal.fire(data.msg, "", "success");
-          Cookies.set('token',data.token);
-          Cookies.set('Authenticated',true);
+        if ( response.status === 200 ) {
+          setToken( data.token );
+          setIsAuthenticated( true );
+          Swal.fire( data.msg, "", "success" );
+          Cookies.set( 'token', token );
+          Cookies.set( 'Authenticated', true );
+          navigate( "/admin", { replace: true } );
 
-          navigate("/admin",{replace:true});
-          
         } else {
-          Swal.fire(data.msg, "", "error");
+          Swal.fire( data.msg, "", "error" );
         }
-      });
+      } );
     }
   }
 
@@ -68,12 +67,12 @@ const AdminLoginpage = () => {
       <div className="loginPageBody">
         <div className="row loginPage">
           <div className="col col-lg-6 col-md-12 col-sm-12 loginPageImage">
-            <img src={backdrop} alt="hello" />
+            <img src={ backdrop } alt="hello" />
           </div>
           <div className="col col-lg-6 col-md-12 col-sm-12 loginPageForm">
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={ handleSubmit }>
               <Form.Group>
-                <img src={im} alt="logo" id="logoImage" />
+                <img src={ im } alt="logo" id="logoImage" />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Admin Id</Form.Label>
@@ -82,12 +81,12 @@ const AdminLoginpage = () => {
                   required
                   placeholder="Admin Id"
                   id="forminput"
-                  onChange={(e) => {
-                    setAdminCredentials({
+                  onChange={ ( e ) => {
+                    setAdminCredentials( {
                       ...adminCredentials,
                       adminId: e.target.value,
-                    });
-                  }}
+                    } );
+                  } }
                 ></Form.Control>
               </Form.Group>
               <Form.Group>
@@ -96,12 +95,12 @@ const AdminLoginpage = () => {
                   type="email"
                   required
                   placeholder="Enter Your email or username"
-                  onChange={(e) => {
-                    setAdminCredentials({
+                  onChange={ ( e ) => {
+                    setAdminCredentials( {
                       ...adminCredentials,
                       email: e.target.value,
-                    });
-                  }}
+                    } );
+                  } }
                   id="forminput"
                 ></Form.Control>
               </Form.Group>
@@ -111,12 +110,12 @@ const AdminLoginpage = () => {
                   type="password"
                   required
                   placeholder="Password"
-                  onChange={(e) => {
-                    setAdminCredentials({
+                  onChange={ ( e ) => {
+                    setAdminCredentials( {
                       ...adminCredentials,
                       password: e.target.value,
-                    });
-                  }}
+                    } );
+                  } }
                   id="forminput"
                 ></Form.Control>
               </Form.Group>

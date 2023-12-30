@@ -1,0 +1,20 @@
+
+
+//include sessions and store user information and cart data in sessions 
+//decrementCount function not working properly
+//Order placement completion
+
+
+//orders tab in admin page
+//profile information of admin
+//inventory available at the moment
+//update product details by admin
+
+
+//implement search in both admin page and user page
+
+//about page 
+//contact page
+
+
+//integrate payment   ----->stripe platform

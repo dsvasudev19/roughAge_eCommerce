@@ -199,7 +199,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: -webkit-linear-gradient(#7c81ad, white);
+  /* background-image: -webkit-linear-gradient(#7c81ad, white); */
+  background-color: #FFB000;
 }
 .subject,
 .questions {
@@ -211,17 +212,24 @@ body {
   align-items: center;
   height: auto;
 }
+.questions{
+  width: 160%;
+}
 #faqSubject {
   font-size: 6rem;
+  background-image: url("../public/Gallery/galleryPicOne.jpg");
+  color: transparent;
+  background-clip: text;
+  /* font-size: 60px; */
 }
 
 .footer {
-  height: 30vh;
+  height: max-content;
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: #176b87;
+  background-color: #304D30;
   color: white;
   font-size: 2rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -545,14 +553,104 @@ body {
   justify-content: center;
   text-align: start;
 }
+.aboutPageMain{
+  /* width: 90%; */
+  /* border: 3px solid black; */
+  height: max-content;
+  padding: 40px;
+}
+.ourStory,.vision,.mission,.achievements,.team{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+}
+.divContent,.divImage{
+  /* border: 3px solid red; */
+  width: 90%;
+  height: 50vh;
+  
+  overflow: hidden;
+  /* padding: 30px; */
+  /* display: flex;
+  justify-content: space-around; */
+}
+.divImage{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.divContent{
+  padding: 30px;
+}
+#aboutPageImages{
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+  object-fit: contain;
+}
+#abouthead{
+  font-size: 30px;
+  /* font-weight: ; */
+}
+#abouttexts{
+  font-size: large;
+  font-weight: 600;
+}
 
+.contactIntro{
+  padding:10px 100px 100px 100px;
+}
+
+.contactForm{
+  border: 3px solid black;
+  background-color: #1C82AD;
+  border-radius: 20px;
+  color: white;
+  width: 80%;
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+}
+.contactSuggestions{
+  /* border: 3px solid red; */
+  padding: 30px;
+}
+.contactSuggestions,.formContent{
+  width: 50%;
+}
+form>input{
+  width: 80%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: transparent;
+
+}
+#description{
+  width: 80%;
+  height: 25vh;
+  background-color: transparent;
+  border-radius: 10px;
+  padding-top: 2px;
+}
+#submitButton{
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+}
+#submitButton:hover{
+  background-color: orange;
+  transform: translateY(5px);
+  
+}
 @media (max-width: 480px) {
   
   .galleryImages {
     grid-template-columns: repeat(2, 1fr);
   }
-  .testimonialsBody {
+  .testimonialsBody,.contactForm {
     display: inline-block;
   }
   .test {
@@ -562,9 +660,16 @@ body {
     width: 100vw !important;
     height: 40vh !important;
   }
+  .contactForm{
+    width: 100%;
+ 
+  }
   .faq{
     display: block !important;
   }
+  .contactSuggestions,.formContent{
+  width: 100%;
+}
   
 }
 @media screen and (max-width:480px) {
@@ -574,7 +679,15 @@ body {
   .organicProduct{
     display: block;
   }
-  
+  #abouttexts{
+    font-size: medium;
+    font-weight: 400;
+  }
+}
+@media screen and (max-width:700px) {
+  #separateDivs{
+    display: block !important;
+  }
 }
 @media screen  and (max-width:1000px) {
   .footer{
@@ -595,7 +708,11 @@ body {
   #naturality{
     font-size: 50px;
   }
-
+  
+  .divContent{
+    height: max-content;
+    /* overflow-y: auto; */
+  }
 }
 @media screen and (min-width:600px) {
   .brand{

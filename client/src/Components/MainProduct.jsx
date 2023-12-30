@@ -25,7 +25,7 @@ function MainProduct() {
     // const [productDetails,setProductDetails]=useState();
     async function handleCart( e ) {
         const id = productId;
-        await fetch( `https://roughage-api.vercel.app/api/addToCart/${ id }`, {
+        await fetch( `http://localhost:3001/api/addToCart/${ id }`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -40,7 +40,7 @@ function MainProduct() {
         } )
     }
     async function fetchProductDetails() {
-        await fetch( `https://roughage-api.vercel.app/api/getProductDetails/${ product.productID }` ).then(
+        await fetch( `http://localhost:3001/api/getProductDetails/${ product.productID }` ).then(
             async response => {
                 if ( response.status === 202 ) {
                     const parsedData = await response.json();
@@ -60,18 +60,18 @@ function MainProduct() {
     async function fetchSimilarProducts() {
         // console.log(productDetails.category)
         // console.log(typeof(productDetails.category))
-        const response = await fetch( 'https://roughage-api.vercel.app/api/getSimilarCategoryProducts', {
+        const response = await fetch( 'http://localhost:3001/api/getSimilarCategoryProducts', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify( { category: productDetails.category } )
-        } ).then(async response => {
+        } ).then( async response => {
             if ( response.status === 202 ) {
-                const ParsedData=await response.json();
+                const ParsedData = await response.json();
                 // console.log(ParsedData)
                 const similarProductsFetched = ParsedData.products;
-                setSimilarProducts(similarProductsFetched)
+                setSimilarProducts( similarProductsFetched )
                 // console.log( similarProductsFetched );
             }
         } ).catch( error => {
@@ -88,14 +88,14 @@ function MainProduct() {
     }
     useEffect( () => {
         fetchProductDetails();
-        
+
     }, [ product.productID ] ); // Add product.productID as a dependency
     useEffect( () => {
         // console.log( productDetails );
         // console.log( productDetails )
         fetchSimilarProducts();
 
-    }, [ productDetails.productID]); 
+    }, [ productDetails.productID ] );
     useEffect( () => {
         // console.log( productDetails )
         // console.log(similarProducts)
@@ -160,15 +160,15 @@ function MainProduct() {
                 </div>
             </section>
             <section>
-            <div className="head">
+                <div className="head">
                     <h1 id="similarhead">Products You may Like</h1>
 
-            </div>
-            
+                </div>
+
                 <div className="row allProducts">
-                    { similarProducts.map( ( prouctAvailable,index ) => (
+                    { similarProducts.map( ( prouctAvailable, index ) => (
                         ( prouctAvailable.productID !== productDetails.productID ) &&
-                        index<5 &&
+                        index < 5 &&
                         <Product
                             key={ prouctAvailable.productID }
                             id={ prouctAvailable.productID }

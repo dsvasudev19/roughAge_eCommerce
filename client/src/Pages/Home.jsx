@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../index.css";
 import Navigationbar from "../Components/Navigationbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {ProductList} from "../Components/ProductList";
+import { ProductList } from "../Components/ProductList";
 
 import Dna from "../Components/Dna";
 // import Trust from "../Components/Trust";
@@ -21,15 +21,15 @@ var similarProducts = [
 ];
 
 function Home() {
-  async function establishSession(){
-    const response = await fetch('https://roughage-api.vercel.app/api/establishSession')
-    .then(async response=>{
-      if(response.status===202){
-        const dataParsed=await response.json();
-        console.log(dataParsed);
-        Swal.fire( dataParsed.msg,",","success");
-      }
-    })
+  async function establishSession() {
+    const response = await fetch( 'http://localhost:3001/api/establishSession' )
+      .then( async response => {
+        if ( response.status === 202 ) {
+          const dataParsed = await response.json();
+          console.log( dataParsed );
+          Swal.fire( dataParsed.msg, ",", "success" );
+        }
+      } )
   }
   // useEffect(()=>{
   //   establishSession();
@@ -53,22 +53,22 @@ function Home() {
         <h1 id="head">NATURAL AND HEALTHY FOODS</h1>
       </div>
 
-      {/* <CategoryTabs /> */}
-        <ProductList />
-        
+      {/* <CategoryTabs /> */ }
+      <ProductList />
+
       <marquee behavior="scroll" direction="left" className="marq">
         <h1>
           <i className="fa fa-solid fa-leaf"></i> EAT NATURAL, STAY HEALTHY ..!
-          <i className="fa fa-solid fa-leaf"></i> “ THE FIRST WEALTH IS HEALTH ”{" "}
-          <i className="fa fa-solid fa-leaf"></i>{" "}
+          <i className="fa fa-solid fa-leaf"></i> “ THE FIRST WEALTH IS HEALTH ”{ " " }
+          <i className="fa fa-solid fa-leaf"></i>{ " " }
         </h1>
       </marquee>
       <div className="showProducts">
-        {similarProducts.map((product) => {
+        { similarProducts.map( ( product ) => {
           return (
-            <img src={product.img} alt="product" className="showCaseProduct" />
+            <img src={ product.img } alt="product" className="showCaseProduct" />
           );
-        })}
+        } ) }
       </div>
       <div className="text-center galleryHead">
         <h1 id="gallery">Gallery</h1>
@@ -123,11 +123,11 @@ function Home() {
             </div>
 
           </div>
-          
+
 
         </div>
       </div>
-      {/* <Trust /> */}
+      {/* <Trust /> */ }
       <div className="naturality">
         <h1 id="naturality">
           100% NATURAL AND PURE <i class="fa fa-solid fa-leaf"></i>
