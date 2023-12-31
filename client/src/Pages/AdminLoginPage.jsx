@@ -9,9 +9,10 @@ import Swal from "sweetalert2";
 import { Navigate, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 
+
 const AdminLoginpage = () => {
   const [ token, setToken ] = useState( "" );
-  const [ isAuthenticated, setIsAuthenticated ] = useState( Cookies.get( 'Authenticated' ) === 'true' );
+  const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( 'Authenticated' ) == 'true' );
   const navigate = useNavigate();
   // const history=useHistory();
   const [ adminCredentials, setAdminCredentials ] = useState( {
@@ -33,31 +34,37 @@ const AdminLoginpage = () => {
       } else {
         return true;
       }
+
     }
+    return false;
   }
   async function handleSubmit( e ) {
     e.preventDefault();
     if ( validateCredentials() ) {
-      await fetch( "http://localhost:3001/api/auth/authenticateAdmin", {
+      const response = await fetch( "http://localhost:3001/api/auth/authenticateAdmin", {
         method: "post",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify( adminCredentials ),
-      } ).then( async ( response ) => {
+      } ).then( async response => {
         const data = await response.json();
-        if ( response.status === 200 ) {
-          setToken( data.token );
-          setIsAuthenticated( true );
-          Swal.fire( data.msg, "", "success" );
-          Cookies.set( 'token', token );
-          Cookies.set( 'Authenticated', true );
+        if(response.status === 200){
+          console.log( data );
+          setToken(data.token);
+          setIsAuthenticated('true');
+          Cookies.set("token",data.token);
+          localStorage.setItem("token",data.token);
+          localStorage.setItem("Authenticated",true);
+          Cookies.set("_url",data.url);
+          localStorage.setItem("_url",data.url)
           navigate( "/admin", { replace: true } );
-
-        } else {
-          Swal.fire( data.msg, "", "error" );
+          Swal.fire(data.msg,"","success");
         }
-      } );
+        else if(response.status === 400){
+          Swal.fire(data.msg,"","error");
+        }
+      } )
     }
   }
 
@@ -133,3 +140,23 @@ const AdminLoginpage = () => {
 };
 
 export default AdminLoginpage;
+
+
+
+
+// .then( async ( response ) => {
+//   const data = await response.json();
+//   if ( response.status === 200 ) {
+//     console.log( data );
+//     setToken( data.token );
+//     console.log( data.token );
+//     setIsAuthenticated( true );
+//     localStorage.setItem( "token", data.token );
+//     localStorage.setItem( 'Authenticated', true );
+//     Swal.fire( data.msg, "", "success" );
+//     navigate( "/admin", { replace: true } );
+
+//   } else {
+//     Swal.fire( data.msg, "", "error" );
+//   }
+// } );

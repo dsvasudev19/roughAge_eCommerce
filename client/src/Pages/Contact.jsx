@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import { Mail, MapPin, MapPinned, PhoneCall } from "lucide-react";
 
 function Contact() {
+ 
   return (
     <>
       <Navbar />
@@ -85,16 +86,17 @@ function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="from"
                   placeholder="Enter your email id"
                 />
                 <br></br>
                 <label htmlFor="subject">Subject</label>
                 <br></br>
-                <input type="text" placeholder="Enter subject of your mail" />
+                <input type="text" placeholder="Enter subject of your mail" name="subject" />
                 <br></br>
-                <label htmlFor="description">Description</label>
+                <label htmlFor="text">Description</label>
                 <br></br>
-                <textarea name="description" id="description"></textarea>
+                <textarea name="text" id="description"></textarea>
                 <input type="submit" id="submitButton" />
               </form>
             </div>

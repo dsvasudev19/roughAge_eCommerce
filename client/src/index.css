@@ -8,7 +8,7 @@ body {
   /* overflow: hidden; */
 }
 .mainpage {
-  background-image: url("../public/carousel4.jpeg");
+  background-image: url("/carousel4.jpeg");
   background-position: center;
   background-size: cover;
   width: 99vw;
@@ -217,7 +217,7 @@ body {
 }
 #faqSubject {
   font-size: 6rem;
-  background-image: url("../public/Gallery/galleryPicOne.jpg");
+  background-image: url("/Gallery/galleryPicOne.jpg");
   color: transparent;
   background-clip: text;
   /* font-size: 60px; */
@@ -258,7 +258,7 @@ body {
   font-size: 1.5rem;
 }
 .sec{
-  margin: 0 50px 45px 0;
+  margin: 20px 50px 45px 0;
   position: relative;
   top: -50px;
 }
@@ -517,7 +517,7 @@ body {
 }
 #testimonialHead {
   margin: 20px;
-  background-image: url("../public/Gallery/galleryPicOne.jpg");
+  background-image: url("/Gallery/galleryPicOne.jpg");
   color: transparent;
   background-clip: text;
   font-size: 60px;

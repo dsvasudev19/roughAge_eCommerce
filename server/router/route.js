@@ -15,7 +15,6 @@ router.route( "/deleteProduct" ).delete( controller.deleteProduct )
 router.route( '/updateCart' ).post( controller.updateCart )
 router.route( '/setCart' ).post( controller.setCart );
 router.route( "/register" ).post( controller.registerUser )
-
 router.route( "/getSimilarCategoryProducts" ).post( controller.getSimilarCategoryProducts )
 router.route("/setUser").post(controller.setUser);
 
@@ -27,7 +26,7 @@ router.route('/establishSession').get(controller.establishSession);
 router.route( "/admin/registerProduct" ).post( controller.registerProduct );
 
 
-
+// router.route( "/contactMailer" ).post( controller.contactMailer )
 
 //Authentication routes
 
@@ -35,7 +34,8 @@ router.route( "/admin/registerProduct" ).post( controller.registerProduct );
 router.route( '/auth/logoutAdmin' ).post( authenticator.logoutAdmin );
 router.route( '/auth/authenticateAdmin' ).post( authenticator.authenticateAdmin )
 
-
+//inventory route
+router.route( "/getAllInventoryProducts" ).get( controller.getAllInventoryProducts );
 
 //get routes 
 

@@ -13,8 +13,7 @@
 
 //implement search in both admin page and user page
 
-//about page 
-//contact page
+//implement sending mail to support team
 
 
 //integrate payment   ----->stripe platform

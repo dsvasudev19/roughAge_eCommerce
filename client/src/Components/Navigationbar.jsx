@@ -86,58 +86,7 @@ function Navigationbar() {
       </Container>
     </Navbar>
   );
-  //   <>
-
-  //     <Navbar key={ false } expand="lg" sticky="top" className="mb-3" style={{
-  //         WebkitBackdropFilter:'blur(5px)',
-  //         backdropFilter:'blur(50px)'
-  //         // backgroundColor:''
-  //       }}>
-  //         <Container fluid>
-
-  //           {/* <Navbar.Brand href="/" className='brand'><Image width={ 80 } height={ 80 } xs={ 6 } src={ figure }></Image></Navbar.Brand>
-  //         <Navbar.Brand href="/" style={ {
-  //           fontSize: '50px',
-  //           fontFamily: 'cursive',
-  //           fontWeight: '700',
-  //           backgroundImage: 'linear-gradient(#E43D00, #FFE900)',
-  //           color: 'transparent',
-  //           backgroundClip: 'text'
-  //         } }>roughAge</Navbar.Brand> */}
-  //         <Navbar.Toggle aria-controls={ `offcanvasNavbar-expand-${ false }` } />
-  //           <Navbar.Offcanvas
-  //           id={ `offcanvasNavbar-expand-${ false }` }
-  //           aria-labelledby={ `offcanvasNavbarLabel-expand-${ false }` }
-  //             placement="end"
-  //           >
-  //             <Offcanvas.Header closeButton>
-  //             <Offcanvas.Title id={ `offcanvasNavbarLabel-expand-${ false }` }>
-  //                 Offcanvas
-  //               </Offcanvas.Title>
-  //             </Offcanvas.Header>
-  //             <Offcanvas.Body>
-  //               <Nav className="justify-content-end flex-grow-1 pe-3">
-  //                 <Nav.Link href="/">Home</Nav.Link>
-  //               <Nav.Link href="/about">About</Nav.Link>
-  //               <Nav.Link href="/contact">Contact</Nav.Link>
-  //               <Nav.Link href="/Cart">Cart</Nav.Link>
-  //               </Nav>
-  //               <Form className="d-flex">
-  //                 <Form.Control
-  //                   type="search"
-  //                   placeholder="Search"
-  //                   className="me-2"
-  //                   aria-label="Search"
-  //                 />
-  //                 <Button variant="outline-success">Search</Button>
-  //               </Form>
-  //             </Offcanvas.Body>
-  //           </Navbar.Offcanvas>
-  //         </Container>
-  //       </Navbar>
-
-  //   </>
-  // );
+  
 }
 
 export default Navigationbar;

@@ -94,7 +94,7 @@ async function addToCartProductId( req, res ) {
 }
 
 async function getProducts( req, res ) {
-    await Product.find({}).then( products => {
+    await Product.find({},{quantityAvailable:0}).then( products => {
         // console.log(products)
         res.status( 200 ).json( products )
     } ).catch( err => res.json( err ) );
@@ -219,7 +219,47 @@ async function setUser(req,res){
 }
 
 
-module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession };
+
+async function getAllInventoryProducts(req,res){
+    await Product.find( {}  ).then( products => {
+        // console.log(products)
+        res.status( 200 ).json( products )
+    } ).catch( err => res.json( err ) );
+
+}
+
+
+
+// async function contactMailer(req,res){
+//     const {from,subject,text}=req.body;
+    
+
+//     const transporter = nodemailer.createTransport( {
+//         service: 'gmail',
+//         auth: {
+//             user: '20j41a0507@mrec.ac.in',
+//             pass: 'mrec2002'
+//         }
+//     } );
+
+//     const mailOptions = {
+//         from,
+//         to:' 20j41a0507@mrec.ac.in', // Your email address where you want to receive messages
+//         subject,
+//         text
+//     };
+
+//     transporter.sendMail( mailOptions, ( error, info ) => {
+//         if ( error ) {
+//             return res.status( 500 ).send( error.toString() );
+//         }
+//         res.status( 200 ).send( 'Email sent successfully' );
+//     } );
+
+// }
+
+
+module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts };
 // exports.getCart=getCart;
 // exports.addToCart=addToCart;
 // exports.addToCartProductId=addToCartProductId;

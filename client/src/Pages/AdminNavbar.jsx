@@ -21,29 +21,31 @@ import Cookies from 'js-cookie';
 function AdminNavbar() {
     const navigate = useNavigate();
     async function logOutAdmin() {
-
+        
         // const token=sessionStorage.getItem("token")||"";
-        var token = Cookies.get( 'token' ) || "";
+        var token = localStorage.getItem("token");
+        
         const response = await fetch( 'http://localhost:3001/api/auth/logoutAdmin', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify( { token } )
-        } ).then( async response => {
-            const parsedData = response.json();
-            if ( response.status === 206 ) {
-                Cookies.set( 'Authenticated', false )
-                // localStorage.setItem("authenticated",false);
-                // sessionStorage.setItem("token","");
-                Cookies.set( 'token', "" );
-                // sessionStorage.setItem("authenticated",false);
-                Swal.fire( "Successfully Logged Out", "", "success" );
-                navigate( "/admin", { replace: true } );
-            } else {
-                Swal.fire( parsedData.msg, "", "question" );
-            }
-        } )
+            body: JSON.stringify( {token:token}  )
+        } ).then(async response=>{
+            const data=await response.json();
+           if(response.status === 206){
+            localStorage.setItem("token","");
+            localStorage.setItem("Authenticated",false);
+            Cookies.set("token","");
+            Cookies.set("Authenticated",false);
+            Cookies.set("_url","")
+            localStorage.setItem("_url","");
+            Swal.fire(data.msg,"","success");
+            navigate('/adminLogin');
+           }else{
+            Swal.fire(data.msg,"","question");
+           }
+        })
     }
 
 
@@ -67,12 +69,12 @@ function AdminNavbar() {
 
             } } sticky='top'>
                 <Container>
-                    <Navbar.Brand href="/" className='brand'><Image width={ 60 } height={ 60 } src={ figure }></Image></Navbar.Brand>
-                    <Navbar.Brand href="/" className='brand'>roughAge</Navbar.Brand>
+                    <Navbar.Brand href="/admin" className='brand'><Image width={ 60 } height={ 60 } src={ figure }></Image></Navbar.Brand>
+                    <Navbar.Brand href="/admin" className='brand'>roughAge</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/" id='nav-item'>Home</Nav.Link>
+                            <Nav.Link href="/admin" id='nav-item'>Home</Nav.Link>
                             <Nav.Link href="/admin/Profile" id='nav-item'>Profile</Nav.Link>
                             <Nav.Link href="/admin/Inventory" id='nav-item'>Inventory</Nav.Link>
                             <Nav.Link href="/admin/RegisterProduct" id='nav-item'>Register New Product</Nav.Link>

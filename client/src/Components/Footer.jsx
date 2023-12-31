@@ -1,5 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { Facebook, Instagram, MessageCircle, PhoneCall, Send } from "lucide-react";
 
 function Footer() {
@@ -26,8 +26,8 @@ function Footer() {
                     </p> */}
                     
                 </div>
-                <h5><FontAwesomeIcon icon="fa-regular fa-copyright" />2023 All copyrights reserved</h5>
-                <h6>Designed and Developed by <a href="https://github.com/dsvasudev19">ds.vasudev </a><a href="https://wa.me/+918328203617"><FontAwesomeIcon icon="fa-brands fa-whatsapp" /></a></h6>
+                <h5>2023 All copyrights reserved</h5>
+                <h6>Designed and Developed by <a href="https://github.com/dsvasudev19">ds.vasudev </a><a href="https://wa.me/+918328203617"></a></h6>
             </div>
         </>
     );

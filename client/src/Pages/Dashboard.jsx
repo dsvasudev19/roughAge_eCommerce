@@ -5,10 +5,9 @@ import AdminLoginpage from './AdminLoginPage';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 const Dashboard = () => {
-    const [ token, setToken ] = useState( Cookies.get( "token" ) || "" );
-    const [ isAuthenticated, setIsAuthenticated ] = useState( Cookies.get( "Authenticated" ) === 'true' )
-    const navigate = useNavigate();
-    const location = useLocation();
+    const [ token, setToken ] = useState( localStorage.getItem( "token" ) || "" );
+    const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem("Authenticated") === 'true' )
+    const navigate=useNavigate();
     const [ count, setCount ] = useState( 0 );
 
     setTimeout( () => {
@@ -16,28 +15,31 @@ const Dashboard = () => {
     }, 100 );
     useEffect( () => {
         async function validateToken() {
-            var token = Cookies.get( "token" );
+            var token = localStorage.getItem( "token" );
             console.log( token );
             const response = await fetch( "http://localhost:3001/api/auth/validateAdminAuthenctication", {
                 method: 'post',
                 headers: {
-                    'content-type': 'application/json',
-                    'Authorization': `Bearer ${ token }`
+                    'content-type': 'application/json'
                 },
-                body:JSON.stringify(token)
+                body: JSON.stringify( token )
             } ).then( async ( response ) => {
                 if ( response.status === 205 ) {
-                    Cookies.set( 'Authenticated', true );
-                    // localStorage.setItem( "authenticated", true );
-                    // sessionStorage.setItem( 'authenticated', true );
+                    localStorage.setItem( 'Authenticated', true );
+                    // localStorage.setItem("authenticated",true);
+                    // sessionStorage.setItem('authenticated',true);
                     setIsAuthenticated( true );
                 } else if ( response.status === 401 ) {
+                    console.log( response );
+                    console.log( await response.json() );
                     console.log( "failure" )
                     setIsAuthenticated( false );
-                    Cookies.set( 'Authenticated', false );
-                    localStorage.setItem( "authenticated", false );
-                    sessionStorage.setItem( 'authenticated', false );
-                    <AdminLoginpage />
+                    localStorage.setItem( 'Authenticated', false );
+                    // localStorage.setItem( "authenticated", false );
+                    // sessionStorage.setItem( 'authenticated', false );
+                    // <AdminLoginpage />
+                    navigate( "/adminLogin" );
+
                 }
 
             } )

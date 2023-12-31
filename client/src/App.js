@@ -15,6 +15,7 @@ import Dashboard from './Pages/Dashboard.jsx';
 import Success from './Pages/Success.jsx';
 import NotFound from './Pages/NotFound.jsx';
 import Profile from './Pages/Profile.jsx';
+import Inventory from './Pages/Inventory.jsx';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/product/:productID' element={ <MainProduct />} />
         <Route path='/success' element={<Success /> } />
         <Route path='/admin/Profile' element={<Profile />} />
+        <Route path='/admin/Inventory' element={<Inventory />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

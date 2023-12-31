@@ -15,8 +15,8 @@ import Cookies from "js-cookie";
 const RegisterNewProduct = () => {
   const [ base64, setBase64 ] = useState( "" );
   const [ validated, setValidated ] = useState( true );
-  const [ token, setToken ] = useState( Cookies.get( "token" ) || "" );
-  const [ isAuthenticated, setIsAuthenticated ] = useState( Cookies.get( "Authenticated" ) )
+  const [ token, setToken ] = useState( localStorage.getItem( "token" ) || "" );
+  const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( "Authenticated" ) )
   const navigate = useNavigate();
   const location = useLocation();
   const [ count, setCount ] = useState( 0 )
@@ -29,45 +29,53 @@ const RegisterNewProduct = () => {
     description: null,
     category: null,
   } );
+
   setTimeout( () => {
     setCount( count + 1 );
-  }, 100 );
+  }, 1000 );
+
+  async function validateToken() {
+    var token = localStorage.getItem( "token" );
+    console.log( token );
+    const response = await fetch( "http://localhost:3001/api/auth/validateAdminAuthenctication", {
+      method: 'post',
+      headers: {
+
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${ token }`
+      },
+      body: JSON.stringify( token )
+    } ).then( async ( response ) => {
+      if ( response.status === 205 ) {
+        localStorage.setItem( 'Authenticated', true );
+        // localStorage.setItem("authenticated",true);
+        // sessionStorage.setItem('authenticated',true);
+        setIsAuthenticated( true );
+      } else if ( response.status === 401 ) {
+        console.log( response );
+        console.log( await response.json() );
+        console.log( "failure" )
+        setIsAuthenticated( false );
+        localStorage.setItem( 'Authenticated', false );
+        // localStorage.setItem( "authenticated", false );
+        // sessionStorage.setItem( 'authenticated', false );
+        // <AdminLoginpage />
+        navigate("/adminLogin");
+        
+      }
+
+    } )
+  }
+
   useEffect( () => {
-    async function validateToken() {
-      var token = Cookies.get( "token" );
-      console.log( token );
-      const response = await fetch( "http://localhost:3001/api/auth/validateAdminAuthenctication", {
-        method: 'post',
-        headers: {
-
-          'content-type': 'application/json',
-          'Authorization':`Bearer ${token}`
-        }
-      } ).then( async ( response ) => {
-        if ( response.status === 205 ) {
-          Cookies.set( 'Authenticated', true );
-          // localStorage.setItem("authenticated",true);
-          // sessionStorage.setItem('authenticated',true);
-          setIsAuthenticated( true );
-        } else if ( response.status === 401 ) {
-          console.log(response);
-          console.log(await response.json());
-          console.log( "failure" )
-          setIsAuthenticated( false );
-          Cookies.set( 'Authenticated', false );
-          // localStorage.setItem( "authenticated", false );
-          // sessionStorage.setItem( 'authenticated', false );
-          <AdminLoginpage />
-        }
-
-      } )
-    }
     validateToken();
     console.log( isAuthenticated );
-  }, [ count ] )
+  }, [ count ] );
+
   useEffect( () => {
     console.log( isAuthenticated )
-  } )
+  },[] );
+
   function convertToBase64( file ) {
     return new Promise( ( resolve, reject ) => {
       const reader = new FileReader();
@@ -81,12 +89,8 @@ const RegisterNewProduct = () => {
       };
     } );
   }
-  // async function validateToken(){
-  //   var token=sessionStorage.getItem("token");
-  //   const response=await fetch("http://localhost:3001/api/auth/validateAdminAuthenctication")
-  //   const result=response.json();
-  //   console.log(result);
-  // }
+  
+
   function validateData() { }
   async function handleFileChange( e ) {
     let file = e.target.files[ 0 ];
@@ -102,10 +106,12 @@ const RegisterNewProduct = () => {
         } );
     }
   }
+
   const resetForm = () => {
     setBase64( "" );
     setProductData( "" );
   };
+
   async function handleSubmit( e ) {
     e.preventDefault();
     validateData();
@@ -141,9 +147,8 @@ const RegisterNewProduct = () => {
       alert( "please check the data and try again" );
     }
   }
-  useEffect( () => {
-    // validateToken();
-  } )
+  
+  
   return isAuthenticated ? (
     <>
       <AdminNavbar />

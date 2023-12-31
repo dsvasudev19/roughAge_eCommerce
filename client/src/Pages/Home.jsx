@@ -89,7 +89,7 @@ function Home() {
       <div className="text-center testimonials">
         <div className="testimonialsBody">
           <div className="test">
-            <img src="/Gallery/galleryPicOne.jpg" alt="g7" />
+            <img src="/Gallery/http://localhost:3001.jpg" alt="g7" />
             <h1>User One</h1>
             <h5>Rating:⭐⭐⭐⭐</h5>
             <div className="testBody">
