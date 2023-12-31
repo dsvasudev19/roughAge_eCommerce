@@ -3,7 +3,7 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
-#root{
+#root {
   max-width: 100%;
   /* overflow: hidden; */
 }
@@ -51,9 +51,9 @@ body {
   background-clip: text;
   color: transparent;
 }
-#similarhead{
-  background-image: radial-gradient(pink,violet,green,red,orange,blue);
-  background-color: linear-gradient(green,orange,yello,red);
+#similarhead {
+  background-image: radial-gradient(pink, violet, green, red, orange, blue);
+  background-color: linear-gradient(green, orange, yello, red);
   /* background-image: circular-gradient(pink,violet,red,orange,blue); */
   background-position: center;
   background-size: cover;
@@ -86,7 +86,7 @@ body {
 #addToCartButton {
   background-color: white;
   color: green;
-  border:3px solid rgba(2, 110, 2, 0.788);
+  border: 3px solid rgba(2, 110, 2, 0.788);
   border-radius: 50%;
   width: 10%;
   height: max-content;
@@ -95,7 +95,7 @@ body {
 }
 
 #addToCartButton:hover {
-  border:rgba(2, 110, 2, 0.788) ;
+  border: rgba(2, 110, 2, 0.788);
   background-color: rgba(2, 110, 2, 0.788);
   color: white;
   height: 35px;
@@ -110,8 +110,6 @@ body {
   height: 65%;
   box-shadow: 2px 1px 5px rgb(97, 96, 96);
 } */
-
-
 
 .active {
   background-color: green;
@@ -200,7 +198,7 @@ body {
   justify-content: center;
   align-items: center;
   /* background-image: -webkit-linear-gradient(#7c81ad, white); */
-  background-color: #FFB000;
+  background-color: #ffb000;
 }
 .subject,
 .questions {
@@ -212,7 +210,7 @@ body {
   align-items: center;
   height: auto;
 }
-.questions{
+.questions {
   width: 160%;
 }
 #faqSubject {
@@ -229,7 +227,7 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: #304D30;
+  background-color: #304d30;
   color: white;
   font-size: 2rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -257,7 +255,7 @@ body {
   text-align: center;
   font-size: 1.5rem;
 }
-.sec{
+.sec {
   margin: 40px 50px 45px 0;
   position: relative;
   /* top: -50px; */
@@ -322,10 +320,10 @@ body {
   font-size: 25px;
   border-radius: 15px;
 }
-#addMe{
+#addMe {
   /* border: 3px solid red; */
 }
-#addMe button{
+#addMe button {
   /* border: 3px solid black; */
   width: 100%;
 }
@@ -337,7 +335,6 @@ body {
   .impItem {
     display: flex;
   }
-  
 }
 .showProducts {
   display: flex;
@@ -553,58 +550,62 @@ body {
   justify-content: center;
   text-align: start;
 }
-.aboutPageMain{
+.aboutPageMain {
   /* width: 90%; */
   /* border: 3px solid black; */
   height: max-content;
   padding: 40px;
 }
-.ourStory,.vision,.mission,.achievements,.team{
+.ourStory,
+.vision,
+.mission,
+.achievements,
+.team {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-.divContent,.divImage{
+.divContent,
+.divImage {
   /* border: 3px solid red; */
   width: 90%;
   height: 50vh;
-  
+
   overflow: hidden;
   /* padding: 30px; */
   /* display: flex;
   justify-content: space-around; */
 }
-.divImage{
+.divImage {
   display: flex;
   justify-content: center;
   padding: 10px;
 }
-.divContent{
+.divContent {
   padding: 30px;
 }
-#aboutPageImages{
+#aboutPageImages {
   width: 100%;
   height: 100%;
   /* overflow: hidden; */
   object-fit: contain;
 }
-#abouthead{
+#abouthead {
   font-size: 30px;
   /* font-weight: ; */
 }
-#abouttexts{
+#abouttexts {
   font-size: large;
   font-weight: 600;
 }
 
-.contactIntro{
-  padding:10px 100px 100px 100px;
+.contactIntro {
+  padding: 10px 100px 100px 100px;
 }
 
-.contactForm{
+.contactForm {
   border: 3px solid black;
-  background-color: #1C82AD;
+  background-color: #1c82ad;
   border-radius: 20px;
   color: white;
   width: 80%;
@@ -615,87 +616,91 @@ body {
   align-items: center;
   /* text-align: center; */
 }
-.contactSuggestions{
+.contactSuggestions {
   /* border: 3px solid red; */
   padding: 30px;
 }
-.contactSuggestions,.formContent{
+.contactSuggestions,
+.formContent {
   width: 50%;
 }
-form>input{
+form > input {
   width: 80%;
   height: 40px;
   border-radius: 10px;
   background-color: transparent;
-
 }
-#description{
+#description {
   width: 80%;
   height: 25vh;
   background-color: transparent;
   border-radius: 10px;
   padding-top: 2px;
 }
-#submitButton{
+#submitButton {
   background-color: rgb(255, 255, 255);
   margin-bottom: 10px;
 }
-#submitButton:hover{
+#submitButton:hover {
   background-color: orange;
   transform: translateY(5px);
-  
+}
+
+.row {
+  display: flex !important;
 }
 @media (max-width: 480px) {
-  
   .galleryImages {
     grid-template-columns: repeat(2, 1fr);
   }
-  .testimonialsBody,.contactForm {
+  .testimonialsBody,
+  .contactForm {
     display: inline-block;
   }
   .test {
     width: 75%;
   }
-  .mainpage{
+  .mainpage {
     width: 100vw !important;
     height: 40vh !important;
   }
-  .contactForm{
+  .contactForm {
     width: 100%;
   }
-  .contactIntro{
-  padding:10px;
-}
-form>input,#description{
-  width: 95%;
-}
-  .faq{
+  .contactIntro {
+    padding: 10px;
+  }
+  form > input,
+  #description {
+    width: 95%;
+  }
+  .faq {
     display: block !important;
   }
-  .contactSuggestions,.formContent{
-  width: 100%;
+  .contactSuggestions,
+  .formContent {
+    width: 100%;
+  }
 }
-  
-}
-@media screen and (max-width:480px) {
-  #head{
+@media screen and (max-width: 480px) {
+  #head {
     font-size: 25px !important;
   }
-  .organicProduct{
+  .organicProduct {
     display: block;
   }
-  #abouttexts{
+  #abouttexts {
     font-size: medium;
     font-weight: 400;
   }
 }
-@media screen and (max-width:700px) {
-  #separateDivs{
+@media screen and (max-width: 700px) {
+  #separateDivs {
     display: block !important;
   }
 }
-@media screen  and (max-width:1000px) {
-  .footer{
+@media screen and (max-width: 1000px) {
+  .footer {
     display: block !important;
     height: max-content !important;
   }
@@ -703,25 +708,24 @@ form>input,#description{
     height: max-content !important;
     display: block !important;
   } */
-  .imageClass{
+  .imageClass {
     width: 100%;
     height: 55vh;
   }
-  .detailsClass{
+  .detailsClass {
     margin-left: 25px !important;
   }
-  #naturality{
+  #naturality {
     font-size: 50px;
   }
-  
-  .divContent{
+
+  .divContent {
     height: max-content;
     /* overflow-y: auto; */
   }
 }
-@media screen and (min-width:600px) {
-  .brand{
+@media screen and (min-width: 600px) {
+  .brand {
     font-size: 30px !important;
   }
-  
 }
