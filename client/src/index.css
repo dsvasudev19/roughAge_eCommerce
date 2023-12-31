@@ -699,10 +699,10 @@ form>input,#description{
     display: block !important;
     height: max-content !important;
   }
-  .organicProduct{
+  /* .organicProduct{
     height: max-content !important;
     display: block !important;
-  }
+  } */
   .imageClass{
     width: 100%;
     height: 55vh;
