@@ -258,9 +258,9 @@ body {
   font-size: 1.5rem;
 }
 .sec{
-  margin: 20px 50px 45px 0;
+  margin: 40px 50px 45px 0;
   position: relative;
-  top: -50px;
+  /* top: -50px; */
 }
 .organicProduct {
   /* margin: 100px; */
