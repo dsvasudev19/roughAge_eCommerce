@@ -1,9 +1,10 @@
-import { React, useState, useEffect } from "react";
+import { React, useState} from "react";
 import Navigationbar from "../Components/Navigationbar";
 import Form from 'react-bootstrap/Form'
 import Footer from "../Components/Footer";
-import Button from 'react-bootstrap/Button'
-// import ExampleForm from "../Components/ExampleForm";
+import Button from "react-bootstrap/esm/Button";
+import Swal from "sweetalert2";
+
 
 function Checkout() {
   const [ userData, setUserData ] = useState( {
@@ -36,6 +37,7 @@ function Checkout() {
   }
 
   const getUserData = async () => {
+    
     // var cartData = sessionStorage.getItem( 'cart' );
     // cartData = JSON.parse( cartData );
     var cartData=JSON.parse(localStorage.getItem("cart"))
@@ -48,6 +50,7 @@ function Checkout() {
       },
       body: JSON.stringify( { cart: cartData, userDetails: userAddressAndData } )
     } );
+    
   };
   return (
     <div className="checkoutpage">
@@ -167,7 +170,7 @@ function Checkout() {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit" onClick={ getUserData }>
+          <Button variant="primary" onClick={ getUserData() }>
             Proceed to Checkout
           </Button>
         </Form>

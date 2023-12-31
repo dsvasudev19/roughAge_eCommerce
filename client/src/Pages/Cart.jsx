@@ -9,7 +9,7 @@ import { Trash2 } from 'lucide-react';
 import { Plus, Minus } from 'lucide-react';
 import Swal from 'sweetalert2';
 import { useNavigate, NavLink } from "react-router-dom";
-import axios from 'axios';
+
 const url = "http://localhost:3001/";
 const localUrl = "http://localhost:3001/api/"
 const EmptyCart = () => {
@@ -38,86 +38,19 @@ function Cart() {
             setQuant( ( prevQuant ) => {
                 var newQuant = prevQuant + 1;
                 const cart = JSON.parse( localStorage.getItem( "cart" ) );
-
-                // Find the index of the product in the cart array
                 const productIndex = cart.findIndex( product => product.productID === props.id );
 
                 if ( productIndex !== -1 ) {
-                    // Update the count of the product
                     cart[ productIndex ].count = newQuant;
-
-                    // Update localStorage with the modified cart
                     localStorage.setItem( "cart", JSON.stringify( cart ) );
-
-                    // Update the state with the modified cart
-                    setProducts( [ ...cart ] ); // Using spread operator to create a new array
-
-                    // You might want to send the updated cart to the server here if needed
-                    // fetch('http://localhost:3001/api/updateCart', {
-                    //     method: 'post',
-                    //     headers: {
-                    //         'content-type': 'application/json'
-                    //     },
-                    //     body: JSON.stringify({ id: props.id, quantity: newQuant })
-                    // });
+                    setProducts( [ ...cart ] ); 
 
                 }
 
                 return newQuant;
             } );
         }
-        // function decreamentCount() {
-        //     alert("decre")
-        //     setItemCount( itemCount - 1 );
-        //     setQuant( ( prevQuant ) => {
-        //         if ( prevQuant > 1 ) {
-        //             var newQuant = prevQuant - 1;
-        //             const cart=JSON.parse(localStorage.getItem("cart"))
-        //             console.log(cart);
-                    
-        //             var productIndex = cart.findIndex(cartItem=>{
-        //                 return cartItem.productID===props.id
-        //             })
-        //             cart[ productIndex ].count--;
-        //             localStorage.setItem("cart",JSON.stringify(cart));
-        //             setProducts([...cart])
-        //             // fetch( 'http://localhost:3001/api/updateCart', {
-        //             //     method: 'post',
-        //             //     headers: {
-        //             //         'content-type': "application/json"
-        //             //     },
-        //             //     body: JSON.stringify( { id: props.id, quantity: newQuant } )
-        //             // } );
-        //             return newQuant;
-        //         }
-        //         // return prevQuant;
-        //     } )
-        // }
-        // function decreamentCount() {
-        //     // alert( "decre" );
-        //     setItemCount( itemCount - 1 );
-        //     setQuant( prevQuant => {
-        //         if ( prevQuant > 1 ) {
-        //             var newQuant = prevQuant - 1;
-        //             var cart = JSON.parse( localStorage.getItem( "cart" ) );
-        //             var ind = cart.findIndex( cartItem => cartItem.productID === props.id );
-
-        //             if ( ind !== -1 ) {
-        //                 // Update the count of the product
-        //                 cart[ ind ].count -- ;
-        //                 setQuant(cart[ind].count);
-        //                 // Update localStorage with the modified cart
-        //                 localStorage.setItem( "cart", JSON.stringify( cart ) );
-
-        //                 // Update the state with the modified cart
-        //                 setProducts( [ ...cart ] ); // Using spread operator to create a new array
-        //             }
-        //             // return prevQuant;
-        //         }
-
-        //         // return newQuant;
-        //     } );
-        // }
+       
         function decreamentCount() {
             setItemCount( ( prevItemCount ) => prevItemCount - 1 ); // Ensure consistent state updates
             setQuant(quant-1);
@@ -132,14 +65,9 @@ function Cart() {
                     var ind = cart.findIndex( ( cartItem ) => cartItem.productID === props.id );
 
                     if ( ind !== -1 ) {
-                        // Update the count of the product
                         cart[ ind ].count = newQuant;
-
-                        // Update localStorage with the modified cart
                         localStorage.setItem( "cart", JSON.stringify( cart ) );
-
-                        // Update the state with the modified cart
-                        setProducts( [ ...cart ] ); // Using spread operator to create a new array
+                        setProducts( [ ...cart ] ); 
                     }
                     return newQuant;
                 }
@@ -153,9 +81,6 @@ function Cart() {
                 title: "Are you sure?",
                 text: "You want to delete this Item from the cart!",
                 icon: "warning",
-                // imageUrl: "https://static.javatpoint.com/computer/images/what-is-delete.png",
-                // imageWidth: 400,
-                // imageHeight: 200,
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
@@ -268,8 +193,10 @@ function Cart() {
             },
             body: JSON.stringify( products )
         } )
-        sessionStorage.setItem( "cart", JSON.stringify( products ) )
-        navigate( '/checkout' )
+        sessionStorage.setItem( "cart", JSON.stringify( products ) );
+        // <Navigate to="/checkout" replace />
+        navigate( '/address' )
+
     }
     useEffect( () => {
         // console.log(products)
@@ -278,7 +205,7 @@ function Cart() {
             return acc + curr.price * curr.count;
         }, 0 );
         setTotalCost( totalCost )
-    } )
+    } ,[products])
     return (
         ( products.length === 0 ) ? <EmptyCart /> :
             <Row className="justify-content-md-center">

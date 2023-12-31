@@ -14,8 +14,10 @@ import AdminLoginpage from './Pages/AdminLoginPage.jsx';
 import Dashboard from './Pages/Dashboard.jsx';
 import Success from './Pages/Success.jsx';
 import NotFound from './Pages/NotFound.jsx';
+import Address from './Pages/Address.jsx';
 import Profile from './Pages/Profile.jsx';
 import Inventory from './Pages/Inventory.jsx';
+import { Check } from 'lucide-react';
 
 function App() {
   return (
@@ -25,7 +27,8 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path='/checkout' element={<Checkout /> } />
+        <Route path='/address' element={<Address/>} />
         <Route path="/register" element={ <Register /> } />
         <Route path='/admin' element={<Dashboard />} />
         <Route path='/adminLogin' element={<AdminLoginpage/>} />

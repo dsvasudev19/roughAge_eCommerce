@@ -1,13 +1,13 @@
 
 const User = require( '../models/userModel.js' )
-const Product=require("../models/ProductModel.js");
+const Product = require( "../models/ProductModel.js" );
 // const Product = require( '../models/ProductModel.js' )
 const bcrypt = require( 'bcrypt' )
-const session=require('express-session')
+const session = require( 'express-session' )
 
 
 let cart = [];
-async function establishSession(req,res){
+async function establishSession( req, res ) {
 
 }
 async function addToCart( req, res ) {
@@ -16,9 +16,9 @@ async function addToCart( req, res ) {
     //first check whether cart is empty or any product is present in the cart
     //if the cart is empty directly add the product to the cart 
     if ( cart.length === 0 ) {
-        Product.findOne( { productID} )
+        Product.findOne( { productID } )
             .then( product => {
-                product.quantityAvailable=undefined;
+                product.quantityAvailable = undefined;
                 let cartProduct = { ...product._doc, count: 1 }
                 cart.push( cartProduct );
             } )
@@ -53,20 +53,20 @@ async function addToCartProductId( req, res ) {
     const { id, quantity } = req.body;
 
     if ( cart.length === 0 ) {
-        Product.findOne( { productID: id } ).then(product=>{
-            if(product){
+        Product.findOne( { productID: id } ).then( product => {
+            if ( product ) {
                 product.quantityAvailable = undefined;
                 let cartProduct = { ...product._doc, count: quantity }
                 cart.push( cartProduct );
-                res.status(202).json({msg:"Successfully added."});
+                res.status( 202 ).json( { msg: "Successfully added." } );
             }
-            else{
-                res.status(404).json({msg:"Product Not Found"});
+            else {
+                res.status( 404 ).json( { msg: "Product Not Found" } );
             }
         }
-        ).catch(error=>{
-            res.status(404);
-        })
+        ).catch( error => {
+            res.status( 404 );
+        } )
     }
     else {
         var productPresent = cart.find( product => product.productID == id );
@@ -74,16 +74,16 @@ async function addToCartProductId( req, res ) {
 
             productPresent.count += quantity;
 
-            res.status(202).json({msg:"Successfully added."})
+            res.status( 202 ).json( { msg: "Successfully added." } )
         } else {
             Product.findOne( { productID: id } ).then( product => {
                 if ( product ) {
                     let cartProduct = { ...product._doc, count: quantity }
                     cart.push( cartProduct )
-                    res.status(202).json({msg:"Successfully added"})
+                    res.status( 202 ).json( { msg: "Successfully added" } )
                 }
                 else {
-                    res.status( 404 ).json({msg:"Product Not found"});
+                    res.status( 404 ).json( { msg: "Product Not found" } );
                 }
             }
             ).catch( error => {
@@ -94,7 +94,7 @@ async function addToCartProductId( req, res ) {
 }
 
 async function getProducts( req, res ) {
-    await Product.find({},{quantityAvailable:0}).then( products => {
+    await Product.find( {}, { quantityAvailable: 0 } ).then( products => {
         // console.log(products)
         res.status( 200 ).json( products )
     } ).catch( err => res.json( err ) );
@@ -113,14 +113,14 @@ async function deleteProduct( req, res ) {
     res.status( 200 ).json( newCart ).send();
 }
 
-async function getProductDetails(req,res){
+async function getProductDetails( req, res ) {
     const id = req.params.productId;
-    Product.find({productID:id}).then(
-        product=>{
-            if(product){
-                res.status(202).json(product);
-            }else{
-                res.status(404).json({msg:"No Product Found"})
+    Product.find( { productID: id } ).then(
+        product => {
+            if ( product ) {
+                res.status( 202 ).json( product );
+            } else {
+                res.status( 404 ).json( { msg: "No Product Found" } )
             }
         }
     )
@@ -144,11 +144,11 @@ async function updateCart( req, res ) {
 }
 
 async function setCart( req, res ) {
-    const cartData=req.body;
+    const cartData = req.body;
     // console.log(cartData);
-    req.cart=cartData;
-    
-    res.status(202).json({msg:'success'});
+    req.cart = cartData;
+
+    res.status( 202 ).json( { msg: 'success' } );
 }
 
 async function registerUser( req, res ) {
@@ -192,36 +192,29 @@ async function registerProduct( req, res ) {
 
 }
 
-async function getSimilarCategoryProducts(req,res){
-    const {category}=req.body;
-    const products=await Product.find({category})
-    if(products.length>0){
-        res.status(202).json({products})
-    }else{
-        res.status(404).json({msg:"Failed to fetch products"})
+async function getSimilarCategoryProducts( req, res ) {
+    const { category } = req.body;
+    const products = await Product.find( { category } )
+    if ( products.length > 0 ) {
+        res.status( 202 ).json( { products } )
+    } else {
+        res.status( 404 ).json( { msg: "Failed to fetch products" } )
     }
 }
 
 
-async function setUser(req,res){
-    const UserData=req.body;
-    // console.log(UserData);
-    UserData.cart.map(userCart=>{
-        userCart.image=undefined;
-        userCart.description=undefined;
-        delete userCart.image;
-        delete userCart.description;
-    })
-    const newOrder=UserData;
+async function setUser( req, res ) {
+    const { userDetails }=req.body;
+    console.log(userDetails);
+    
+    res.status( 200 );
 
-    // console.log(UserData);
-    req.User=UserData;
 }
 
 
 
-async function getAllInventoryProducts(req,res){
-    await Product.find( {}  ).then( products => {
+async function getAllInventoryProducts( req, res ) {
+    await Product.find( {} ).then( products => {
         // console.log(products)
         res.status( 200 ).json( products )
     } ).catch( err => res.json( err ) );
@@ -230,33 +223,6 @@ async function getAllInventoryProducts(req,res){
 
 
 
-// async function contactMailer(req,res){
-//     const {from,subject,text}=req.body;
-    
-
-//     const transporter = nodemailer.createTransport( {
-//         service: 'gmail',
-//         auth: {
-//             user: '20j41a0507@mrec.ac.in',
-//             pass: 'mrec2002'
-//         }
-//     } );
-
-//     const mailOptions = {
-//         from,
-//         to:' 20j41a0507@mrec.ac.in', // Your email address where you want to receive messages
-//         subject,
-//         text
-//     };
-
-//     transporter.sendMail( mailOptions, ( error, info ) => {
-//         if ( error ) {
-//             return res.status( 500 ).send( error.toString() );
-//         }
-//         res.status( 200 ).send( 'Email sent successfully' );
-//     } );
-
-// }
 
 
 module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts };

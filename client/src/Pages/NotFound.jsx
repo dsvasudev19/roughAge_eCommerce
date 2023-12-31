@@ -6,9 +6,7 @@ const NotFound = () => {
     return (
         <div>
             <Navigationbar />
-            <br></br>
-            <br></br>
-            <br></br>
+
             <>
                 <img src="errorpage.png" usemap="#image-map" style={
                     {
