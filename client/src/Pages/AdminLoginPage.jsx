@@ -41,7 +41,7 @@ const AdminLoginpage = () => {
   async function handleSubmit( e ) {
     e.preventDefault();
     if ( validateCredentials() ) {
-      const response = await fetch( "http://localhost:3001/api/auth/authenticateAdmin", {
+      const response = await fetch( "https://roughage-api.vercel.app//api/auth/authenticateAdmin", {
         method: "post",
         headers: {
           "content-type": "application/json",
@@ -49,20 +49,20 @@ const AdminLoginpage = () => {
         body: JSON.stringify( adminCredentials ),
       } ).then( async response => {
         const data = await response.json();
-        if(response.status === 200){
+        if ( response.status === 200 ) {
           console.log( data );
-          setToken(data.token);
-          setIsAuthenticated('true');
-          Cookies.set("token",data.token);
-          localStorage.setItem("token",data.token);
-          localStorage.setItem("Authenticated",true);
-          Cookies.set("_url",data.url);
-          localStorage.setItem("_url",data.url)
+          setToken( data.token );
+          setIsAuthenticated( 'true' );
+          Cookies.set( "token", data.token );
+          localStorage.setItem( "token", data.token );
+          localStorage.setItem( "Authenticated", true );
+          Cookies.set( "_url", data.url );
+          localStorage.setItem( "_url", data.url )
           navigate( "/admin", { replace: true } );
-          Swal.fire(data.msg,"","success");
+          Swal.fire( data.msg, "", "success" );
         }
-        else if(response.status === 400){
-          Swal.fire(data.msg,"","error");
+        else if ( response.status === 400 ) {
+          Swal.fire( data.msg, "", "error" );
         }
       } )
     }

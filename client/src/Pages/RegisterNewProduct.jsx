@@ -16,7 +16,7 @@ const RegisterNewProduct = () => {
   const [ base64, setBase64 ] = useState( "" );
   const [ validated, setValidated ] = useState( true );
   const [ token, setToken ] = useState( localStorage.getItem( "token" ) || "" );
-  const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( "Authenticated" ) ==='true')
+  const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( "Authenticated" ) === 'true' )
   const navigate = useNavigate();
   const location = useLocation();
   const [ count, setCount ] = useState( 0 )
@@ -37,7 +37,7 @@ const RegisterNewProduct = () => {
   async function validateToken() {
     var token = localStorage.getItem( "token" );
     console.log( token );
-    const response = await fetch( "http://localhost:3001/api/auth/validateAdminAuthenctication", {
+    const response = await fetch( "https://roughage-api.vercel.app//api/auth/validateAdminAuthenctication", {
       method: 'post',
       headers: {
 
@@ -60,8 +60,8 @@ const RegisterNewProduct = () => {
         // localStorage.setItem( "authenticated", false );
         // sessionStorage.setItem( 'authenticated', false );
         // <AdminLoginpage />
-        navigate("/adminLogin");
-        
+        navigate( "/adminLogin" );
+
       }
 
     } )
@@ -74,7 +74,7 @@ const RegisterNewProduct = () => {
 
   useEffect( () => {
     console.log( isAuthenticated )
-  },[] );
+  }, [] );
 
   function convertToBase64( file ) {
     return new Promise( ( resolve, reject ) => {
@@ -89,7 +89,7 @@ const RegisterNewProduct = () => {
       };
     } );
   }
-  
+
 
   function validateData() { }
   async function handleFileChange( e ) {
@@ -125,7 +125,7 @@ const RegisterNewProduct = () => {
       } ).then( async ( result ) => {
         /* Read more about isConfirmed, isDenied below */
         if ( result.isConfirmed ) {
-          await fetch( "http://localhost:3001/api/admin/registerProduct", {
+          await fetch( "https://roughage-api.vercel.app//api/admin/registerProduct", {
             method: "post",
             headers: {
               "content-type": "application/json",
@@ -147,9 +147,9 @@ const RegisterNewProduct = () => {
       alert( "please check the data and try again" );
     }
   }
-  
-  
-  return (isAuthenticated) ? (
+
+
+  return ( isAuthenticated ) ? (
     <>
       <AdminNavbar />
       <div className="productReg">

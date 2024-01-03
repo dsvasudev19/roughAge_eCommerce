@@ -10,8 +10,8 @@ import { Plus, Minus } from 'lucide-react';
 import Swal from 'sweetalert2';
 import { useNavigate, NavLink } from "react-router-dom";
 
-const url = "http://localhost:3001/";
-const localUrl = "http://localhost:3001/api/"
+const url = "https://roughage-api.vercel.app//";
+const localUrl = "https://roughage-api.vercel.app//api/"
 const EmptyCart = () => {
     return (
         <div className="emptyCartContainer">
@@ -43,17 +43,17 @@ function Cart() {
                 if ( productIndex !== -1 ) {
                     cart[ productIndex ].count = newQuant;
                     localStorage.setItem( "cart", JSON.stringify( cart ) );
-                    setProducts( [ ...cart ] ); 
+                    setProducts( [ ...cart ] );
 
                 }
 
                 return newQuant;
             } );
         }
-       
+
         function decreamentCount() {
             setItemCount( ( prevItemCount ) => prevItemCount - 1 ); // Ensure consistent state updates
-            setQuant(quant-1);
+            setQuant( quant - 1 );
         }
         function decrementCount() {
             // alert("decre");
@@ -67,7 +67,7 @@ function Cart() {
                     if ( ind !== -1 ) {
                         cart[ ind ].count = newQuant;
                         localStorage.setItem( "cart", JSON.stringify( cart ) );
-                        setProducts( [ ...cart ] ); 
+                        setProducts( [ ...cart ] );
                     }
                     return newQuant;
                 }
@@ -90,12 +90,12 @@ function Cart() {
                     setItemCount( itemCount - props.count );
                     const id = props.id;
                     try {
-                        var cart=JSON.parse(localStorage.getItem("cart"));
-                        var newCart=cart.filter(product=>{
-                            return product.id!==id
-                        })
-                        localStorage.setItem("cart",JSON.stringify(newCart));
-                        await fetch( 'http://localhost:3001/api/deleteProduct', {
+                        var cart = JSON.parse( localStorage.getItem( "cart" ) );
+                        var newCart = cart.filter( product => {
+                            return product.id !== id
+                        } )
+                        localStorage.setItem( "cart", JSON.stringify( newCart ) );
+                        await fetch( 'https://roughage-api.vercel.app//api/deleteProduct', {
                             method: "DELETE",
                             headers: {
                                 'content-type': "application/json"
@@ -156,12 +156,12 @@ function Cart() {
     useEffect( () => {
         const fetchData = async () => {
             try {
-                const response = await fetch( 'http://localhost:3001/api/getCart' )
+                const response = await fetch( 'https://roughage-api.vercel.app//api/getCart' )
                     .then( async response => {
                         const recievedData = await response.json();
                         // console.log(recievedData);
                         setProducts( recievedData );
-                        localStorage.setItem("cart",JSON.stringify(recievedData));
+                        localStorage.setItem( "cart", JSON.stringify( recievedData ) );
                     } )
 
             } catch ( error ) {
@@ -186,7 +186,7 @@ function Cart() {
         />
     ) );
     async function handleCheckout() {
-        const response = await fetch( 'http://localhost:3001/api/setCart', {
+        const response = await fetch( 'https://roughage-api.vercel.app//api/setCart', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
@@ -205,7 +205,7 @@ function Cart() {
             return acc + curr.price * curr.count;
         }, 0 );
         setTotalCost( totalCost )
-    } ,[products])
+    }, [ products ] )
     return (
         ( products.length === 0 ) ? <EmptyCart /> :
             <Row className="justify-content-md-center">

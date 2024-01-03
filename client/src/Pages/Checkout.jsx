@@ -1,4 +1,4 @@
-import { React, useState} from "react";
+import { React, useState } from "react";
 import Navigationbar from "../Components/Navigationbar";
 import Form from 'react-bootstrap/Form'
 import Footer from "../Components/Footer";
@@ -37,20 +37,20 @@ function Checkout() {
   }
 
   const getUserData = async () => {
-    
+
     // var cartData = sessionStorage.getItem( 'cart' );
     // cartData = JSON.parse( cartData );
-    var cartData=JSON.parse(localStorage.getItem("cart"))
+    var cartData = JSON.parse( localStorage.getItem( "cart" ) )
     const userAddressAndData = userData;
     console.log( userAddressAndData );
-    const response = await fetch( "http://localhost:3001/api/setUser", {
+    const response = await fetch( "https://roughage-api.vercel.app//api/setUser", {
       method: "post",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify( { cart: cartData, userDetails: userAddressAndData } )
     } );
-    
+
   };
   return (
     <div className="checkoutpage">

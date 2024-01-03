@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Navigationbar from "../Components/Navigationbar";
 import Footer from "../Components/Footer";
 import Form from 'react-bootstrap/Form'
@@ -6,8 +6,8 @@ import Button from "react-bootstrap/esm/Button";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-function Address(){
-    const navigate=useNavigate();
+function Address() {
+    const navigate = useNavigate();
     const [ userData, setUserData ] = useState( {
         fullName: null,
         email: null,
@@ -42,23 +42,23 @@ function Address(){
         var cartData = JSON.parse( localStorage.getItem( "cart" ) )
         const userAddressAndData = userData;
         console.log( userAddressAndData );
-        const response = await fetch( "http://localhost:3001/api/setUser", {
+        const response = await fetch( "https://roughage-api.vercel.app//api/setUser", {
             method: "post",
             headers: {
                 "content-type": "application/json",
             },
             body: JSON.stringify( { userDetails: userAddressAndData } )
-        } ).then(response=>{
-            console.log(response.status)
-            if(response.status===200){
+        } ).then( response => {
+            console.log( response.status )
+            if ( response.status === 200 ) {
                 Swal.fire( "bye", "", "success" )
-                navigate('/success')
+                navigate( '/success' )
 
-            }else{
+            } else {
 
             }
-        })
-        
+        } )
+
     };
     return (
         <div className="checkoutpage">

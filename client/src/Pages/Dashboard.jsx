@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 const Dashboard = () => {
     const [ token, setToken ] = useState( localStorage.getItem( "token" ) || "" );
-    const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem("Authenticated") === 'true' )
-    const navigate=useNavigate();
+    const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( "Authenticated" ) === 'true' )
+    const navigate = useNavigate();
     const [ count, setCount ] = useState( 0 );
 
     setTimeout( () => {
@@ -17,7 +17,7 @@ const Dashboard = () => {
         async function validateToken() {
             var token = localStorage.getItem( "token" );
             console.log( token );
-            const response = await fetch( "http://localhost:3001/api/auth/validateAdminAuthenctication", {
+            const response = await fetch( "https://roughage-api.vercel.app//api/auth/validateAdminAuthenctication", {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'

@@ -16,9 +16,9 @@ async function handleEvent( e ) {
     denyButtonText: `Don't save`
   } ).then( async ( result ) => {
     if ( result.isConfirmed ) {
-      var cart=JSON.parse(localStorage.getItem("cart"))|| [];
-      
-      const response = await fetch( 'http://localhost:3001/api/addToCart', {
+      var cart = JSON.parse( localStorage.getItem( "cart" ) ) || [];
+
+      const response = await fetch( 'https://roughage-api.vercel.app//api/addToCart', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

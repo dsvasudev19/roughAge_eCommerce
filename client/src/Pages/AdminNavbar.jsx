@@ -21,31 +21,31 @@ import Cookies from 'js-cookie';
 function AdminNavbar() {
     const navigate = useNavigate();
     async function logOutAdmin() {
-        
+
         // const token=sessionStorage.getItem("token")||"";
-        var token = localStorage.getItem("token");
-        
-        const response = await fetch( 'http://localhost:3001/api/auth/logoutAdmin', {
+        var token = localStorage.getItem( "token" );
+
+        const response = await fetch( 'https://roughage-api.vercel.app//api/auth/logoutAdmin', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify( {token:token}  )
-        } ).then(async response=>{
-            const data=await response.json();
-           if(response.status === 206){
-            localStorage.setItem("token","");
-            localStorage.setItem("Authenticated",false);
-            Cookies.set("token","");
-            Cookies.set("Authenticated",false);
-            Cookies.set("_url","")
-            localStorage.setItem("_url","");
-            Swal.fire(data.msg,"","success");
-            navigate('/adminLogin');
-           }else{
-            Swal.fire(data.msg,"","question");
-           }
-        })
+            body: JSON.stringify( { token: token } )
+        } ).then( async response => {
+            const data = await response.json();
+            if ( response.status === 206 ) {
+                localStorage.setItem( "token", "" );
+                localStorage.setItem( "Authenticated", false );
+                Cookies.set( "token", "" );
+                Cookies.set( "Authenticated", false );
+                Cookies.set( "_url", "" )
+                localStorage.setItem( "_url", "" );
+                Swal.fire( data.msg, "", "success" );
+                navigate( '/adminLogin' );
+            } else {
+                Swal.fire( data.msg, "", "question" );
+            }
+        } )
     }
 
 

@@ -10,35 +10,35 @@ import '../index.css'
 import { jwtDecode } from "jwt-decode";
 import Footer from '../Components/Footer';
 const Profile = () => {
-    const [adminDetails,setAdminDetails]=useState({
-        email:null,
-        employeId:null,
-        designation:null,
-        phone:null,
-        name:null,
-        image:""
-    });
+    const [ adminDetails, setAdminDetails ] = useState( {
+        email: null,
+        employeId: null,
+        designation: null,
+        phone: null,
+        name: null,
+        image: ""
+    } );
     const [ token, setToken ] = useState( localStorage.getItem( "token" ) || "" );
     const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( "Authenticated" ) === 'true' )
-    
-    const navigate=useNavigate();
+
+    const navigate = useNavigate();
     const [ count, setCount ] = useState( 0 );
 
     setTimeout( () => {
         setCount( count + 1 );
-    }, 10000);
+    }, 10000 );
 
     async function fetchData() {
         const ad = jwtDecode( localStorage.getItem( "token" ) )
         console.log( ad );
         setAdminDetails( ad );
-        adminDetails.image=localStorage.getItem("_url");
+        adminDetails.image = localStorage.getItem( "_url" );
     }
 
     async function validateToken() {
         var token = localStorage.getItem( "token" );
         console.log( token );
-        const response = await fetch( "http://localhost:3001/api/auth/validateAdminAuthenctication", {
+        const response = await fetch( "https://roughage-api.vercel.app//api/auth/validateAdminAuthenctication", {
             method: 'post',
             headers: {
 
@@ -70,17 +70,17 @@ const Profile = () => {
     useEffect( () => {
         validateToken();
     }, [ count ] )
-    useEffect(()=>{
-        
+    useEffect( () => {
+
         console.log( isAuthenticated );
         fetchData();
-    },[isAuthenticated])
-    
+    }, [ isAuthenticated ] )
+
     return (
         ( isAuthenticated ) ?
             <div>
                 <AdminNavbar />
-                {/* <img src={localStorage.getItem("_url")} alt='image' id='profilePic' /> */}
+                {/* <img src={localStorage.getItem("_url")} alt='image' id='profilePic' /> */ }
                 <div className="productReg">
                     <div className="productDetails">
                         <Form>
@@ -128,10 +128,10 @@ const Profile = () => {
                                     required
                                     type="text"
                                     placeholder="Desgination of the Employee"
-                                    value={adminDetails.designation}
+                                    value={ adminDetails.designation }
                                 ></Form.Control>
                             </Form.Group>
-                            
+
                         </Form>
                     </div>
                     <div className="imagePreview">

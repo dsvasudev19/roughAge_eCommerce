@@ -31,7 +31,7 @@ function ResitrationForm() {
     e.preventDefault();
     const userAddressAndData = userData;
     userAddressAndData.confirmPassword = null;
-    const response = await fetch( "http://localhost:3001/api/register", {
+    const response = await fetch( "https://roughage-api.vercel.app//api/register", {
       method: "post",
       headers: {
         "content-type": "application/json",
