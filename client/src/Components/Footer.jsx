@@ -27,7 +27,7 @@ function Footer() {
                     
                 </div>
                 <h5>2023 All copyrights reserved</h5>
-                <h6>Designed and Developed by <a href="https://github.com/dsvasudev19">ds.vasudev </a><a href="https://wa.me/+918328203617"></a></h6>
+                <h6>Designed and Developed by <a href="https://dsvasudev.netlify.app/">ds.vasudev </a><a href="https://wa.me/+918328203617"></a></h6>
             </div>
         </>
     );
