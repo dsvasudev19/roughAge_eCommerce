@@ -6,12 +6,17 @@ const cors = require( 'cors' );
 const router = require( './router/route.js' )
 const conn = require( './mongoDB.js/connect.js' )
 const cookieParser = require( 'cookie-parser' )
-const session=require('express-session');
+const session = require( 'express-session' );
 
 const app = express();
 
 
-app.use( cors() );
+app.use( cors( {
+    origin: 'https://roughage.vercel.app',
+    methods: 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+} ) );
+
 app.use( bodyParser.json( { limit: '2mb' } ) );
 app.use( express.json( { limit: '10mb' } ) )
 app.use( express.static( 'public' ) );
@@ -22,7 +27,7 @@ app.use( "/api", router )
 app.use( cookieParser() )
 app.use(
     session( {
-        secret: process.env.SECRET, 
+        secret: process.env.SECRET,
         resave: false,
         saveUninitialized: true,
         cookie: {
@@ -31,7 +36,7 @@ app.use(
     } )
 );
 app.get( "/", ( req, res ) => {
-    console.log(" / file from backend")
+    console.log( " / file from backend" )
     res.send( "HELLO WELCOME" );
 } )
 
@@ -44,16 +49,16 @@ conn()
         app.listen( 3001, function ( req, res ) {
             console.log( `server started on port number ${ process.env.PORT }` );
         } )
-        
+
     )
     .catch( error => {
-        console.log( "unable to start mongodb server." + error);
+        console.log( "unable to start mongodb server." + error );
     } )
 
 
 
 
-module.exports=app;
+module.exports = app;
 
 
 
