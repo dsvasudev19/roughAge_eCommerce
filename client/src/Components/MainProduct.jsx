@@ -90,12 +90,12 @@ function MainProduct() {
         fetchProductDetails();
 
     }, [ product.productID ] ); // Add product.productID as a dependency
-    useEffect( () => {
-        // console.log( productDetails );
-        // console.log( productDetails )
-        fetchSimilarProducts();
+    // useEffect( () => {
+    //     // console.log( productDetails );
+    //     // console.log( productDetails )
+    //     fetchSimilarProducts();
 
-    }, [ productDetails.productID ] );
+    // }, [ productDetails.productID ] );
     useEffect( () => {
         // console.log( productDetails )
         // console.log(similarProducts)
