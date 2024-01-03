@@ -23,61 +23,137 @@ function MainProduct() {
         category: ""
     } );
     // const [productDetails,setProductDetails]=useState();
+    // async function handleCart( e ) {
+    //     const id = productId;
+    //     await fetch( `https://roughage-api.vercel.app/api/addToCart/${ id }`, {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify( { id, quantity } )
+    //     } ).then( response => {
+    //         if ( response.status !== 404 ) {
+    //             Swal.fire( "Successfully Added", "", "success" );
+    //         } else {
+    //             Swal.fire( "Error", "", "error" );
+    //         }
+    //     } )
+    // }
+
     async function handleCart( e ) {
         const id = productId;
-        await fetch( `https://roughage-api.vercel.app/api/addToCart/${ id }`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify( { id, quantity } )
-        } ).then( response => {
+        try {
+            const response = await fetch( `https://roughage-api.vercel.app/api/addToCart/${ id }`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify( { id, quantity } )
+            } );
+
             if ( response.status !== 404 ) {
                 Swal.fire( "Successfully Added", "", "success" );
             } else {
                 Swal.fire( "Error", "", "error" );
             }
-        } )
+        } catch ( error ) {
+            console.error( "Error adding to cart:", error );
+            Swal.fire( "Error", "", "error" );
+        }
     }
+
+
+
+
+
+
+    // async function fetchProductDetails() {
+    //     await fetch( `https://roughage-api.vercel.app/api/getProductDetails/${ product.productID }` ).then(
+    //         async response => {
+    //             if ( response.status === 202 ) {
+    //                 const parsedData = await response.json();
+
+    //                 const data = parsedData[ 0 ];
+    //                 setProductId( data.productID );
+    //                 setProductDetails( { image: data.image, productID: data.productID, productName: data.productName, price: data.price, description: data.description, category: data.category } );
+    //                 // Swal.fire("success","","success");
+    //             }
+    //             if ( response.status === 404 ) {
+    //                 Swal.fire( "No Product found", "", "error" );
+    //             }
+    //         }
+    //     )
+
+    // }
     async function fetchProductDetails() {
-        await fetch( `https://roughage-api.vercel.app/api/getProductDetails/${ product.productID }` ).then(
-            async response => {
-                if ( response.status === 202 ) {
-                    const parsedData = await response.json();
+        try {
+            const response = await fetch( `https://roughage-api.vercel.app/api/getProductDetails/${ product.productID }` );
 
-                    const data = parsedData[ 0 ];
-                    setProductId( data.productID );
-                    setProductDetails( { image: data.image, productID: data.productID, productName: data.productName, price: data.price, description: data.description, category: data.category } );
-                    // Swal.fire("success","","success");
-                }
-                if ( response.status === 404 ) {
-                    Swal.fire( "No Product found", "", "error" );
-                }
+            if ( response.status === 202 ) {
+                const parsedData = await response.json();
+                const data = parsedData[ 0 ];
+
+                setProductId( data.productID );
+                setProductDetails( {
+                    image: data.image,
+                    productID: data.productID,
+                    productName: data.productName,
+                    price: data.price,
+                    description: data.description,
+                    category: data.category
+                } );
+            } else if ( response.status === 404 ) {
+                Swal.fire( "No Product found", "", "error" );
             }
-        )
-
+        } catch ( error ) {
+            console.error( "Error fetching product details:", error );
+        }
     }
+    // async function fetchSimilarProducts() {
+    //     // console.log(productDetails.category)
+    //     // console.log(typeof(productDetails.category))
+    //     const response = await fetch( 'https://roughage-api.vercel.app/api/getSimilarCategoryProducts', {
+    //         method: 'post',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify( { category: productDetails.category } )
+    //     } ).then( async response => {
+    //         if ( response.status === 202 ) {
+    //             const ParsedData = await response.json();
+    //             // console.log(ParsedData)
+    //             const similarProductsFetched = ParsedData.products;
+    //             setSimilarProducts( similarProductsFetched )
+    //             // console.log( similarProductsFetched );
+    //         }
+    //     } ).catch( error => {
+    //         console.log( error )
+    //     } )
+    // }
+
     async function fetchSimilarProducts() {
-        // console.log(productDetails.category)
-        // console.log(typeof(productDetails.category))
-        const response = await fetch( 'https://roughage-api.vercel.app/api/getSimilarCategoryProducts', {
-            method: 'post',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify( { category: productDetails.category } )
-        } ).then( async response => {
+        try {
+            const response = await fetch( 'https://roughage-api.vercel.app/api/getSimilarCategoryProducts', {
+                method: 'post',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify( { category: productDetails.category } )
+            } );
+
             if ( response.status === 202 ) {
                 const ParsedData = await response.json();
-                // console.log(ParsedData)
                 const similarProductsFetched = ParsedData.products;
-                setSimilarProducts( similarProductsFetched )
-                // console.log( similarProductsFetched );
+
+                setSimilarProducts( similarProductsFetched );
             }
-        } ).catch( error => {
-            console.log( error )
-        } )
+        } catch ( error ) {
+            console.error( "Error fetching similar products:", error );
+        }
     }
+
+
+
     function increaseCount( e ) {
         setQuantity( quantity + 1 )
     }
@@ -96,11 +172,14 @@ function MainProduct() {
     //     fetchSimilarProducts();
 
     // }, [ productDetails.productID ] );
+    const [ hasReloaded, setHasReloaded ] = useState( false );
+
     useEffect( () => {
-        // console.log( productDetails )
-        // console.log(similarProducts)
+        
         window.scrollTo( 0, 0 );
-    }, [] );
+
+        
+    }, [  ] );
     return (
         <>
             <Navigationbar />
@@ -111,9 +190,9 @@ function MainProduct() {
                     </div>
                     <div className="col col-lg-5 col-md-10 col-sm-12 col-xs-12 detailsClass" lg={ 6 } md={ 12 } sm={ 12 } xs={ 12 }>
                         <table>
-                            <thead>
-                                <td id="brand">roughAge</td>
-                            </thead>
+                            <tr>
+                                <th id="brand">roughAge</th>
+                            </tr>
                             <tr className="data">
                                 <td style={ { fontFamily: "Sans-serif", fontSize: "3rem", fontWeight: "bolder", lineHeight: "1.2" } }>{ productDetails.productName }</td>
                             </tr>
