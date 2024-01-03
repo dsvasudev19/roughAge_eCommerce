@@ -1,21 +1,25 @@
 .inventProduct{
     width: 90%;
     height: 30vh;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 23px;
+    box-shadow: inset 30px 30px 41px #bababa,
+            inset -30px -30px 41px #ffffff;
+    overflow: hidden;
 }
 .inventProductImage{
     width: 35%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     overflow: hidden;
 }
 .inventProductDetails{
     width: 65%;
     height: 100%;
-    border: 3px solid red;
+    /* border: 3px solid red; */
 }
 #inventProImage{
     width: 100%;

@@ -2,18 +2,18 @@
 
 //include sessions and store user information and cart data in sessions 
 //decrementCount function not working properly
-//Order placement completion
+//Order placement completion  -->final stage
 
 
-//orders tab in admin page
-//profile information of admin
-//inventory available at the moment
+//orders tab in admin page  -->need to be implemented
+//profile information of admin --->done representing in the front end is required
+//inventory available at the moment --->done only styling is required
 //update product details by admin
 
 
 //implement search in both admin page and user page
 
-//implement sending mail to support team
+//implement sending mail to support team 
 
 
 //integrate payment   ----->stripe platform

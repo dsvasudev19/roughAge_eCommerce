@@ -16,7 +16,7 @@ const RegisterNewProduct = () => {
   const [ base64, setBase64 ] = useState( "" );
   const [ validated, setValidated ] = useState( true );
   const [ token, setToken ] = useState( localStorage.getItem( "token" ) || "" );
-  const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( "Authenticated" ) )
+  const [ isAuthenticated, setIsAuthenticated ] = useState( localStorage.getItem( "Authenticated" ) ==='true')
   const navigate = useNavigate();
   const location = useLocation();
   const [ count, setCount ] = useState( 0 )
@@ -149,7 +149,7 @@ const RegisterNewProduct = () => {
   }
   
   
-  return isAuthenticated ? (
+  return (isAuthenticated) ? (
     <>
       <AdminNavbar />
       <div className="productReg">

@@ -4,6 +4,9 @@ import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import AdminLoginpage from './AdminLoginPage';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import Form from 'react-bootstrap/Form';
+import './ProfileCss.css'
+import '../index.css'
 import { jwtDecode } from "jwt-decode";
 import Footer from '../Components/Footer';
 const Profile = () => {
@@ -77,7 +80,64 @@ const Profile = () => {
         ( isAuthenticated ) ?
             <div>
                 <AdminNavbar />
-                <img src={localStorage.getItem("_url")} alt='image' id='profilePic' />
+                {/* <img src={localStorage.getItem("_url")} alt='image' id='profilePic' /> */}
+                <div className="productReg">
+                    <div className="productDetails">
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>EmployeId ID</Form.Label>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Product ID"
+                                    //             productID: null,
+                                    // productName: null,
+                                    // price: null,
+                                    value={ adminDetails.employeId || null }
+                                ></Form.Control>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control
+                                    required="text"
+                                    placeholder="Name"
+                                    value={ adminDetails.name || null }
+                                ></Form.Control>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control
+                                    required
+                                    type="email"
+                                    placeholder="Email"
+                                    value={ adminDetails.email }
+                                ></Form.Control>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Phone</Form.Label>
+                                <Form.Control
+                                    required
+                                    type="mobile"
+                                    placeholder="Phone"
+                                    value={ adminDetails.email }
+                                ></Form.Control>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Designation</Form.Label>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Desgination of the Employee"
+                                    value={adminDetails.designation}
+                                ></Form.Control>
+                            </Form.Group>
+                            
+                        </Form>
+                    </div>
+                    <div className="imagePreview">
+                        <img src={ localStorage.getItem( "_url" ) } alt='image' id='profilePic' />
+                    </div>
+                </div>
                 <Footer />
 
             </div> : <Navigate to="/adminLogin" replace />

@@ -22,7 +22,7 @@ app.use( "/api", router )
 app.use( cookieParser() )
 app.use(
     session( {
-        secret: process.env.SECRET, // Change this to a strong, random key
+        secret: process.env.SECRET, 
         resave: false,
         saveUninitialized: true,
         cookie: {

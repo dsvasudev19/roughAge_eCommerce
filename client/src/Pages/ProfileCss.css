@@ -1,0 +1,32 @@
+.profileMain{
+    width: 90%;
+    position: relative;
+    margin: auto;
+    height: 40vh;
+    display: flex;
+    /* border: 3px solid red; */
+}
+.profileImage{
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    
+    /* border: 3px solid black; */
+    border-radius: 50%;
+}
+
+.profileDetails{
+    width: 60%;
+    height: 100%;
+    /* border: 3px solid orange; */
+}
+.profileDetails>h2{
+    box-shadow: inset 30px 30px 41px #bababa,
+            inset -30px -30px 41px #ffffff;
+}
+.profileImage>img{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/4;
+    
+}

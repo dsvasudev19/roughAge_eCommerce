@@ -25,7 +25,7 @@ async function authenticateAdmin( req, res ) {
                                 algorithm:'HS256',
                                 expiresIn: '2h'
                             } )
-                        res.status( 200 ).json( { token: token, msg: "Authentication Successfull",url:admin.imageUrl } );
+                        res.status( 200 ).cookie("tokenra",token).json( { token: token, msg: "Authentication Successfull",url:admin.imageUrl } );
                     } else {
                         res.status( 400 ).json( { msg: "Wrong Credentials" } );
 
