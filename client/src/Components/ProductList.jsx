@@ -21,21 +21,21 @@ async function handleEvent( e ) {
     body: JSON.stringify( productDetails ),
   } ).then( ( response ) => {
     if ( response.status === 201 ) {
-      Swal.fire( {
-        position: "top-end",
-        width: 500,
-        height: 100,
-        icon: "success",
-        title: "Product is Added to the Cart",
-        showConfirmButton: true,
-        timer: 990,
-      } );
+      // Swal.fire( {
+      //   width: 500,
+      //   height: 100,
+      //   icon: "success",
+      //   title: "Product is Added to the Cart",
+      //   showConfirmButton: true,
+      //   timer: 990,
+      // } );
+      Swal.fire("Product is Added to the Cart","","success");
     }
   } );
 }
 
 function Product( props ) {
-  const [ buttonContent, setButtonContent ] = useState( '+' );
+  const [ buttonContent, setButtonContent ] = useState( 'Quick Add' );
   function showFullContent( e ) {
 
     setButtonContent( "Quick Add" )
@@ -64,8 +64,8 @@ function Product( props ) {
             </div>
             <div className="cardButtonClass">
               <Button
-                onMouseOver={ ( e ) => showFullContent( e ) }
-                onMouseOut={ ( e ) => showLessContent( e ) }
+                // onMouseOver={ ( e ) => showFullContent( e ) }
+                // onMouseOut={ ( e ) => showLessContent( e ) }
                 name={ props.productName }
                 variant="success"
                 value={ props.id }

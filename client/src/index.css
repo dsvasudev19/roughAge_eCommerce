@@ -84,25 +84,25 @@ body {
   margin-bottom: 5px; 
 } */
 #addToCartButton {
-  background-color: white;
-  color: green;
-  border: 3px solid rgba(2, 110, 2, 0.788);
-  border-radius: 50%;
-  width: 10%;
+  /* background-color: white; */
+  /* color: green;
+  border: 3px solid rgba(2, 110, 2, 0.788); */
+  border-radius: 15px;
+  width: 35%;
   height: max-content;
   overflow: hidden;
   transition: width 0.5s ease-in-out; /* Moved the transition property here */
 }
 
 #addToCartButton:hover {
-  border: rgba(2, 110, 2, 0.788);
+  /* border: rgba(2, 110, 2, 0.788);
   background-color: rgba(2, 110, 2, 0.788);
-  color: white;
+  color: white; */
   height: 35px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 5px 5px 5px rgb(202, 198, 198);
-  width: 35%;
+  width: 90%;
   /*transition-delay: 1s;  Add a 1s delay before the width transition starts */
 }
 /* .cardImage {
@@ -202,8 +202,8 @@ body {
 }
 .subject,
 .questions {
-  width: 100%;
-
+  /* width: 100%; */
+  width: 45%;
   border-radius: 15px;
   justify-content: center;
   text-align: center;
@@ -211,7 +211,7 @@ body {
   height: auto;
 }
 .questions {
-  width: 160%;
+  width: 100%;
 }
 #faqSubject {
   font-size: 6rem;
@@ -497,7 +497,7 @@ body {
   align-items: center;
 }
 .galleryImages {
-  width: 80%;
+  width: 95%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
@@ -517,7 +517,7 @@ body {
 }
 #testimonialHead {
   margin: 20px;
-  background-image: url("/Gallery/galleryPicOne.jpg");
+  background-image: url("/Gallery/galleryPicTwo.jpg");
   color: transparent;
   background-clip: text;
   font-size: 60px;
@@ -545,6 +545,7 @@ body {
   border: 1px solid black;
   border-radius: 15px;
   margin-left: 20px;
+  margin-top: 20px;
   padding: 20px;
   width: 25%;
 }
@@ -701,8 +702,15 @@ form > input {
 
 @media (max-width: 480px) {
   .galleryImages {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
+  .galleryImages img {
+  object-fit: cover;
+  width: 50%;
+  height: 250px;
+  padding: 20px;
+  aspect-ratio: 4/3;
+}
   .testimonialsBody,
   .contactForm {
     display: inline-block;
@@ -745,6 +753,9 @@ form > input {
   }
 }
 @media screen and (max-width: 700px) {
+  .galleryImages {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
   #separateDivs {
     display: block !important;
   }
@@ -753,6 +764,9 @@ form > input {
   }
 }
 @media screen and (max-width: 1000px) {
+  .galleryImages {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
   .footer {
     display: block !important;
     height: max-content !important;

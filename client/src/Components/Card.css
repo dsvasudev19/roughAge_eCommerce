@@ -38,7 +38,7 @@
 .cardButtonClass {
   padding-right: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .allProducts {
   padding: 20px;
@@ -53,14 +53,24 @@
 #price {
   font-size: 15px;
 }
+
+
+
+
 @media screen and (max-width: 700px) {
   .allProducts {
-    display: block;
-    /* display: grid;
-    grid-template-columns: repeat(2, 1fr); */
+    /* display: block !important; */
+     display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
   }
-  /* .cardS {
-    height: 250px;
-  } */
-  
+   .cardS {
+    height: 300px;
+  } 
+  .cardI {
+    height: 70%;
+    overflow: hidden;
+  }
+  #addToCartButton{
+    width: max-content !important;
+  }
 }

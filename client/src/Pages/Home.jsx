@@ -75,12 +75,15 @@ function Home() {
       </div>
       <div className="gallery">
         <div className="row galleryImages">
-          <img src="/Gallery/galleryPicOne.jpg" alt="g1" />
-          <img src="/Gallery/galleryPicTwo.jpg" alt="g2" />
-          <img src="/Gallery/galleryPicThree.jpg" alt="g3" />
-          <img src="/Gallery/galleryPicFour.jpg" alt="g4" />
-          <img src="/Gallery/galleryPicFive.jpg" alt="g5" />
-          <img src="/Gallery/galleryPicSix.jpg" alt="g6" />
+          <img src="/Gallery/cauliflower.jpg" alt="Cauliflower" />
+          <img src="/Gallery/galleryPicTwo.jpg" alt="Maize" />
+          <img src="/Gallery/mango.jpg" alt="Mango" />
+          <img src="/Gallery/galleryPicFour.jpg" alt="Grapes" />
+          <img src="/Gallery/popaya.jpg" alt="Popaya" />
+          <img src="/Gallery/watermelon.jpg" alt="Watermelon" />
+          <img src="/Gallery/bananaSmall.jpg" alt="Banana" />
+          <img src="/Gallery/banana.jpg" alt="Banana" />
+          
         </div>
       </div>
       <div className="text-center">
@@ -89,7 +92,7 @@ function Home() {
       <div className="text-center testimonials">
         <div className="testimonialsBody">
           <div className="test">
-            <img src="/Gallery/galleryPicOne.jpg" alt="g7" />
+            <img src="/Gallery/maize.jpg" alt="g7" />
             <h1>User One</h1>
             <h5>Rating:⭐⭐⭐⭐</h5>
             <div className="testBody">
@@ -100,7 +103,7 @@ function Home() {
 
           </div>
           <div className="test">
-            <img src="/Gallery/galleryPicOne.jpg" alt="g7" />
+            <img src="/Gallery/popaya.jpg" alt="g7" />
             <h1>User One</h1>
             <h5>Rating:⭐⭐⭐⭐</h5>
             <div className="testBody">
@@ -112,7 +115,7 @@ function Home() {
 
           </div>
           <div className="test">
-            <img src="/Gallery/galleryPicOne.jpg" alt="g7" />
+            <img src="/Gallery/banana.jpg" alt="g7" />
             <h1>User One</h1>
             <h5>Rating:⭐⭐⭐⭐</h5>
             <div className="testBody">
