@@ -73,4 +73,10 @@
   #addToCartButton{
     width: max-content !important;
   }
+  .allProducts {
+    padding: 5px !important;
+    row-gap: 5px !important;
+    /* border: 3px solid black; */
+    height: max-content;
+}
 }
