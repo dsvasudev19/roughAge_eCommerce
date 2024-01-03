@@ -37,7 +37,7 @@ const RegisterNewProduct = () => {
   async function validateToken() {
     var token = localStorage.getItem( "token" );
     console.log( token );
-    const response = await fetch( "https://roughage-api.vercel.app//api/auth/validateAdminAuthenctication", {
+    const response = await fetch( "https://roughage-api.vercel.app/api/auth/validateAdminAuthenctication", {
       method: 'post',
       headers: {
 
@@ -125,7 +125,7 @@ const RegisterNewProduct = () => {
       } ).then( async ( result ) => {
         /* Read more about isConfirmed, isDenied below */
         if ( result.isConfirmed ) {
-          await fetch( "https://roughage-api.vercel.app//api/admin/registerProduct", {
+          await fetch( "https://roughage-api.vercel.app/api/admin/registerProduct", {
             method: "post",
             headers: {
               "content-type": "application/json",

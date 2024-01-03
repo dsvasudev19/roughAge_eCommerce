@@ -22,7 +22,7 @@ var similarProducts = [
 
 function Home() {
   async function establishSession() {
-    const response = await fetch( 'https://roughage-api.vercel.app//api/establishSession' )
+    const response = await fetch( 'https://roughage-api.vercel.app/api/establishSession' )
       .then( async response => {
         if ( response.status === 202 ) {
           const dataParsed = await response.json();
@@ -89,7 +89,7 @@ function Home() {
       <div className="text-center testimonials">
         <div className="testimonialsBody">
           <div className="test">
-            <img src="/Gallery/https://roughage-api.vercel.app/.jpg" alt="g7" />
+            <img src="/Gallery/https://roughage-api.vercel.app.jpg" alt="g7" />
             <h1>User One</h1>
             <h5>Rating:⭐⭐⭐⭐</h5>
             <div className="testBody">
