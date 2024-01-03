@@ -48,7 +48,7 @@ function Product( props ) {
     <>
       <NavLink
         to={ `/product/${ props.id }` }
-        className="col col-lg-3  col-md-6  col-sm-6 col-mb-6 col-xs-6"
+        className="col col-lg-3  col-md-6  col-sm-6 col-xs-6"
         style={ { textDecoration: 'none' } }
       >
         <div className="cardS">

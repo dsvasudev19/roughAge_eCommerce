@@ -74,8 +74,9 @@
     width: max-content !important;
   }
   .allProducts {
-    padding: 5px !important;
-    row-gap: 5px !important;
+    padding: 15px !important;
+    row-gap: 15px !important;
+    column-gap: none;
     /* border: 3px solid black; */
     height: max-content;
 }
