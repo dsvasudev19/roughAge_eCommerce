@@ -602,6 +602,37 @@ body {
   font-weight: 600;
 }
 
+.ceo{
+  display: flex;
+  width: 80%;
+  position: relative;
+  margin: auto;
+  border: 3px solid black;
+  border-radius: 95px;
+  background: #e0e0e0;
+  box-shadow:  38px 38px 51px #9d9d9d,
+              -38px -38px 51px #ffffff;
+  justify-content: center;
+  align-items: center;
+}
+.ceo-image{
+  width: 30%;
+}
+.ceo-details{
+  width: 65%;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+.ceo img{
+  width: 300px;
+  height: 300px;
+  border-radius:50% ;
+  /* mix-blend-mode: color; */
+}
+
+
+
 .contactIntro {
   padding: 10px 100px 100px 100px;
 }
@@ -649,9 +680,25 @@ form > input {
   transform: translateY(5px);
 }
 
+.contactSuggestions #img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    /* overflow: hidden; */
+    box-shadow: 4px 4px 7px rgb(185, 183, 183);
+    margin: 0px 5px 0px 0px;
+}
+.contactSuggestions #img:hover{
+    transition: 0.4s ease-in-out;
+    box-shadow: 2px 3px 5px rgb(226, 48, 48);
+    transform: translateY(-7%);
+}
+
 .row {
   display: flex !important;
 }
+
 @media (max-width: 480px) {
   .galleryImages {
     grid-template-columns: repeat(2, 1fr);
@@ -701,6 +748,9 @@ form > input {
   #separateDivs {
     display: block !important;
   }
+  .ceo{
+    display: block !important;
+  }
 }
 @media screen and (max-width: 1000px) {
   .footer {
@@ -720,6 +770,9 @@ form > input {
   }
   #naturality {
     font-size: 50px;
+  }
+  .ceo{
+    display: block !important;
   }
 
   .divContent {

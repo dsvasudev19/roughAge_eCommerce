@@ -75,6 +75,13 @@ function Contact() {
               <span style={{ fontSize: "20px" }}>
                 contact.roughAge@gmail.com
               </span>
+              <br></br>
+              <h6>Connect with me:</h6>
+              <a href="https://github.com/dsvasudev19"><img id="img" src="/images\GitHub.png" alt="Github" /></a>
+              <a href="https://www.linkedin.com/in/darseshikarivasudev/"><img id="img" src="/images/linkedin.png"
+                alt="linkedin" /></a>
+              <a href="https://wa.me/+918328203617"><img id="img" src="/images/what.webp" alt="Whatsapp" /></a>
+              <a href="https://www.gmail.com"><img id="img" src="/images/gmail.png" alt="Gmail" /></a>
             </div>
             <div className="formContent">
               <h1 id="contactheading" style={{ fontVariant: "all-small-caps" }}>

@@ -150,7 +150,32 @@ function About() {
             />
           </div>
         </div>
-        <div className="team" id="separateDivs"></div>
+        <br></br>
+        <div className="team" id="separateDivs">
+          <div className="ceo">
+            <div className="ceo-image">
+              <img src="/ceo.png" alt="ceo" />
+            </div>
+            <div className="ceo-details">
+              <h2>Founder and Ceo @ <span style={ { color: "orangered" } }>roughAge</span></h2>
+              {/* <p id="abouttexts">
+                <span style={ { visibility: 'hidden' } }>sf</span>Meet <span style={ { color: '#F49D1A',fontWeight:'bold' } }>Vasudev Darse Shikari</span>, the Founder and CEO of Roughage, a visionary leader who initiated this venture even before graduation. Driven by the mission to make organically grown foods accessible to all, <span style={ { color: 'red',fontWeight:'bold' } }>@Vasudev</span> established Roughage with a commitment to delivering health to your doorstep at affordable prices.
+                <br></br>
+                <span style={ { visibility: 'hidden' } }>sf</span>Roughage is not just a company; it's a movement inspired by <span style={ { color: '#F49D1A' } }>@Vasudev</span>'s passion for fostering better eating habits. By providing a diverse range of high-quality, organically grown foods, we aim to redefine how people approach their daily nutrition.
+                <br></br>
+                <span style={{visibility:'hidden'}}>sf</span>At Roughage, we invite you to join us on this journey toward a more sustainable and healthier future. <span style={ { color: '#F49D1A' } }>@Vasudev</span>'s leadership ensures that Roughage is more than just a business; it's an opportunity for everyone to embrace a healthier lifestyle. Welcome to Roughage, where health meets your doorstep, and <span style={ { color: '#F49D1A' } }>@Vasudev</span>'s vision becomes a reality for all.
+              </p> */}
+              <p id="abouttexts">
+                Introducing <span style={ { color: '#F49D1A', fontWeight: 'bold' } }>Vasudev Darse Shikari</span>, the Founder and CEO of Roughage, a visionary leader who initiated this venture before graduation. Driven by the mission to make organically grown foods accessible to all, our commitment is to deliver health to your doorstep at affordable prices.
+                <br></br>
+                Roughage transcends being merely a company; it's a movement inspired by a passion for fostering better eating habits. Providing a diverse range of high-quality, organically grown foods, we aim to redefine how people approach daily nutrition. Join us on this journey toward a more sustainable and healthier future. Our leadership, led by <span style={ { color: '#F49D1A' } }>@Vasudev</span>, ensures that Roughage is more than just a business; it's an opportunity for everyone to embrace a healthier lifestyle. Welcome to Roughage, where health meets your doorstep, and our vision becomes a reality for all.
+                <br></br>
+                At Roughage, we believe in cultivating not just crops but communities, fostering a shared commitment to well-being. With every doorstep delivery, we're sowing the seeds of health, sustainability, and a better life. Experience the Roughage difference — where nourishment meets convenience, guided by the vision of [Your Name]. Welcome to Roughage, where health meets your doorstep, and our vision becomes a reality for all.
+              </p>
+            </div>
+
+          </div>
+        </div>
       </div>
       <Footer />
     </>
