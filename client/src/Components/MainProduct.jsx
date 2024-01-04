@@ -9,6 +9,11 @@ import Navigationbar from '../Components/Navigationbar'
 import axios from 'axios'
 import { Product } from "./ProductList";
 import Footer from "./Footer";
+import Skeleton from "../skeleton-loading.gif";
+
+
+
+
 function MainProduct() {
     const product = useParams();
     const [ quantity, setQuantity ] = useState( 1 );
@@ -186,7 +191,7 @@ function MainProduct() {
             <section className="sec">
                 <div className="row organicProduct" >
                     <div className="col col-lg-5 col-md-10 col-sm-12 col-xs-12 imageClass" lg={ 6 } md={ 12 } sm={ 12 } xs={ 12 }>
-                        <img src={ productDetails.image } id="organicImage" />
+                        <img src={ productDetails.image || Skeleton } id="organicImage" />
                     </div>
                     <div className="col col-lg-5 col-md-10 col-sm-12 col-xs-12 detailsClass" lg={ 6 } md={ 12 } sm={ 12 } xs={ 12 }>
                         <table>
