@@ -6,6 +6,7 @@ import './Card.css'
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import "../index.css";
+import Loader from "react-js-loader";
 
 async function handleEvent( e ) {
   e.preventDefault();
@@ -29,7 +30,7 @@ async function handleEvent( e ) {
       //   showConfirmButton: true,
       //   timer: 990,
       // } );
-      Swal.fire("Product is Added to the Cart","","success");
+      Swal.fire( "Product is Added to the Cart", "", "success" );
     }
   } );
 }
@@ -87,6 +88,7 @@ function Product( props ) {
 
 
 function ProductList() {
+  const [ loaded, setLoaded ] = useState( false );
   const [ productsAvailable, setProductsAvailable ] = useState( [] );
   // useEffect(() => {
   //   axios
@@ -106,6 +108,7 @@ function ProductList() {
           const data = await response.json();
           // console.log( data );
           setProductsAvailable( data );
+          setLoaded( true );
         }
       } )
       .catch( ( err ) => console.log( err ) );
@@ -131,7 +134,7 @@ function ProductList() {
   ) );
   return (
     <div className="row allProducts">
-      { productsAvailable.map( ( prouctAvailable ) => (
+      { loaded ? productsAvailable.map( ( prouctAvailable ) => (
         <Product
           key={ prouctAvailable.productID }
           id={ prouctAvailable.productID }
@@ -140,7 +143,7 @@ function ProductList() {
           img={ prouctAvailable.image }
           description={ prouctAvailable.description }
         />
-      ) ) }
+      ) ) : <h1>Please Wait...</h1>}
     </div>
   );
 }

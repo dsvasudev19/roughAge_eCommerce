@@ -293,7 +293,7 @@ body {
 }
 .detailsClass {
   /* width: %; */
-  width: 30%;
+  width: 45%;
   /* border: 3px solid orange; */
   padding: 20px;
   margin: 10px;
@@ -781,6 +781,8 @@ form > input {
   }
   .detailsClass {
     margin-left: 25px !important;
+    width: 100% !important;
+    padding-right: 20px;
   }
   #naturality {
     font-size: 50px;

@@ -50,6 +50,7 @@ function Navigationbar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/" id='nav-item'>Home</Nav.Link>
+            <Nav.Link href='/products' id='nav-item'>Products</Nav.Link>
             <Nav.Link href="/about" id='nav-item'>About</Nav.Link>
             <Nav.Link href="/contact" id='nav-item'>Contact</Nav.Link>
             <Nav.Link href="/Cart" id='nav-item'>Cart</Nav.Link>
