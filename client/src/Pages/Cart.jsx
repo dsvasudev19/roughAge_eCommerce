@@ -10,8 +10,8 @@ import { Plus, Minus } from 'lucide-react';
 import Swal from 'sweetalert2';
 import { useNavigate, NavLink } from "react-router-dom";
 
-const url = "https://roughage-api.vercel.app/";
-const localUrl = "https://roughage-api.vercel.app/api/"
+const url = "http://localhost:3001/";
+const localUrl = "http://localhost:3001/api/"
 const EmptyCart = () => {
     return (
         <div className="emptyCartContainer">
@@ -95,7 +95,7 @@ function Cart() {
                             return product.id !== id
                         } )
                         localStorage.setItem( "cart", JSON.stringify( newCart ) );
-                        await fetch( 'https://roughage-api.vercel.app/api/deleteProduct', {
+                        await fetch( 'http://localhost:3001/api/deleteProduct', {
                             method: "DELETE",
                             headers: {
                                 'content-type': "application/json"
@@ -156,7 +156,7 @@ function Cart() {
     useEffect( () => {
         const fetchData = async () => {
             try {
-                const response = await fetch( 'https://roughage-api.vercel.app/api/getCart' )
+                const response = await fetch( 'http://localhost:3001/api/getCart' )
                     .then( async response => {
                         const recievedData = await response.json();
                         // console.log(recievedData);
@@ -186,7 +186,7 @@ function Cart() {
         />
     ) );
     async function handleCheckout() {
-        const response = await fetch( 'https://roughage-api.vercel.app/api/setCart', {
+        const response = await fetch( 'http://localhost:3001/api/setCart', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

@@ -41,7 +41,7 @@ const AdminLoginpage = () => {
   async function handleSubmit( e ) {
     e.preventDefault();
     if ( validateCredentials() ) {
-      const response = await fetch( "https://roughage-api.vercel.app/api/auth/authenticateAdmin", {
+      const response = await fetch( "http://localhost:3001/api/auth/authenticateAdmin", {
         method: "post",
         headers: {
           "content-type": "application/json",

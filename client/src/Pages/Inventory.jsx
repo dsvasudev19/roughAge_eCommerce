@@ -25,7 +25,7 @@ const Inventory = () => {
     var token = localStorage.getItem( "token" );
     console.log( token );
     const response = await fetch(
-      "https://roughage-api.vercel.app/api/auth/validateAdminAuthenctication",
+      "http://localhost:3001/api/auth/validateAdminAuthenctication",
       {
         method: "post",
         headers: {
@@ -59,7 +59,7 @@ const Inventory = () => {
 
   async function getAllInventoryProducts() {
     const response = await fetch(
-      "https://roughage-api.vercel.app/api/getAllInventoryProducts"
+      "http://localhost:3001/api/getAllInventoryProducts"
     ).then( async ( response ) => {
       const data = await response.json();
       if ( response.status === 200 ) {

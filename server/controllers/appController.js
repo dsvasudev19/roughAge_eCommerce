@@ -1,6 +1,7 @@
 
 const User = require( '../models/userModel.js' )
 const Product = require( "../models/ProductModel.js" );
+const Supportmail =require('../models/SupportMailModel.js')
 // const Product = require( '../models/ProductModel.js' )
 const bcrypt = require( 'bcrypt' )
 const session = require( 'express-session' )
@@ -211,6 +212,21 @@ async function setUser( req, res ) {
 
 }
 
+async function sendSupportMail(req,res){
+    const {from,subject,text}=req.body;
+    const mbody={
+        email:from,
+        subject:subject,
+        text:text
+    }
+    Supportmail.create(mbody).then((success)=>{
+        res.status(200).json({msg:"Successfully Sent"}).send();
+    }).catch(error=>{
+        console.log(error);
+        res.status(401).json({msg:"not sending"});
+    })
+    
+}
 
 
 async function getAllInventoryProducts( req, res ) {
@@ -225,7 +241,7 @@ async function getAllInventoryProducts( req, res ) {
 
 
 
-module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts };
+module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts, sendSupportMail };
 // exports.getCart=getCart;
 // exports.addToCart=addToCart;
 // exports.addToCartProductId=addToCartProductId;

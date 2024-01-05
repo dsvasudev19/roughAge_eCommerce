@@ -14,7 +14,7 @@ async function handleEvent( e ) {
     productID: e.target.value,
   };
 
-  const response = await fetch( "https://roughage-api.vercel.app/api/addToCart", {
+  const response = await fetch( "http://localhost:3001/api/addToCart", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -92,7 +92,7 @@ function ProductList() {
   const [ productsAvailable, setProductsAvailable ] = useState( [] );
   // useEffect(() => {
   //   axios
-  //     .get("https://roughage-api.vercel.app/api/getProducts")
+  //     .get("http://localhost:3001/api/getProducts")
   //     .then((productsRecieved) => {
   //       if (productsRecieved.status === 200) {
   //         // Swal.fire( "Sucessfully loaded all the products", "", "success" );
@@ -102,7 +102,7 @@ function ProductList() {
   //     .catch((err) => console.log(err));
   // }, []);
   useEffect( async () => {
-    const response = await fetch( "https://roughage-api.vercel.app/api/getProducts" )
+    const response = await fetch( "http://localhost:3001/api/getProducts" )
       .then( async response => {
         if ( response.status === 200 ) {
           const data = await response.json();
@@ -143,7 +143,7 @@ function ProductList() {
           img={ prouctAvailable.image }
           description={ prouctAvailable.description }
         />
-      ) ) : <h1>Please Wait...</h1>}
+      ) ) : <h1>Please Wait...</h1> }
     </div>
   );
 }

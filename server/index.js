@@ -41,7 +41,9 @@ app.get( "/", ( req, res ) => {
     console.log( " / file from backend" )
     res.send( "HELLO WELCOME" );
 } )
-
+app.post("/sendMail",(req,res)=>{
+    console.log("what re");
+})
 
 conn()
     .then(

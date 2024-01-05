@@ -18,7 +18,7 @@ async function handleEvent( e ) {
     if ( result.isConfirmed ) {
       var cart = JSON.parse( localStorage.getItem( "cart" ) ) || [];
 
-      const response = await fetch( 'https://roughage-api.vercel.app/api/addToCart', {
+      const response = await fetch( 'http://localhost:3001/api/addToCart', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

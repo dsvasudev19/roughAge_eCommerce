@@ -18,7 +18,12 @@ router.route( "/register" ).post( controller.registerUser )
 router.route( "/getSimilarCategoryProducts" ).post( controller.getSimilarCategoryProducts )
 router.route("/setUser").post(controller.setUser);
 
+//support mail route
+router.route("/sendMail").post(controller.sendSupportMail)
 
+
+
+//get routes
 router.route( '/getProducts' ).get( controller.getProducts )
 router.route( '/getProductDetails/:productId' ).get( controller.getProductDetails )
 router.route( "/getCart" ).get( controller.getCart )
