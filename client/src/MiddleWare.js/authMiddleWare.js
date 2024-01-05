@@ -5,7 +5,7 @@ const validateToken = async () => {
         var token = localStorage.getItem( "token" );
         console.log( token );
         const response = await fetch(
-            "http://localhost:3001/api/auth/validateAdminAuthenctication",
+            "https://roughage-api.vercel.app/api/auth/validateAdminAuthenctication",
             {
                 method: "post",
                 headers: {

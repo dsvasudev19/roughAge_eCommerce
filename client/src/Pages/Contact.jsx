@@ -43,7 +43,7 @@ function Contact() {
     }
   }
   async function handleSubmit( e ) {
-    const response = await fetch( 'http://localhost:3001/api/sendMail', {
+    const response = await fetch( 'https://roughage-api.vercel.app/api/sendMail', {
       method: 'post',
       headers: {
         'content-type': 'application/json'
@@ -57,7 +57,7 @@ function Contact() {
     } else {
       Swal.fire( data.msg, "", "info" )
     }
-
+    // 
   }
   return (
     <>
