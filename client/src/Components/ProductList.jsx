@@ -3,10 +3,10 @@ import products from "../products";
 import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import './Card.css'
-import axios from "axios";
+
 import { NavLink } from "react-router-dom";
 import "../index.css";
-import Loader from "react-js-loader";
+
 
 async function handleEvent( e ) {
   e.preventDefault();
