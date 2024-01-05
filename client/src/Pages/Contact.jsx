@@ -13,7 +13,7 @@ function Contact() {
     subject: null,
     text: null
   } );
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   function handleFromChange( e ) {
     const from = e.target.value;
@@ -33,31 +33,31 @@ function Contact() {
     setMailBody( { ...mailBody, text } );
 
   }
-  function validateData(e){
+  function validateData( e ) {
     e.preventDefault();
-    if(mailBody.from && mailBody.subject && mailBody.text){
+    if ( mailBody.from && mailBody.subject && mailBody.text ) {
       handleSubmit();
     }
-    else{
-      Swal.fire("Please fill all the fields","","error");
+    else {
+      Swal.fire( "Please fill all the fields", "", "error" );
     }
   }
-  async function handleSubmit(e){
-    const response=await fetch('http://localhost:3001/api/sendMail',{
-      method:'post',
-      headers:{
-        'content-type':'application/json'
+  async function handleSubmit( e ) {
+    const response = await fetch( 'http://localhost:3001/api/sendMail', {
+      method: 'post',
+      headers: {
+        'content-type': 'application/json'
       },
-      body:JSON.stringify(mailBody)
-    });
-    const data=await response.json();
-    if(response.status===200){
-      Swal.fire("Successfully Sent","","success");
-      navigate('/contact');
-    }else{
-      Swal.fire(data.msg,"","info")
+      body: JSON.stringify( mailBody )
+    } );
+    const data = await response.json();
+    if ( response.status === 200 ) {
+      Swal.fire( "Successfully Sent.. Please refresh the page.", "", "success" );
+      navigate( '/contact' );
+    } else {
+      Swal.fire( data.msg, "", "info" )
     }
-    
+
   }
   return (
     <>
@@ -141,7 +141,7 @@ function Contact() {
               <h1 id="contactheading" style={ { fontVariant: "all-small-caps" } }>
                 Let's Get in Touch
               </h1>
-              <form onSubmit={validateData}>
+              <form onSubmit={ validateData }>
                 <label htmlFor="email">Email</label>
                 <br></br>
                 <input
@@ -162,7 +162,7 @@ function Contact() {
                 <label htmlFor="text">Description</label>
                 <br></br>
                 <textarea name="text" id="description" value={ mailBody.text } onChange={ handleText } required></textarea>
-                <input type="submit" id="submitButton"/>
+                <input type="submit" id="submitButton" />
               </form>
             </div>
           </div>
