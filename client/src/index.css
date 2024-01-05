@@ -751,6 +751,20 @@ form > input {
   }
 }
 @media screen and (max-width: 700px) {
+  .ceo{
+    width: 95%;
+    display: block;
+    overflow: hidden;
+  }
+  .ceo-image{
+    width: 90%;
+    position: relative;
+    margin: auto;
+  }
+  .ceo-details{
+    width: 100%;
+    padding: 20px;
+  }
   .galleryImages {
     grid-template-columns: repeat(2, 1fr) !important;
   }
