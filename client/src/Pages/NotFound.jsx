@@ -8,9 +8,9 @@ const NotFound = () => {
             <Navigationbar />
 
             <>
-                <img src="errorpage.png" usemap="#image-map" style={
+                <img src="/errorpage.png" usemap="#image-map" style={
                     {
-                        height: '100vh',
+                        height: '91vh',
                         width: '100vw',
                     }
                 } />

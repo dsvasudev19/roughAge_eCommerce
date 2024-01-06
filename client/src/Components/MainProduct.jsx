@@ -243,7 +243,7 @@ function MainProduct() {
 
                 </div>
             </section>
-            <section>
+            {/* <section>
                 <div className="head">
                     <h1 id="similarhead">Products You may Like</h1>
 
@@ -263,21 +263,21 @@ function MainProduct() {
                         />
                     ) ) }
                 </div>
-            </section>
+            </section> */}
             <div className="text-center galleryHead">
                 <h1 id="gallery">Gallery</h1>
             </div>
             <div className="gallery">
                 <div className="row galleryImages">
-                    <img src="/Gallery/galleryPicOne.jpg" alt="g1" />
-                    <img src="/Gallery/galleryPicTwo.jpg" alt="g2" />
-                    <img src="/Gallery/galleryPicThree.jpg" alt="g3" />
-                    <img src="/Gallery/galleryPicFour.jpg" alt="g4" />
-                    <img src="/Gallery/galleryPicFive.jpg" alt="g5" />
-                    <img src="/Gallery/galleryPicSix.jpg" alt="g6" />
-                    {/* <img src="/Gallery/g7.jpg" alt="g7" />
-          <img src="/Gallery/g8.jpg" alt="g8" />
-          <img src="/Gallery/g9.jpg" alt="g9" />  */}
+                    <img src="/Gallery/cauliflower.jpg" alt="Cauliflower" />
+                    <img src="/Gallery/galleryPicTwo.jpg" alt="Maize" />
+                    <img src="/Gallery/mango.jpg" alt="Mango" />
+                    <img src="/Gallery/galleryPicFour.jpg" alt="Grapes" />
+                    <img src="/Gallery/popaya.jpg" alt="Popaya" />
+                    <img src="/Gallery/watermelon.jpg" alt="Watermelon" />
+                    <img src="/Gallery/bananaSmall.jpg" alt="Banana" />
+                    <img src="/Gallery/banana.jpg" alt="Banana" />
+
                 </div>
             </div>
             <Footer />
