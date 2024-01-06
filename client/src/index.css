@@ -712,14 +712,16 @@ form > input {
   align-items: center;
   text-align: center;
   object-fit: cover;
+  /* border-image: fill 0 linear-gradient(#0003,#000,red); */
 }
 .carImage{
   width: 100%;
   height: 100%;
+  /* border-image: fill 0 linear-gradient(#0003,#000,red); */
 
 }
-.carouselMain{
-  /* padding: 0px 30px 30px 30px; */
+.carouselCaptionHeading{
+  font-size: 85px;
 }
 .carousItem{
   /* padding: 20px; */
@@ -727,7 +729,7 @@ form > input {
   height: 80vh;
   object-fit: contain;
   overflow: hidden;
-
+  /* border-image: fill 0 linear-gradient(#0003,#000,red); */
 }
 
 @media (max-width: 480px) {
@@ -751,6 +753,9 @@ form > input {
   .mainpage {
     width: 100vw !important;
     /* height: 40vh !important; */
+  }
+  .carouselCaptionHeading{
+    font-size: 30px;
   }
    .carousDiv{
     height: 100%;
