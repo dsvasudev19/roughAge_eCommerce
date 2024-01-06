@@ -1,43 +1,43 @@
 import Carousel from 'react-bootstrap/Carousel';
-
+import React from 'react';
 function CarouselRoughAge() {
     return (
-        <Carousel>
-            <Carousel.Item interval={ 1000 }>
+        <Carousel className='carouselMain'>
+            <Carousel.Item interval={ 2000 } className='carousItem'>
                 <img
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=f5f5f5"
+                    className="d-block w-100 carImage"
+                    src="/Gallery/a1.png"
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>Fresh and Natural</h3>
+                    {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={ 500 }>
+            <Carousel.Item interval={ 1000 } className='carousItem'>
                 <img
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=f5f5f5"
+                    className="d-block w-100 carImage"
+                    src="/Gallery/a2.png"
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3>Eat Natural Stay Healthy</h3>
+                    {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
                 </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item> 
+            <Carousel.Item interval={ 1000 } className='carousItem'>
                 <img
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=f5f5f5"
+                    className="d-block w-100 carImage"
+                    src="/Gallery/a3.png"
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>Third slide label</h3>
+                    {/* <h3>Third slide label</h3>
                     <p>
                         Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                    </p>
+                    </p> */}
                 </Carousel.Caption>
-            </Carousel.Item>
+            </Carousel.Item> 
         </Carousel>
     );
 }

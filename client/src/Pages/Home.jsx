@@ -3,7 +3,7 @@ import "../index.css";
 import Navigationbar from "../Components/Navigationbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ProductList } from "../Components/ProductList";
-
+import CarouselRoughAge from '../Components/CarouselRoughAge'
 import Dna from "../Components/Dna";
 // import Trust from "../Components/Trust";
 import Frequent from "../Components/Frequent";
@@ -38,7 +38,7 @@ function Home() {
     <>
       <Navigationbar />
       <div className="mainpage row">
-        <div className="col leftRow"></div>
+        {/* <div className="col leftRow"></div>
         <div className="col midRow"></div>
         <div className="col">
           <br></br>
@@ -47,7 +47,12 @@ function Home() {
           <br></br>
           <br></br>
           <Dna />
+        </div> */}
+        <div className="carousDiv">
+          <CarouselRoughAge />
+
         </div>
+        
       </div>
       <div className="head">
         <h1 id="head">NATURAL AND HEALTHY FOODS</h1>

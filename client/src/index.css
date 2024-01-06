@@ -11,14 +11,14 @@ body {
   background-image: url("/carousel4.jpeg");
   background-position: center;
   background-size: cover;
-  width: 99vw;
-  height: 80vh;
+  width: 100vw;
+  /* height: 80vh; */
   object-fit: cover;
   overflow: hidden;
   display: flex;
   justify-content: center;
   text-align: center;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   /* margin-top: 100px; */
 }
 #special {
@@ -698,6 +698,38 @@ form > input {
   display: flex !important;
 }
 
+.carousDiv{
+  /* height: 80vh; */
+  width: 100%;
+  
+  position: relative;
+  margin: auto;
+  /* border: 3px solid black; */
+  /* margin-bottom: 200px; */
+  /* display: flex; */
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+  text-align: center;
+  object-fit: cover;
+}
+.carImage{
+  width: 100%;
+  height: 100%;
+
+}
+.carouselMain{
+  /* padding: 0px 30px 30px 30px; */
+}
+.carousItem{
+  /* padding: 20px; */
+  width: 100%;
+  height: 80vh;
+  object-fit: contain;
+  overflow: hidden;
+
+}
+
 @media (max-width: 480px) {
   .galleryImages {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -718,8 +750,19 @@ form > input {
   }
   .mainpage {
     width: 100vw !important;
-    height: 40vh !important;
+    /* height: 40vh !important; */
   }
+   .carousDiv{
+    height: 100%;
+    width: 100vw;
+  }
+  .carousItem{
+   /* padding: 20px;   */
+   width: 100%;
+   height: 100%; 
+  
+
+ } 
   .contactForm {
     width: 100%;
   }
