@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navigationbar from "../Components/Navigationbar";
 import Footer from "../Components/Footer";
 import Form from 'react-bootstrap/Form'
@@ -60,10 +60,15 @@ function Address() {
         } )
 
     };
+    useEffect(()=>{
+        Swal.fire("Fill carefully Once submitted cannot be changed.","","warning");
+    },[]);
     return (
         <div className="checkoutpage">
             <Navigationbar />
-            <h2>adress collection page</h2>
+            <div className="addressheading">
+                <h2>Shipping Address</h2>
+            </div>
             <div className="co-form">
                 <Form action="/success">
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -166,7 +171,7 @@ function Address() {
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>State</Form.Label>
                         <Form.Control
                             required
@@ -177,8 +182,16 @@ function Address() {
                                 setUserData( { ...userData, state: e.target.value } );
                             } }
                         />
+                    </Form.Group> */}
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>State</Form.Label>
+                        <Form.Select aria-label="Default select example" onChange={(e)=>{
+                            setUserData({...userData,state:e.target.value})
+                        }}>
+                            <option>State</option>
+                            <option value="Telangana">Telangana</option>
+                        </Form.Select>
                     </Form.Group>
-
                     <Button variant="primary" type="submit" onClick={ getUserData }>
                         Proceed to Checkout
                     </Button>

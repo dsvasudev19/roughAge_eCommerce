@@ -732,6 +732,20 @@ form > input {
   /* border-image: fill 0 linear-gradient(#0003,#000,red); */
 }
 
+.addressheading{
+  color: orange;
+  width: 90%;
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.addressheading>h2{
+  font-size: 55px;
+
+}
 @media (max-width: 650px) {
   .galleryImages {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -772,6 +786,15 @@ form > input {
   .formContent {
     width: 100%;
   }
+  .co-form {
+  margin: 0 ;
+  padding: 10px;
+  width: 95%;
+  left: 0;
+  position: relative;
+  margin: auto;
+  /* border: 3px solid black; */
+}
 }
 @media screen and (max-width: 480px) {
   #head {
@@ -862,8 +885,16 @@ form > input {
    /* padding: 20px;   */
    width: 100%;
    height: 100%; 
-  
-
  } 
+ .co-form {
+  margin: 0;
+  padding: 10px;
+  width: 95%;
+  left: 0;
+  position: relative;
+  margin: auto;
+  
+  /* border: 3px solid black; */
+}
 
 }
