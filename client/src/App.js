@@ -20,6 +20,7 @@ import Inventory from './Pages/Inventory.jsx';
 import { Check } from 'lucide-react';
 import { ProductList } from './Components/ProductList.jsx';
 import ProductsPage from './Pages/ProductsPage.jsx';
+import SpecificProduct from './Components/SpecificProduct.jsx';
 
 function App() {
   return (
@@ -41,7 +42,6 @@ function App() {
         <Route path='/admin/Inventory' element={<Inventory />} />
         <Route path='/products' element={<ProductsPage/>} />
         <Route path='*' element={<NotFound />} />
-        
       </Routes>
     </BrowserRouter>
   );
