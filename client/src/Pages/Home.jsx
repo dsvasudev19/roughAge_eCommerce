@@ -24,16 +24,16 @@ function Home() {
   async function establishSession() {
     const response = await fetch( 'https://roughage-api.vercel.app/api/establishSession' )
       .then( async response => {
-        if ( response.status === 202 ) {
+        if ( response.status === 200 ) {
           const dataParsed = await response.json();
           console.log( dataParsed );
           Swal.fire( dataParsed.msg, ",", "success" );
         }
       } )
   }
-  // useEffect(()=>{
-  //   establishSession();
-  // })
+  useEffect( () => {
+    establishSession();
+  } )
   return (
     <>
       <Navigationbar />
@@ -52,7 +52,7 @@ function Home() {
           <CarouselRoughAge />
 
         </div>
-        
+
       </div>
       <div className="head">
         <h1 id="head">NATURAL AND HEALTHY FOODS</h1>

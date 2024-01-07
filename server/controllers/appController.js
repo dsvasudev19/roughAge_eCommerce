@@ -9,7 +9,7 @@ const session = require( 'express-session' )
 
 let cart = [];
 async function establishSession( req, res ) {
-
+    
 }
 async function addToCart( req, res ) {
     const { productID } = req.body;
@@ -17,9 +17,9 @@ async function addToCart( req, res ) {
     //first check whether cart is empty or any product is present in the cart
     //if the cart is empty directly add the product to the cart 
     if ( cart.length === 0 ) {
-        Product.findOne( { productID } )
+        Product.findOne( { productID } ,{quantityAvailable:0,_id:0,description:0})
             .then( product => {
-                product.quantityAvailable = undefined;
+                
                 let cartProduct = { ...product._doc, count: 1 }
                 cart.push( cartProduct );
             } )
@@ -37,7 +37,7 @@ async function addToCart( req, res ) {
         }
         // if product doesn't exist in cart extend it to cart
         else {
-            Product.findOne( { productID: productID } ).then( newProduct => {
+            Product.findOne( { productID: productID },{quantityAvailable:0,_id:0,description:0} ).then( newProduct => {
                 let toAddProduct = { ...newProduct._doc, count: 1 };
                 cart.push( toAddProduct );
             } )
@@ -54,7 +54,7 @@ async function addToCartProductId( req, res ) {
     const { id, quantity } = req.body;
 
     if ( cart.length === 0 ) {
-        Product.findOne( { productID: id } ).then( product => {
+        Product.findOne( { productID: id }, { quantityAvailable: 0, _id: 0, description: 0 } ).then( product => {
             if ( product ) {
                 product.quantityAvailable = undefined;
                 let cartProduct = { ...product._doc, count: quantity }
@@ -77,7 +77,7 @@ async function addToCartProductId( req, res ) {
 
             res.status( 202 ).json( { msg: "Successfully added." } )
         } else {
-            Product.findOne( { productID: id } ).then( product => {
+            Product.findOne( { productID: id }, { quantityAvailable: 0, _id: 0, description: 0 } ).then( product => {
                 if ( product ) {
                     let cartProduct = { ...product._doc, count: quantity }
                     cart.push( cartProduct )
@@ -95,7 +95,7 @@ async function addToCartProductId( req, res ) {
 }
 
 async function getProducts( req, res ) {
-    await Product.find( {}, { quantityAvailable: 0 } ).then( products => {
+    await Product.find( {}, { quantityAvailable: 0,_id:0 } ).then( products => {
         // console.log(products)
         res.status( 200 ).json( products )
     } ).catch( err => res.json( err ) );
@@ -205,9 +205,12 @@ async function getSimilarCategoryProducts( req, res ) {
 
 
 async function setUser( req, res ) {
-    const { userDetails }=req.body;
-    console.log(userDetails);
+    const { userDetails, cartData }=req.body;
     
+    console.log(userDetails);
+    console.log(cartData);
+    console.log( newCart );
+    console.log(typeof(userDetails),typeof(cartData));
     res.status( 200 );
 
 }

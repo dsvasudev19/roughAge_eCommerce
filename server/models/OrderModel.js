@@ -12,10 +12,14 @@ const cartItemSchema = new Schema( {
 // Define the Address schema
 const addressSchema = new Schema( {
     name: String,
-    city: String,
-    age: Number,
-    mobile: String
-    
+    email:String,
+    phone:String,
+    pincode:String,
+    address:String,
+    street:String,
+    landmark:String,
+    city:String,
+    state:String
 } );
 
 // Define the Order schema

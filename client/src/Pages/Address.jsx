@@ -47,7 +47,7 @@ function Address() {
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify( { userDetails: userAddressAndData } )
+            body: JSON.stringify( { userDetails: userAddressAndData, cartData: JSON.parse( localStorage.getItem( "cart" ) ) } )
         } ).then( response => {
             console.log( response.status )
             if ( response.status === 200 ) {
@@ -60,9 +60,9 @@ function Address() {
         } )
 
     };
-    useEffect(()=>{
-        Swal.fire("Fill carefully Once submitted cannot be changed.","","warning");
-    },[]);
+    useEffect( () => {
+        Swal.fire( "Fill carefully Once submitted cannot be changed.", "", "warning" );
+    }, [] );
     return (
         <div className="checkoutpage">
             <Navigationbar />
@@ -185,9 +185,9 @@ function Address() {
                     </Form.Group> */}
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>State</Form.Label>
-                        <Form.Select aria-label="Default select example" onChange={(e)=>{
-                            setUserData({...userData,state:e.target.value})
-                        }}>
+                        <Form.Select aria-label="Default select example" onChange={ ( e ) => {
+                            setUserData( { ...userData, state: e.target.value } )
+                        } }>
                             <option>State</option>
                             <option value="Telangana">Telangana</option>
                         </Form.Select>
