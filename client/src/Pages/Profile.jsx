@@ -119,7 +119,7 @@ const Profile = () => {
                                     required
                                     type="mobile"
                                     placeholder="Phone"
-                                    value={ adminDetails.email }
+                                    value={ adminDetails.phone }
                                 ></Form.Control>
                             </Form.Group>
                             <Form.Group>
