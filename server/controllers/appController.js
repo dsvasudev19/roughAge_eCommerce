@@ -4,7 +4,7 @@ const Product = require( "../models/ProductModel.js" );
 const Supportmail =require('../models/SupportMailModel.js')
 // const Product = require( '../models/ProductModel.js' )
 const bcrypt = require( 'bcrypt' )
-const session = require( 'express-session' )
+const session = require( 'express-session' );
 
 
 let cart = [];
@@ -241,10 +241,27 @@ async function getAllInventoryProducts( req, res ) {
 }
 
 
+async function updateProductDetails(req,res){
+    const id = req.params.productID;
+    const {price,quant}=req.body;
+    
+    const updateFields={
+        price,
+        quantityAvailable:quant
+    }
+
+    const result = await Product.updateOne( { productID:id},{$set:updateFields});
+    if(result){
+        const UpdatedProducts=await Product.find({},{quantityAvailable:0,_id:0});
+        res.status(206).json({products:UpdatedProducts,msg:"Updated... Changes will reflect withing few seconds."});
+    }else{
+        res.status(400).json({msg:"Technical Error please try later"});
+    }
+
+}
 
 
-
-module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts, sendSupportMail };
+module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts, sendSupportMail, updateProductDetails };
 // exports.getCart=getCart;
 // exports.addToCart=addToCart;
 // exports.addToCartProductId=addToCartProductId;

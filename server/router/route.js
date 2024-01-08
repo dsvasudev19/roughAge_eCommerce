@@ -47,5 +47,13 @@ router.route( "/getAllInventoryProducts" ).get( controller.getAllInventoryProduc
 router.route( "/auth/validateAdminAuthenctication" ).post( authenticator.validateAdminAuthenctication )
 
 
+
+
+
+//update routes (put methods)
+
+router.route( "/admin/updateProduct/:productID" ).put( controller.updateProductDetails )
+
+
 module.exports = router;
 

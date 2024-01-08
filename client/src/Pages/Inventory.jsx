@@ -43,7 +43,7 @@ const Inventory = () => {
         setIsAuthenticated( true );
       } else if ( response.status === 401 ) {
         // console.log( response );
-        console.log( await response.json() );
+        // console.log( await response.json() );
         console.log( "failure" );
         setIsAuthenticated( false );
         localStorage.setItem( "Authenticated", false );
@@ -76,7 +76,7 @@ const Inventory = () => {
     getAllInventoryProducts();
   }, [ isAuthenticated ] );
   useEffect( () => {
-    console.log( inventory );
+    // console.log( inventory );
   } );
 
   function EachProduct( props ) {
@@ -86,8 +86,58 @@ const Inventory = () => {
     function deleteProduct(){
       Swal.fire("Are you sure you want to delete product. ","","error");
     }
-    function updateDetails(){
-      Swal.fire("What do you want to update","","question");
+    async function updateDetails(){
+      Swal.fire( {
+        title: 'Enter multiple values',
+        html:
+          `<label>Product Id</label><input id="productId" class="swal2-input" placeholder="ProductID" value=${props.id}>`+
+          `<label>Upd. Name</label><input id="productName" class="swal2-input" placeholder="ProductName" value=${ props.name }>` + `<label>Upd. Price</label><input id="productprice" class="swal2-input" placeholder="Price of the product" value=${ props.price }>` + `<label>Quantity</label><input id="quantity" class="swal2-input" placeholder="Quantity Update" value=${ props.quant }>` ,
+          
+        showCancelButton: true,
+        confirmButtonText: 'Submit',
+        cancelButtonText: 'Cancel',
+        showLoaderOnConfirm: true,
+        preConfirm: async () => {
+          // Retrieve values from the input fields
+          const ProductId = document.getElementById( 'productId' ).value;
+          const ProductName = document.getElementById( 'productName' ).value;
+          const productPrice=document.getElementById("productprice").value;
+          const quantity=document.getElementById("quantity").value;
+
+          // Validate or process the inputs as needed
+          // if ( input1 && input2 ) {
+          //   Swal.fire( 'You entered: Input 1 - ' + input1 + ', Input 2 - ' + input2 );
+          // } else {
+          //   Swal.fire( 'Please fill in both input boxes' );
+          // }
+          Swal.fire( "Updated details of the product.. <br> Name: " + ProductName + "<br>Product Price : " + productPrice +"<br>Quantity:  "+quantity);
+          const dataToBeUpdated={
+            price:productPrice,
+            quant:quantity
+          }
+
+          const response = await fetch( `https://roughage-api.vercel.app/api/admin/updateProduct/${ ProductId}`,{
+            method:'put',
+            headers:{
+              'content-type':'application/json'
+            },
+            body: JSON.stringify( dataToBeUpdated )
+          }).then(async response=>{
+            const data=await response.json();
+            getAllInventoryProducts();
+            // setInventory(data.products);
+            if(response.status === 206){
+              Swal.fire(data.msg,"","success");
+            }
+            else if(response.status===400){
+              Swal.fire(data.msg,"","error");
+            } else {
+              Swal.fire( "something went wrong ", "", "error" );
+            }
+          })
+          
+        }
+      } );
     }
     return (
       <>
