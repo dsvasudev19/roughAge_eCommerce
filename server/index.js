@@ -17,7 +17,9 @@ const app = express();
 //     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
 // } ) );
 
-app.use(cors());
+app.use(cors({
+    origin: [ "http://localhost:3000", "https://roughage.vercel.app", "https://roughage-api.vercel.app", "http://localhost:3001" ]
+}));
 
 app.use( bodyParser.json( { limit: '2mb' } ) );
 app.use( express.json( { limit: '10mb' } ) )
