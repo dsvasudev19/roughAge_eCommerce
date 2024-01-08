@@ -83,6 +83,7 @@ const Profile = () => {
                 {/* <img src={localStorage.getItem("_url")} alt='image' id='profilePic' /> */ }
                 <div className="productReg">
                     <div className="productDetails">
+                       <h1 style={{color:'orange'}}>Admin Details</h1>
                         <Form>
                             <Form.Group>
                                 <Form.Label>EmployeId ID</Form.Label>

@@ -9,6 +9,7 @@ import "./InventCss.css";
 
 const Inventory = () => {
   const [ inventory, setInventory ] = useState( [] );
+  const [loaded,setLoaded]=useState(false);
 
   const [ isAuthenticated, setIsAuthenticated ] = useState(
     localStorage.getItem( "Authenticated" ) == "true"
@@ -23,7 +24,7 @@ const Inventory = () => {
 
   async function validateToken() {
     var token = localStorage.getItem( "token" );
-    console.log( token );
+    // console.log( token );
     const response = await fetch(
       "https://roughage-api.vercel.app/api/auth/validateAdminAuthenctication",
       {
@@ -41,7 +42,7 @@ const Inventory = () => {
         // sessionStorage.setItem('authenticated',true);
         setIsAuthenticated( true );
       } else if ( response.status === 401 ) {
-        console.log( response );
+        // console.log( response );
         console.log( await response.json() );
         console.log( "failure" );
         setIsAuthenticated( false );
@@ -64,6 +65,7 @@ const Inventory = () => {
       const data = await response.json();
       if ( response.status === 200 ) {
         setInventory( data );
+        setLoaded(true);
         // Swal.fire("Successfully Fetched the Inventory.", "", "success");
       } else {
         Swal.fire( "Something Went Wrong" );
@@ -78,6 +80,15 @@ const Inventory = () => {
   } );
 
   function EachProduct( props ) {
+    function markAsSoldOut(){
+      Swal.fire("Mark as sold out clicked.","","question");
+    }
+    function deleteProduct(){
+      Swal.fire("Are you sure you want to delete product. ","","error");
+    }
+    function updateDetails(){
+      Swal.fire("What do you want to update","","question");
+    }
     return (
       <>
         <div className="inventProduct">
@@ -89,9 +100,9 @@ const Inventory = () => {
             <h4>Product: { props.name }</h4>
             <h4>Price: { props.price }</h4>
             <h4>Quantity Available: { props.quant }</h4>
-            <button>Update Details</button>{ '    ' }<button>Delete Product</button> <br></br>
+            <button onClick={updateDetails}>Update Details</button>{ '    ' }<button onClick={deleteProduct}>Delete Product</button> <br></br>
             <br></br>
-            <button>Mark as Sold Out</button>
+            <button onClick={markAsSoldOut}>Mark as Sold Out</button>
           </div>
         </div>
       </>
@@ -104,7 +115,7 @@ const Inventory = () => {
       <div>
         <div className="inventoryMain">
           <h1>Inventory</h1>
-          { inventory.map( ( eachInventory ) => (
+          {loaded ? inventory.map( ( eachInventory ) => (
             <div key={ eachInventory.productID }>
               <EachProduct
                 img={ eachInventory.image }
@@ -115,7 +126,7 @@ const Inventory = () => {
               />
               <br></br>
             </div>
-          ) ) }
+          ) ) : <h2>Loading....... please wait..</h2>}
         </div>
       </div>
       <Footer />
