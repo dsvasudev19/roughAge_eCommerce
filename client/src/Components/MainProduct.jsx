@@ -19,6 +19,8 @@ function MainProduct() {
     const [ quantity, setQuantity ] = useState( 1 );
     const [ productId, setProductId ] = useState();
     const [ similarProducts, setSimilarProducts ] = useState( [] );
+    const [simLoaded,setSimLoaded]=useState(false);
+    const [loaded,setLoaded]=useState(false);
     const [ productDetails, setProductDetails ] = useState( {
         image: "",
         productID: "",
@@ -44,7 +46,7 @@ function MainProduct() {
     //         }
     //     } )
     // }
-
+    
     async function handleCart( e ) {
         const id = productId;
         try {
@@ -149,7 +151,7 @@ function MainProduct() {
             if ( response.status === 202 ) {
                 const ParsedData = await response.json();
                 const similarProductsFetched = ParsedData.products;
-
+                setLoaded(true);
                 setSimilarProducts( similarProductsFetched );
             }
         } catch ( error ) {
@@ -169,7 +171,7 @@ function MainProduct() {
     }
     useEffect( () => {
         fetchProductDetails();
-
+        window.scrollTo( 0, 0 );
     }, [ product.productID ] ); // Add product.productID as a dependency
     // useEffect( () => {
     //     // console.log( productDetails );
@@ -177,14 +179,13 @@ function MainProduct() {
     //     fetchSimilarProducts();
 
     // }, [ productDetails.productID ] );
+
+    
+    if ( loaded ){
+        fetchSimilarProducts();
+    }
     const [ hasReloaded, setHasReloaded ] = useState( false );
 
-    useEffect( () => {
-
-        window.scrollTo( 0, 0 );
-
-
-    }, [] );
     return (
         <>
             <Navigationbar />
@@ -243,7 +244,7 @@ function MainProduct() {
 
                 </div>
             </section>
-            {/* <section>
+            { simLoaded?<section>
                 <div className="head">
                     <h1 id="similarhead">Products You may Like</h1>
 
@@ -263,7 +264,7 @@ function MainProduct() {
                         />
                     ) ) }
                 </div>
-            </section> */}
+            </section> : <></> }
             <div className="text-center galleryHead">
                 <h1 id="gallery">Gallery</h1>
             </div>

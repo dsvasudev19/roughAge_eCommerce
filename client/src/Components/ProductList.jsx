@@ -36,21 +36,16 @@ async function handleEvent( e ) {
 }
 
 function Product( props ) {
-  const [ buttonContent, setButtonContent ] = useState( 'Quick Add' );
-  function showFullContent( e ) {
-
-    setButtonContent( "Quick Add" )
-  }
-  function showLessContent( e ) {
-    setButtonContent( "+" );
-
-  }
   return (
     <>
       <NavLink
         to={ `/product/${ props.id }` }
+        onClick={ () => {
+          window.location.href = `/product/${ props.id }`;
+        } }
         className="col col-lg-3  col-md-6  col-sm-6 col-xs-6"
         style={ { textDecoration: 'none' } }
+        key={ props.id }
       >
         <div className="cardS">
           <div className="cardI">
@@ -76,7 +71,7 @@ function Product( props ) {
                   handleEvent( e );
                 } }
               >
-                { buttonContent }
+                Quick Add
               </Button>
             </div>
           </div>

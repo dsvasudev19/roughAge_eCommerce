@@ -24,7 +24,7 @@ import SpecificProduct from './Components/SpecificProduct.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh>
       <Routes>
         <Route index element={<Home />} />
         <Route path="/cart" element={<CartPage />} />
