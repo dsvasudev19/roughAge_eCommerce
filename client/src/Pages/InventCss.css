@@ -22,9 +22,10 @@
     /* border: 3px solid red; */
 }
 #inventProImage{
+    padding: 10px;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 .inventoryMain{
     padding:30px 100px 100px 100px;
