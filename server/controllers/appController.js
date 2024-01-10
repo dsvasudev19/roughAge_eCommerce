@@ -252,7 +252,7 @@ async function updateProductDetails(req,res){
 
     const result = await Product.updateOne( { productID:id},{$set:updateFields});
     if(result){
-        const UpdatedProducts=await Product.find({},{quantityAvailable:0,_id:0});
+        const UpdatedProducts=await Product.find({},{_id:0});
         res.status(206).json({products:UpdatedProducts,msg:"Updated... Changes will reflect withing few seconds."});
     }else{
         res.status(400).json({msg:"Technical Error please try later"});

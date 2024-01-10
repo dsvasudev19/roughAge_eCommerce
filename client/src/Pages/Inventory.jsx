@@ -7,9 +7,10 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./InventCss.css";
 
+
 const Inventory = () => {
   const [ inventory, setInventory ] = useState( [] );
-  const [loaded,setLoaded]=useState(false);
+  const [ loaded, setLoaded ] = useState( false );
 
   const [ isAuthenticated, setIsAuthenticated ] = useState(
     localStorage.getItem( "Authenticated" ) == "true"
@@ -65,7 +66,7 @@ const Inventory = () => {
       const data = await response.json();
       if ( response.status === 200 ) {
         setInventory( data );
-        setLoaded(true);
+        setLoaded( true );
         // Swal.fire("Successfully Fetched the Inventory.", "", "success");
       } else {
         Swal.fire( "Something Went Wrong" );
@@ -80,19 +81,19 @@ const Inventory = () => {
   } );
 
   function EachProduct( props ) {
-    function markAsSoldOut(){
-      Swal.fire("Mark as sold out clicked.","","question");
+    function markAsSoldOut() {
+      Swal.fire( "Mark as sold out clicked.", "", "question" );
     }
-    function deleteProduct(){
-      Swal.fire("Are you sure you want to delete product. ","","error");
+    function deleteProduct() {
+      Swal.fire( "Are you sure you want to delete product. ", "", "error" );
     }
-    async function updateDetails(){
+    async function updateDetails() {
       Swal.fire( {
         title: 'Enter multiple values',
         html:
-          `<label>Product Id</label><input id="productId" class="swal2-input" placeholder="ProductID" value=${props.id}>`+
-          `<label>Upd. Name</label><input id="productName" class="swal2-input" placeholder="ProductName" value=${ props.name }>` + `<label>Upd. Price</label><input id="productprice" class="swal2-input" placeholder="Price of the product" value=${ props.price }>` + `<label>Quantity</label><input id="quantity" class="swal2-input" placeholder="Quantity Update" value=${ props.quant }>` ,
-          
+          `<label>Product Id</label><input id="productId" class="swal2-input" placeholder="ProductID" value=${ props.id }>` +
+          `<label>Upd. Name</label><input id="productName" class="swal2-input" placeholder="ProductName" value=${ props.name }>` + `<label>Upd. Price</label><input id="productprice" class="swal2-input" placeholder="Price of the product" value=${ props.price }>` + `<label>Quantity</label><input id="quantity" class="swal2-input" placeholder="Quantity Update" value=${ props.quant }>`,
+
         showCancelButton: true,
         confirmButtonText: 'Submit',
         cancelButtonText: 'Cancel',
@@ -101,8 +102,8 @@ const Inventory = () => {
           // Retrieve values from the input fields
           const ProductId = document.getElementById( 'productId' ).value;
           const ProductName = document.getElementById( 'productName' ).value;
-          const productPrice=document.getElementById("productprice").value;
-          const quantity=document.getElementById("quantity").value;
+          const productPrice = document.getElementById( "productprice" ).value;
+          const quantity = document.getElementById( "quantity" ).value;
 
           // Validate or process the inputs as needed
           // if ( input1 && input2 ) {
@@ -110,32 +111,31 @@ const Inventory = () => {
           // } else {
           //   Swal.fire( 'Please fill in both input boxes' );
           // }
-          Swal.fire( "Updated details of the product.. <br> Name: " + ProductName + "<br>Product Price : " + productPrice +"<br>Quantity:  "+quantity);
-          const dataToBeUpdated={
-            price:productPrice,
-            quant:quantity
+          Swal.fire( "Updated details of the product.. <br> Name: " + ProductName + "<br>Product Price : " + productPrice + "<br>Quantity:  " + quantity );
+          const dataToBeUpdated = {
+            price: productPrice,
+            quant: quantity
           }
 
-          const response = await fetch( `https://roughage-api.vercel.app/api/admin/updateProduct/${ ProductId}`,{
-            method:'put',
-            headers:{
-              'content-type':'application/json'
+          const response = await fetch( `https://roughage-api.vercel.app/api/admin/updateProduct/${ ProductId }`, {
+            method: 'put',
+            headers: {
+              'content-type': 'application/json'
             },
             body: JSON.stringify( dataToBeUpdated )
-          }).then(async response=>{
-            const data=await response.json();
-            getAllInventoryProducts();
-            // setInventory(data.products);
-            if(response.status === 206){
-              Swal.fire(data.msg,"","success");
+          } ).then( async response => {
+            const data = await response.json();
+            setInventory( data.products );
+            if ( response.status === 206 ) {
+              Swal.fire( data.msg, "", "success" );
             }
-            else if(response.status===400){
-              Swal.fire(data.msg,"","error");
+            else if ( response.status === 400 ) {
+              Swal.fire( data.msg, "", "error" );
             } else {
               Swal.fire( "something went wrong ", "", "error" );
             }
-          })
-          
+          } )
+
         }
       } );
     }
@@ -150,9 +150,9 @@ const Inventory = () => {
             <h4>Product: { props.name }</h4>
             <h4>Price: { props.price }</h4>
             <h4>Quantity Available: { props.quant }</h4>
-            <button onClick={updateDetails}>Update Details</button>{ '    ' }<button onClick={deleteProduct}>Delete Product</button> <br></br>
+            <button onClick={ updateDetails }>Update Details</button>{ '    ' }<button onClick={ deleteProduct }>Delete Product</button> <br></br>
             <br></br>
-            <button onClick={markAsSoldOut}>Mark as Sold Out</button>
+            <button onClick={ markAsSoldOut }>Mark as Sold Out</button>
           </div>
         </div>
       </>
@@ -165,7 +165,7 @@ const Inventory = () => {
       <div>
         <div className="inventoryMain">
           <h1>Inventory</h1>
-          {loaded ? inventory.map( ( eachInventory ) => (
+          { loaded ? inventory.map( ( eachInventory ) => (
             <div key={ eachInventory.productID }>
               <EachProduct
                 img={ eachInventory.image }
@@ -176,7 +176,8 @@ const Inventory = () => {
               />
               <br></br>
             </div>
-          ) ) : <h2>Loading....... please wait..</h2>}
+          ) ) :
+            <h2>Loading...Please wait.</h2> }
         </div>
       </div>
       <Footer />
