@@ -95,7 +95,7 @@ async function addToCartProductId( req, res ) {
 }
 
 async function getProducts( req, res ) {
-    await Product.find( {}, { quantityAvailable: 0,_id:0 } ).then( products => {
+    await Product.find( {}, { quantityAvailable: 0,_id:0 ,image:0 } ).then( products => {
         // console.log(products)
         res.status( 200 ).json( products )
     } ).catch( err => res.json( err ) );

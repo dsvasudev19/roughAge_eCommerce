@@ -7,7 +7,7 @@ const router = require( './router/route.js' )
 const conn = require( './mongoDB.js/connect.js' )
 const cookieParser = require( 'cookie-parser' )
 const session = require( 'express-session' );
-
+const {productMediaUpload} = require( './utils/multer' )
 const app = express();
 
 
@@ -46,7 +46,10 @@ app.get( "/", ( req, res ) => {
 app.post("/sendMail",(req,res)=>{
     console.log("what re");
 })
-
+app.post("/fileUpload", productMediaUpload.single("productMedia"),(req,res)=>{
+    const imageUrl=`http://localhost:3001/uploads/productMedia${req.file.path}`
+    console.log(imageUrl);
+})
 conn()
     .then(
         console.log( `mongodb server started successfully...` )
