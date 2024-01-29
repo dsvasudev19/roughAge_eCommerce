@@ -260,14 +260,8 @@ async function updateProductDetails(req,res){
 
 }
 
-const uploadProductImage = async ( req, res ) => {   
-    
-    const imageUrl=`https://roughage-api.vercel.app/uploads/productMedia/${req.file.filename}`
-    console.log(imageUrl);
-    
-}
 
-module.exports = {getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts, sendSupportMail, uploadProductImage, updateProductDetails, get };
+module.exports = { getCart, addToCart, addToCartProductId, updateCart, deleteProduct, setCart, registerUser, registerProduct, getProducts, getProductDetails, getSimilarCategoryProducts, setUser, establishSession, getAllInventoryProducts, sendSupportMail, updateProductDetails };
 // exports.getCart=getCart;
 // exports.addToCart=addToCart;
 // exports.addToCartProductId=addToCartProductId;
