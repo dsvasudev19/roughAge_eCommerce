@@ -7,7 +7,7 @@ const router = require( './router/route.js' )
 const conn = require( './mongoDB.js/connect.js' )
 const cookieParser = require( 'cookie-parser' )
 const session = require( 'express-session' );
-
+const {productMediaUpload}=require('./utils/multer.js')
 const app = express();
 
 
@@ -41,11 +41,8 @@ app.use(
 );
 app.get( "/", ( req, res ) => {
     console.log( " / file from backend" )
-    res.send( "HELLO WELCOME" );
+    res.send( "HELLO WELCOME..............................." );
 } )
-app.post("/sendMail",(req,res)=>{
-    console.log("what re");
-})
 
 conn()
     .then(

@@ -1,7 +1,8 @@
 const express = require( "express" )
 const router = express.Router();
 const controller = require( '../controllers/appController' );
-const authenticator = require( '../Authentication/auth' )
+const authenticator = require( '../Authentication/auth' );
+const {productMediaUpload} = require("../utils/multer");
 
 router.route( '/addToCart' ).post( controller.addToCart )
 // router.route('/authenticate').post(controller.authenticate)
@@ -48,7 +49,8 @@ router.route( "/auth/validateAdminAuthenctication" ).post( authenticator.validat
 
 
 
-
+router.post("/fileUpload", productMediaUpload.single("proudctMedia"), controller.uploadProductImage)
+// router.route("/fileUpload", productMediaUpload.single("proudctMedia")).post(controller.uploadProductImage)
 
 //update routes (put methods)
 
