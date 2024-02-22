@@ -4,7 +4,7 @@ module.exports={
     "password": "root",
     "database": "roughage-ecommerce",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
   },
   "test": {
     "username": "root",

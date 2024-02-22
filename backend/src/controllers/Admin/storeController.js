@@ -16,7 +16,6 @@ const getStores= async (req, res,next) => {
         console.log(error);next(error);
     }
 }
-
 const getStore = async (req, res,next) => {
     try {
         const store = await Store.findByPk(req.params.storeId,{
@@ -47,9 +46,16 @@ const createStore = async (req, res,next) => {
                     file_type: req.file.mimetype,
                     file_size: req.file.size,
                 };
-                await Profile.create(fileDetails);
+                const profile=await Profile.create(fileDetails);
+                if(!profile){
+                    const storeWithoutProfile=await Store.findByPk(store.id);
+                   await storeWithoutProfile.destroy();
+                    return res.status(400).json({success: false, message: "Store creation failed"});
+                }
+                return res.status(200).json({success: true, message: "Store created successfully",data:store});
             }
-            return res.status(201).json({success: true, data: store, message: "Store created successfully"});
+            await store.destroy();
+            return res.status(400).json({success: false, message: "Profile not found. Store Creation failed"})
         }
         return res.status(400).json({success: false, message: "Store creation failed"});
     } catch (error) {
@@ -65,6 +71,26 @@ const updateStore = async (req, res,next) => {
             await Store.update(req.body,{where:{
                 id:req.params.storeId
             }});
+            if(req.file){
+                const fileDetails = {
+                    mediable_id: store.id,
+                    mediable_type: 'Store',
+                    url: `./uploads/storeMedia/${ req.file.filename }`,
+                    name: req.file.originalname,
+                    file_name: req.file.filename,
+                    file_type: req.file.mimetype,
+                    file_size: req.file.size,
+                };
+                const profile=await Profile.findOne({where:{mediable_id:store.id,mediable_type:'Store'}});
+                if(profile){
+                    await Profile.update(fileDetails,{where:{id:profile.id}});
+                }else{
+                    const newProfile=await Profile.create(fileDetails);
+                    if(!newProfile){
+                        return res.status(400).json({success: false, message: "Profile not found. Store update failed"})
+                    }
+                }
+            }
             return res.status(200).json({success: true, old_data: store, message: "Store updated successfully",updated_data:req.body});
         } else {
             return res.status(404).json({success: false, message: "Store not found"});

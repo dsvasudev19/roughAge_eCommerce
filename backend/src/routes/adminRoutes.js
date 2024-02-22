@@ -31,5 +31,8 @@ router.use("/profileMedia", profileMediaRoutes);
 const supportRoutes=require("./admin/supportRoutes");
 router.use("/support", supportRoutes);
 
+const categoryRoutes=require("./admin/categoryRoutes");
+router.use("/category", categoryRoutes);
+
 
 module.exports = router;

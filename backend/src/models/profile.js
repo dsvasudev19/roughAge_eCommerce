@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Profiles extends Model {
+  class Profile extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,9 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Store,{
+        foreignKey: 'mediable_id',
+        constraints: false,
+        scope: {
+          mediable_type: 'Store'
+        },
+        as: 'store'
+      });
     }
   }
-  Profiles.init({
+  Profile.init({
     mediable_id: DataTypes.INTEGER,
     mediable_type: DataTypes.STRING,
     url: DataTypes.TEXT,
@@ -24,8 +32,8 @@ module.exports = (sequelize, DataTypes) => {
     file_size: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Profiles',
+    modelName: 'Profile',
     tableName: 'profiles'
   });
-  return Profiles;
+  return Profile;
 };
