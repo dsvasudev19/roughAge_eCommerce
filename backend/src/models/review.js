@@ -11,38 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-     
+      this.belongsTo(models.User,{
+        foreignKey: 'userId'
+      })
+      this.belongsTo(models.Product,{
+        foreignKey: 'reviewable_id',
+        constraints: false,
+        
+       
+      })
     }
   }
   Review.init({
-    reviewable_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    reviewable_type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    userId:{
-      type:DataTypes.INTEGER,
-      allowNull:false,
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1,
-        max: 5,
-      },
-    },
+    reviewable_id: DataTypes.INTEGER,
+    reviewable_type: DataTypes.STRING,
+    content: DataTypes.TEXT,
+    userId: DataTypes.INTEGER,
+    rating: DataTypes.INTEGER
   }, {
     sequelize,
-    tableName: 'reviews',
     modelName: 'Review',
+    tableName: 'reviews'
   });
   return Review;
 };

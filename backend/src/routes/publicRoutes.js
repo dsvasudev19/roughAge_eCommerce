@@ -1,11 +1,13 @@
-// const express = require('express');
-// const router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-// const publicController = require('../controllers/publicController');
+const publicController = require('../controllers/publicController');
 
-// router.get('/products', publicController.getProducts);
+router.get('/', publicController.getProducts);
 
-// router.get('/products/:productId', publicController.getProduct);
+router.get('/:productId', publicController.getProductById);
+
+router.get("/product/:productSlug", publicController.getProductBySlug);
 
 // router.get('/categories', publicController.getCategories);
 
@@ -25,4 +27,4 @@
 
 
 
-// module.exports = router;
+module.exports = router;

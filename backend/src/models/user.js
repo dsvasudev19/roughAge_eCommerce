@@ -1,5 +1,7 @@
-"use strict";
-const {Model} = require("sequelize");
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -8,49 +10,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasOne(models.Profile, {
-        foreignKey: "mediable_id",
-        constraints: false,
-        scope: {
-          mediable_type: "User",
-        },
-        as: "profile",
-      });
+      // define association here
+      this.hasMany(models.Review,{
+        foreignKey: 'userId'
+        
+      })
     }
   }
-
-  User.init(
-    {
-      first_name: DataTypes.STRING,
-      last_name: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      gender:{
-        type:DataTypes.ENUM('Male','Female'),
-        allowNull:true
-      },
-      location:{
-        type:DataTypes.STRING,
-        allowNull:true,
-      },
-      password: DataTypes.STRING,
-      phone: DataTypes.STRING,
-      // wishlistId:{
-      //   type:DataTypes.ARRAY(DataTypes.INTEGER),
-      //   allowNull:true
-      // }
-    },
-    {
-      sequelize,
-      tableName: "users",
-      modelName: "User",
-      paranoid:true
-    }
-  );
+  User.init({
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    gender: DataTypes.STRING,
+    location: DataTypes.STRING,
+    password: DataTypes.STRING,
+    phone: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'User',
+    tableName: 'users'
+  });
   return User;
 };

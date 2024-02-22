@@ -2,8 +2,7 @@ const {Staff} = require("../models");
 const jwt = require("jsonwebtoken");
 
 const auth = async (req, res, next) => {
-const getMAC = require('getmac').default;
-const getmac=getMAC();
+
   try {
     // const token =
     //   req.headers.authorization && req.headers.authorization.split(" ")[1];
@@ -36,7 +35,7 @@ const getmac=getMAC();
 
     req.user = staff;
 
-    res.cookie('token', token, {
+    res.cookie('token', token, { 
       httpOnly: false,
       sameSite: 'None',
       maxAge: 2*60*60*1000, // 2 hours

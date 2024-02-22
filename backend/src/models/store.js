@@ -1,63 +1,29 @@
-"use strict"
-const {Model}=require("sequelize")
-
-module.exports=(sequelize,DataTypes)=>{
-    class Store extends Model{
-        static associate(models){
-            Store.hasMany(models.Product,{
-                foreignKey:"storeId",
-                constraints:false,
-                as:'storeImages'
-            })
-            this.hasMany(models.Profile,{
-                foreignKey:"mediable_id",
-                constraints:false,
-                scope:{
-                    mediable_type:"Store"
-                },
-                as:"profile"
-            })
-        }
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Store extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
     }
-    Store.init({
-        storeId:{
-            type:DataTypes.INTEGER,
-            primaryKey:true,
-            autoIncrement:true
-        },
-        storeName:{
-            type:DataTypes.STRING,
-            allowNull:false
-        },
-        storeSlug:{
-            type:DataTypes.STRING,
-            allowNull:false
-        },
-        storeDescription:{
-            type:DataTypes.TEXT,
-            allowNull:false
-        },
-        storeHost:{
-            type:DataTypes.STRING,
-            allowNull:false
-        },
-        storeStatus:{
-            type:DataTypes.BOOLEAN,
-            defaultValue:true
-        },
-        createdAt:{
-            type:DataTypes.DATE,
-            defaultValue:DataTypes.NOW
-        },
-        updatedAt:{
-            type:DataTypes.DATE,
-            defaultValue:DataTypes.NOW
-        }
-    },{
-        sequelize,
-        modelName:"Store",
-        tableName:"stores",
-        
-    })
-    return Store;
-}
+  }
+  Store.init({
+    name: DataTypes.STRING,
+    about: DataTypes.TEXT,
+    headId: DataTypes.INTEGER,
+    status: DataTypes.BOOLEAN,
+    lattitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE
+  }, {
+    sequelize,
+    modelName: 'Store',
+    tableName: 'stores'
+  });
+  return Store;
+};

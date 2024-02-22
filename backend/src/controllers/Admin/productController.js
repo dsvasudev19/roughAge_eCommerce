@@ -1,10 +1,10 @@
 const {Product, Media}=require("../../models");
 const {uuid}=require("uuidv4");
-
+const crypto = require('crypto');
 
 const getAllProducts = async (req, res) => {
     try {
-        const products = await Product.findAll({include: [
+        const products = await Product.findAll({include:[
             {
                 model: Media,
                 as: "featuredImage",
@@ -13,7 +13,9 @@ const getAllProducts = async (req, res) => {
                 model: Media,
                 as: "galleryImages"
             }
+        
         ]});
+        
         if(products.length===0) return res.status(404).json({success: false, message: "Products not found"});
         return res.status(200).json({success: true, data: products});
     } catch (error) {
@@ -44,15 +46,16 @@ const getProduct = async (req, res) => {
     }
 }
 const addProduct=async(req,res)=>{
+    
     try {
         if (!req.file) {
             return res.status(400).json({success: false, message: 'No file uploaded.'});
         }
-        const product = await Product.create({...req.body,storeId:parseInt(req.body.storeId),productSlug:uuid(),productBrand:"roughage"}); 
+        const product = await Product.create({...req.body,storeId:1,productSlug:crypto.randomBytes(6).toString('hex'),productBrand:"roughage"}); 
         const imageURL = `./uploads/productMedia/${ req.file.filename }`;
 
         const fileDetails = {
-            mediable_id: product.productId,
+            mediable_id: product.id,
             mediable_type: 'Product',
             url: imageURL,
             name: req.file.originalname,
@@ -110,13 +113,13 @@ const addProductProfile = async (req, res) => {
             return res.status(400).json({success: false, message: 'No file uploaded.'});
         }
         const product = await Product.findByPk(req.params.productId);
-      
+        console.log(product)
         if(!product) return res.status(404).json({success: false, message: "Product not found"});
 
         const imageURL = `./uploads/productMedia/${ req.file.filename }`;
 
         const fileDetails = {
-            mediable_id: product.productId,
+            mediable_id: product.id,
             mediable_type: 'Product',
             url: imageURL,
             name: req.file.originalname,
@@ -126,7 +129,7 @@ const addProductProfile = async (req, res) => {
             featured: true
         };
 
-        const oldMediaDestroy = await Media.destroy({where: {mediable_id: product.productId,mediable_type:"Product",featured:true}});
+        const oldMediaDestroy = await Media.destroy({where: {mediable_id: product.id,mediable_type:"Product",featured:true}});
 
         
 

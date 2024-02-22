@@ -87,8 +87,8 @@ const login = async (req, res, next) => {
     console.log("getting here")
     try {
         let {email, password} = req.body;
+        
         const staff = await Staff.findOne({where: {email}});
-
         if (!staff) {
             return res
                 .status(401)

@@ -1,7 +1,8 @@
 const {User,Profile}= require('../../models');
 const bcrypt = require('bcrypt');
 
-const getUsers= async (req, res) => {
+const getUsers= async (req, res,next) => {
+    console.log("get users")
     try {
         const users = await User.findAll({},{
             include: [
@@ -10,33 +11,32 @@ const getUsers= async (req, res) => {
                     as: "profile"
                 }
             ]
-
         });
         res.json(users);
     } catch (error) {
-        res.status(500).json({error: error.message});
+        console.log(error);next(error);
     }
 };
 
-const getUser = async (req, res) => {
+const getUser = async (req, res,next) => {
     try {
         const user = await User.findByPk(req.params.userId);
         res.json(user);
     } catch (error) {
-        res.status(500).json({error: error.message});
+        console.log(error);next(error);
     }
 };
 
-const createUser = async (req, res) => {
+const createUser = async (req, res,next) => {
     try {
         const user = await User.create({...req.body,password:bcrypt.hashSync(req.body.password, 10)});
         res.json(user);
     } catch (error) {
-        res.status(500).json({error: error.message});
+        console.log(error);next(error);
     }
 };
 
-const updateUser = async (req, res) => {
+const updateUser = async (req, res,next) => {
     try {
         const user = await User.findByPk(req.params.userId);
         if (user) {
@@ -46,11 +46,11 @@ const updateUser = async (req, res) => {
             return res.status(404).json({error: "User not found"});
         }
     } catch (error) {
-        res.status(500).json({error: error.message});
+        console.log(error);next(error);
     }
 };
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req, res,next) => {
     try {
         const user = await User.findByPk(req.params.userId);
         if (user) {
@@ -60,7 +60,7 @@ const deleteUser = async (req, res) => {
             res.status(404).json({error: "User not found"});
         }
     } catch (error) {
-        res.status(500).json({error: error.message});
+        console.log(error);next(error);
     }
 };
 
