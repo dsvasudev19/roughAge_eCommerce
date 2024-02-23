@@ -28,7 +28,17 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.TEXT,
     file_name: DataTypes.TEXT,
     file_type: DataTypes.STRING,
-    path: DataTypes.STRING,
+    path: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      get() {
+        const val = this.getDataValue("url");
+        const val2 = this.getDataValue("file_name");
+        return val && val2
+          ? process.env.BASE_URL + "/" + val.split("/")[2] + "/" + val2
+          : null;
+      },
+    },
     file_size: DataTypes.INTEGER
   }, {
     sequelize,
