@@ -33,6 +33,6 @@
     "swagger-ui-express": "^5.0.0",
     "uuid": "^9.0.1",
     "uuidv4": "^6.2.13",
-    "vercel":"^33.5.2"
+
   }
 }
