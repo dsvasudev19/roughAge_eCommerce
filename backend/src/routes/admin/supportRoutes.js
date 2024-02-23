@@ -4,11 +4,11 @@ const supportController = require("../../controllers/Admin/supportController");
 
 router.get("/", supportController.getAllSupportEnquiries);
 
-router.get("/today/", [auth], supportController.getTodayEnquiries);
+router.get("/today/", supportController.getTodayEnquiries);
 
-router.get("/:id", [auth], supportController.getSupportEnquiryById);
+router.get("/:id",supportController.getSupportEnquiryById);
 
-router.put("/:id", [auth], supportController.updateSupportEnquiry);
+router.put("/:id",  supportController.updateSupportEnquiry);
 
 router.delete("/:id", supportController.deleteSupportEnquiry);
 
