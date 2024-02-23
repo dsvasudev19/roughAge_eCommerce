@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "postinstall":"npm install pg",
+    "postinstall": "npm install pg && vercel",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ds.vasudev",
