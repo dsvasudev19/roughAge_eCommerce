@@ -1,15 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const supportController = require("../../controllers/Admin/supportController");
-const auth = require("../../middlewares/authMiddleware");
 
 router.get("/", supportController.getAllSupportEnquiries);
 
-router.get("/today/",supportController.getTodayEnquiries);
+router.get("/today/", [auth], supportController.getTodayEnquiries);
 
-router.get("/:id", supportController.getSupportEnquiryById);
+router.get("/:id", [auth], supportController.getSupportEnquiryById);
 
-router.put("/:id",supportController.updateSupportEnquiry);
+router.put("/:id", [auth], supportController.updateSupportEnquiry);
 
 router.delete("/:id", supportController.deleteSupportEnquiry);
 
