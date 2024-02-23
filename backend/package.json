@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
+    "postinstall": "npm install pg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ds.vasudev",
@@ -31,6 +32,7 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "uuid": "^9.0.1",
-    "uuidv4": "^6.2.13"
+    "uuidv4": "^6.2.13",
+    "vercel": "^33.5.2"
   }
 }
