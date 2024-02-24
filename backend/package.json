@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
+    "postinstall": "npm install pg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ds.vasudev",
@@ -25,11 +26,13 @@
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.9.1",
     "path": "^0.12.7",
+    "pg": "^8.11.3",
     "process": "^0.11.10",
     "sequelize": "^6.36.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "uuid": "^9.0.1",
     "uuidv4": "^6.2.13"
+
   }
 }

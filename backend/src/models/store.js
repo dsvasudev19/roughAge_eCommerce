@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         as: 'profile'
       });
+      this.hasMany(models.Product,{
+        foreignKey: 'storeId'
+      });
+     
     }
   }
   Store.init({
