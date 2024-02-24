@@ -3,7 +3,7 @@ const { Category, Media } = require("../../models");
 const getAllCategories = async (req, res, next) => {
   try {
     const categories = await Category.findAll({
-        attributes: ["id", "name"],
+        attributes: ["id", "name","status"],
       include: {
         model: Media,
         as: "media",
@@ -29,7 +29,7 @@ const getAllCategories = async (req, res, next) => {
 const getCategoryById = async (req, res, next) => {
   try {
     const category = await Category.findByPk(req.params.id, {
-        attributes: ["id", "name"],
+        attributes: ["id", "name","status"],
       include: {
         model: Media,
         as: "media",
