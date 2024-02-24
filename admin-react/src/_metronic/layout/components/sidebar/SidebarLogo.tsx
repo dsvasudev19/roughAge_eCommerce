@@ -53,14 +53,14 @@ const SidebarLogo = (props: PropsType) => {
         {config.layoutType === "dark-sidebar" ? (
           <img
             alt="Logo"
-            src={toAbsoluteUrl("media/logos/roughAge_logo.jpg")}
+            src={toAbsoluteUrl("media/logos/roughAge_logo.png")}
             className="h-70px app-sidebar-logo-default"
           />
         ) : (
           <>
             <img
               alt="Logo"
-              src={toAbsoluteUrl("media/logos/roughAge_logo.jpg")}
+              src={toAbsoluteUrl("media/logos/routeAge_logo.png")}
               className="h-25px app-sidebar-logo-default theme-light-show"
             />
             <img

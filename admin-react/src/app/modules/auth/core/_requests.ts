@@ -10,7 +10,7 @@ export const REQUEST_PASSWORD_URL = `${API_URL}/forgot_password`;
 
 // Server should return AuthModel
 export function login(email: string, password: string) {
-  return axios.post<AuthModel>("http://localhost:3001/v1/admin/auth/login", {
+  return axios.post<AuthModel>("/admin/auth/login", {
     email,
     password,
   });
@@ -42,7 +42,7 @@ export function requestPassword(email: string) {
 
 export function getUserByToken(token: string) {
   return axios.post<UserModel>(
-    "http://localhost:3001/v1/admin/auth/getByToken",
+    "/admin/auth/getByToken",
     {
       accessToken: token,
     }
