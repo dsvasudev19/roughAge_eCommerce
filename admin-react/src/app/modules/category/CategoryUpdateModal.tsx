@@ -3,110 +3,90 @@ import { useNavigate } from "react-router-dom";
 // import axios from "../../Helpers/Api_instance";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import { Bounce, ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import { toast } from "react-toastify";
+import { KTSVG } from "../../../_metronic/helpers";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { KTSVG } from "../../../_metronic/helpers";
 
 export interface IAppProps {}
 
-export default function App({ getEnquiries, id }: { getEnquiries: () => {}; id: any }) {
+export default function App({
+  getCategories,
+  id,
+}: {
+  getCategories: () => {};
+  id: any;
+}) {
   const [initialValues, setInitialValues] = useState({
-    status: 0,
+    name: "",
+    image: "",
+    
   });
-  const [stat, setStat] = useState(0);
   const navigate = useNavigate();
 
   const onSubmit = async (values: any, { setSubmitting, resetForm }: any) => {
+    
     try {
-        
-      const updateToast = toast.warning(
-        "Updating Enquiry.Don't Refresh the Page.",
-        {
-          autoClose: false, // Prevent the toast from auto-closing
-          closeButton: false, // Hide the close button
-        }
-      );
       const formData = new FormData();
       formData.append("name", values.name);
       formData.append("email", values.email);
-      // formData.append("image", values.image);
+      formData.append("categoryImage", values.image);
       formData.append("phone", values.phone);
-      console.log({ ...initialValues });
-      // Swal.fire("Updating Property Status", `${stat}+ ${typeof(stat)}`, "info");
-      const res = await fetch(
-        "http://localhost:3000/v1/admin/vendor/enquiries/" + id,
-        {
-          method: "put",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ status: initialValues.status }),
-        }
-      );
-      const response = await res.json();
-      console.log(response);
-      if (res.status === 200) {
-        toast.update(updateToast, {
-          render: "Enquiry updated successfully!",
-          type: "success",
-          autoClose: 500, // Close the toast after 3 seconds
-          closeButton: true, // Show the close button
-        });
-        getEnquiries();
-        
+      console.log({...initialValues})
+      const res=await axios.put("/admin/category/"+id,formData,{
+        withCredentials:true
+        })
+      if (res.status===200 && res.data) {
+        getCategories();
+        toast.success("Category Updated successfully");
+        resetForm();
       }
     } catch (error: any) {
-      console.error("Error submitting form:", error);
+      console.error("Error submitting form:", error.message);
       toast.error("Unable Update Category");
     } finally {
-      // getProperties();
       setSubmitting(false);
     }
   };
 
-  const getEnquiryById = async () => {
+  const getCategoryById = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/v1/admin/vendor/enquiries/${id}`,
+        `/admin/category/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-
+    
       if (response && response.data) {
-        console.log(response.data);
-        setInitialValues(response.data);
+        console.log(response.data.data);
+        setInitialValues(response.data.data);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      console.log(error.message);
     }
 
   };
-
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    console.log(name, value);
+    console.log(name,value)
     setInitialValues({ ...initialValues, [name]: value });
   };
 
   useEffect(() => {
-    if (id !== "") {
-      getEnquiryById();
+    if (id !== "" && id !== undefined && id !== null) {
+      getCategoryById();
     }
   }, [id]);
   return (
     <div>
-      <ToastContainer />
-      <div className="modal fade" tabIndex={-1} id="enquiryStatusUpdate">
+      <div className="modal fade" tabIndex={-1} id="kt_modal_2">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Update Status of Vendor Enquiry</h5>
+              <h5 className="modal-title">Update Category Profile</h5>
               <div
                 className="btn btn-icon btn-sm btn-active-light-primary ms-2"
                 data-bs-dismiss="modal"
@@ -128,36 +108,41 @@ export default function App({ getEnquiries, id }: { getEnquiries: () => {}; id: 
                   <Form placeholder={undefined}>
                     <div className="fv-row mb-7">
                       <label className="required fs-6 fw-semibold mb-2">
-                        Status
+                        Name
                       </label>
                       <Field
-                        as="select"
-                        id="status"
-                        name="status"
+                        type="text"
+                        id="offeredPrice"
+                        name="name"
                         className="form-control form-control-white"
+                        placeholder="Enter Your Name"
                         onChange={handleChange}
-                      >
-                        <option>Select Status of the Property</option>
-                        <option id="2" value={2}>
-                          Completed
-                        </option>
-                        <option id="1" value={1}>
-                          Processing
-                        </option>
-                        <option id="-1" value={-1}>
-                          Pending
-                        </option>
-                        <option id="0" value={0}>
-                          Rejected
-                        </option>
-                      </Field>
+                      />
                       <ErrorMessage
-                        name="Status"
+                        name="name"
                         component="div"
                         className="text-danger mt-2"
                       />
                     </div>
-
+                    
+                    <div className="fv-row mb-7">
+                      <label className="required fs-6 fw-semibold mb-2">
+                        Image
+                      </label>
+                      <input
+                        type="file"
+                        id="image"
+                        className="form-control"
+                        onChange={(e: any) => {
+                          setFieldValue("image", e.target.files[0]);
+                        }}
+                      />
+                      <ErrorMessage
+                        name="Image"
+                        component="div"
+                        className="text-danger mt-2"
+                      />
+                    </div>
                     <div className="modal-footer">
                       <a
                         className="btn btn-light-danger me-3"

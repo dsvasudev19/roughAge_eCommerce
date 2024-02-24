@@ -61,7 +61,7 @@ const AuthLayout = () => {
         <div className='d-flex flex-column flex-center py-15 px-5 px-md-15 w-100'>
           {/* begin::Logo */}
           <Link to='/' className='mb-12'>
-            <img alt='Logo' src={toAbsoluteUrl('media/logos/roughAge_logo.jpg')} className='h-450px' />
+            <img alt='Logo' src={toAbsoluteUrl('media/logos/roughAge_logo.png')} className='h-450px' />
           </Link>
           {/* end::Logo */}
 
@@ -74,8 +74,8 @@ const AuthLayout = () => {
           {/* end::Image */}
 
           {/* begin::Title */}
-          <h1 className='text-white fs-2qx fw-bolder text-center mb-7'>
-            Fast, Efficient and Productive
+          <h1 className='text-black fs-2qx fw-bolder text-center mb-7'>
+            Super Fresh and Organic
           </h1>
           {/* end::Title */}
 

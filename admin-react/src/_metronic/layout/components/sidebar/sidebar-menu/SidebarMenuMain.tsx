@@ -22,19 +22,19 @@ const SidebarMenuMain = () => {
         </div>
       </div>
       <SidebarMenuItemWithSub
-        to="/vendor"
-        title="Vendor"
+        to="/category"
+        title="Category"
         icon="profile-circle"
         fontIcon="bi-person"
       >
         <SidebarMenuItem
-          to="/vendor/vendors"
-          title="Vendors"
+          to="/category/categories"
+          title="Categories"
           hasBullet={true}
         />
         <SidebarMenuItem
-          to="/vendor/add-vendor"
-          title="Add Vendor"
+          to="/category/add-category"
+          title="Add Category"
           hasBullet={true}
         />
       </SidebarMenuItemWithSub>
@@ -62,19 +62,7 @@ const SidebarMenuMain = () => {
         title="Bookings"
         icon="cross-circle"
       />
-      {/* </SidebarMenuItemWithSub> */}
-      <SidebarMenuItem
-        to="/enquiry/enquiries"
-        title="Enquiries"
-        fontIcon="bi-sticky"
-        icon="cross-circle"
-      ></SidebarMenuItem>
-      {/* <SidebarMenuItemWithSub
-        to="/review"
-        title="Review"
-        fontIcon="bi-sticky"
-        icon="cross-circle"
-      > */}
+      
       <SidebarMenuItem
         to="/review/reviews"
         title="Reviews"
