@@ -5,16 +5,18 @@ const process = require("process")
 const cwd = process.cwd();
 
 const pwd = cwd.replace(/\\/g, "/");
+if (!fs.existsSync('.//uploads')) {
+      fs.mkdirSync('./uploads')
+    }
+
+const createDirIfNot= (dir) => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+  }
+}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (!fs.existsSync('http://localhost:3001/uploads')) {
-      fs.mkdirSync('http://localhost:3001/uploads')
-    }
-
-    if (!fs.existsSync("./uploads")) {
-      fs.mkdirSync("./uploads")
-    }
     cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
@@ -27,9 +29,11 @@ const storage = multer.diskStorage({
 
 const profile_media = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (!fs.existsSync("./uploads/profileMedia")) {
-      fs.mkdirSync("./uploads/profileMedia")
-    }
+    // if (!fs.existsSync("./uploads/profileMedia")) {
+    //   fs.mkdirSync("./uploads/profileMedia")
+    // }
+    createDirIfNot("./uploads/profileMedia")
+
     cb(null, "./uploads/profileMedia");
   },
   filename: (req, file, cb) => {
@@ -40,9 +44,10 @@ const profile_media = multer.diskStorage({
 
 const product_media = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (!fs.existsSync("./uploads/productMedia")) {
-      fs.mkdirSync("./uploads/productMedia")
-    }
+    // if (!fs.existsSync("./uploads/productMedia")) {
+    //   fs.mkdirSync("./uploads/productMedia")
+    // }
+    createDirIfNot("./uploads/productMedia")
     cb(null, "./uploads/productMedia");
   },
   filename: (req, file, cb) => {
@@ -53,9 +58,10 @@ const product_media = multer.diskStorage({
 
 const category_media = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (!fs.existsSync("./uploads/categoryMedia")) {
-      fs.mkdirSync("./uploads/categoryMedia")
-    }
+    // if (!fs.existsSync("./uploads/categoryMedia")) {
+    //   fs.mkdirSync("./uploads/categoryMedia")
+    // }
+    createDirIfNot("./uploads/categoryMedia")
     cb(null, "./uploads/categoryMedia");
   },
   filename: (req, file, cb) => {
@@ -66,9 +72,10 @@ const category_media = multer.diskStorage({
 
 const store_media = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (!fs.existsSync("./uploads/storeMedia")) {
-      fs.mkdirSync("./uploads/storeMedia")
-    }
+    // if (!fs.existsSync("./uploads/storeMedia")) {
+    //   fs.mkdirSync("./uploads/storeMedia")
+    // }
+    createDirIfNot("./uploads/storeMedia")
     cb(null, "./uploads/storeMedia");
   },
   filename: (req, file, cb) => {
