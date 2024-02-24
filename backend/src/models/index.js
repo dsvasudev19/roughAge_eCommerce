@@ -42,12 +42,12 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-( async () => {
-  try {
-    await sequelize.sync( { alter: true } );
-  } catch ( error ) {
-    console.log( error.message );
-  }
-} )();
+// ( async () => {
+//   try {
+//     await sequelize.sync( { alter: true } );
+//   } catch ( error ) {
+//     console.log( error.message );
+//   }
+// } )();
 
 module.exports = db;
