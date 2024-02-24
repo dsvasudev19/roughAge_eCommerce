@@ -26,7 +26,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Category.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue: 1
+    },
   }, {
     sequelize,
     modelName: 'Category',
