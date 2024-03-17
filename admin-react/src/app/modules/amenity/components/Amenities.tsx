@@ -18,7 +18,7 @@ const Amenities: FC<Props> = ({ className }) => {
   const [propertyAmenities,setPropertyAmenities]=useState([]);
   const [roomAmenitiesNumber, setroomAmenitiesNumber] = useState(1);
   const [propertyAmenitiesNumber, setPropertyAmenitiesNumber] = useState(1);
-  
+  const [pageNumber, setPageNumber] = useState(1);
   const [offSet, setOffSet] = useState(0);
   const [limit, setLimit] = useState(10);
   

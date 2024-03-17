@@ -12,7 +12,13 @@ import { KTSVG } from "../../../_metronic/helpers";
 
 export interface IAppProps {}
 
-export default function App({ getProducts, id }: { getProducts: () => {}; id: any }) {
+export default function App({
+  getProducts,
+  id,
+}: {
+  getProducts: () => {};
+  id: any;
+}) {
   const [initialValues, setInitialValues] = useState({
     status: 0,
   });
@@ -37,7 +43,8 @@ export default function App({ getProducts, id }: { getProducts: () => {}; id: an
         }
       );
       const res = await axios.post(
-        "http://localhost:3001/v1/admin/productMedia/multiple/" + id,
+        "https://roughagebackend-production.up.railway.app/v1/admin/productMedia/multiple/" +
+          id,
         formData
       );
 

@@ -10,6 +10,8 @@ export type User = {
     label: string
     state: string
   }
+  role?: any
+  position?: any
 }
 
 export type UsersQueryResponse = Response<Array<User>>

@@ -10,10 +10,15 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { KTSVG } from "../../../_metronic/helpers";
 
-
 export interface IAppProps {}
 
-export default function App({ getProducts, id }: { getProducts: () => {}; id: any }) {
+export default function App({
+  getProducts,
+  id,
+}: {
+  getProducts: () => {};
+  id: any;
+}) {
   const [initialValues, setInitialValues] = useState({
     status: 0,
   });
@@ -30,7 +35,8 @@ export default function App({ getProducts, id }: { getProducts: () => {}; id: an
       console.log({ ...initialValues });
       // Swal.fire("Updating Property Status", `${stat}+ ${typeof(stat)}`, "info");
       const res = await fetch(
-        "http://localhost:3001/v1/admin/products/status/" + id,
+        "https://roughagebackend-production.up.railway.app/v1/admin/products/status/" +
+          id,
         {
           method: "put",
           headers: {
@@ -71,12 +77,15 @@ export default function App({ getProducts, id }: { getProducts: () => {}; id: an
 
   const getProductById = async () => {
     try {
-      const res = await fetch(`http://localhost:3001/v1/admin/products/${id}`, {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://roughagebackend-production.up.railway.app/v1/admin/products/${id}`,
+        {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const response = await res.json();
       if (response && response.data) {
         console.log(response.data);
@@ -125,8 +134,7 @@ export default function App({ getProducts, id }: { getProducts: () => {}; id: an
               >
                 {({ setFieldValue }) => (
                   <Form placeholder={undefined}>
-                    <div className="fv-row mb-7">
-                    </div>
+                    <div className="fv-row mb-7"></div>
                     <div className="fv-row mb-7">
                       <label className="required fs-6 fw-semibold mb-2">
                         Status

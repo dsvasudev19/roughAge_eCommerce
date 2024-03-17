@@ -127,10 +127,10 @@ export default function App({ getCategories, id }: { getCategories: () => {}; id
                         onChange={handleChange}
                       >
                         <option>Select Status of the Property</option>
-                        <option id="2" value={true}>
+                        <option id="2" value="true">
                           Available
                         </option>
-                        <option id="0" value={false}>
+                        <option id="0" value="false">
                           Coming Soon
                         </option>
                       </Field>

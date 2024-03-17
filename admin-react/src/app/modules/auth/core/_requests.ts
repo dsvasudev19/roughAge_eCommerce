@@ -1,7 +1,8 @@
 import axios from "axios";
 import { AuthModel, UserModel } from "./_models";
 
-const API_URL = "http://localhost:3001/v1/admin/auth";
+const API_URL =
+  "https://roughagebackend-production.up.railway.app/v1/admin/auth";
 
 export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/verify_token`;
 export const LOGIN_URL = `${API_URL}/login`;
@@ -41,10 +42,7 @@ export function requestPassword(email: string) {
 }
 
 export function getUserByToken(token: string) {
-  return axios.post<UserModel>(
-    "/admin/auth/getByToken",
-    {
-      accessToken: token,
-    }
-  );
+  return axios.post<UserModel>("/admin/auth/getByToken", {
+    accessToken: token,
+  });
 }

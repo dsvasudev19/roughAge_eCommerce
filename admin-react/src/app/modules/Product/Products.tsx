@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import {KTIcon, toAbsoluteUrl} from '../../../_metronic/helpers'
-import StatusUpdateModal from './StatusUpdateModal'
-import Swal from 'sweetalert2'
-import { Navigate, useNavigate ,Link} from "react-router-dom";
-import { ids } from 'webpack'
-import ProfileUpdateModal from './ProductUpdateModal'
-import GalleryUploadModal from './GalleryUploadModal'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import { KTIcon, toAbsoluteUrl } from "../../../_metronic/helpers";
+import StatusUpdateModal from "./StatusUpdateModal";
+import Swal from "sweetalert2";
+import { Navigate, useNavigate, Link } from "react-router-dom";
+import { ids } from "webpack";
+import ProfileUpdateModal from "./ProductUpdateModal";
+import GalleryUploadModal from "./GalleryUploadModal";
+import axios from "axios";
 type Props = {
-  className: string
-}
-
+  className: string;
+};
 
 const Products: React.FC<Props> = ({ className }) => {
   const [products, setProducts] = useState<any>([]);
@@ -39,7 +38,7 @@ const Products: React.FC<Props> = ({ className }) => {
         },
         withCredentials: true,
       });
-      // const response = await fetch('http://localhost:3001/v1/admin/products/',{
+      // const response = await fetch('https://roughagebackend-production.up.railway.app/v1/admin/products/',{
       //   method: 'GET',
       //   credentials: 'include',
       //   headers: {
@@ -71,7 +70,7 @@ const Products: React.FC<Props> = ({ className }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const productId = id;
-        const deleteUrl = `http://localhost:3001/v1/admin/products/${productId}`;
+        const deleteUrl = `https://roughagebackend-production.up.railway.app/v1/admin/products/${productId}`;
         const res = await fetch(deleteUrl, {
           method: "DELETE",
           headers: {
@@ -107,9 +106,9 @@ const Products: React.FC<Props> = ({ className }) => {
           </span>
         </h3>
         <div className="card-toolbar">
-          <Link to={"/room/add-room"} className="btn btn-sm btn-light-primary">
+          <Link to={"/product/add-product"} className="btn btn-sm btn-light-primary">
             <KTIcon iconName="plus" />
-            Add Room
+            Add Product
           </Link>
         </div>
       </div>
@@ -601,4 +600,3 @@ const Products: React.FC<Props> = ({ className }) => {
 };
 
 export { Products };
-

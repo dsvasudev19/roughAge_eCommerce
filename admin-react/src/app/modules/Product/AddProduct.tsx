@@ -1,23 +1,23 @@
-import {useState, FC, useEffect} from 'react'
-import {IProfileDetails, profileDetailsInitValues as initialValues} from './ProductModal'
-import * as Yup from 'yup'
-import {useFormik} from 'formik'
+import { useState, FC, useEffect } from "react";
+import {
+  IProfileDetails,
+  profileDetailsInitValues as initialValues,
+} from "./ProductModal";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 
-import axios from 'axios';
+import axios from "axios";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { totalmem } from 'os';
+import { totalmem } from "os";
 
 const profileDetailsSchema = Yup.object().shape({
-  title: Yup.string().required('Title is required')
-
-})
-
-
+  title: Yup.string().required("Title is required"),
+});
 
 const AddProduct: FC = () => {
-  const [data, setData] = useState<IProfileDetails>(initialValues)
+  const [data, setData] = useState<IProfileDetails>(initialValues);
   // const updateData = (fieldsToUpdate: Partial<IProfileDetails>): void => {
   //   const updatedData = Object.assign(data, fieldsToUpdate)
   //   setData(updatedData)
@@ -25,28 +25,28 @@ const AddProduct: FC = () => {
 
   const [loading, setLoading] = useState(false);
 
-
-  const handleSubmit = async (values:any,{resetForm}:any)=>{
+  const handleSubmit = async (values: any, { resetForm }: any) => {
     // const newDates=selectedDates.map((date:any)=>date.toLocaleDateString());
     // console.log(newDates)
-    console.log("submitting")
-    const formData=new FormData();
-    formData.append("productName", values.productName);
-    formData.append("productDescription",values.description);
-    formData.append("storeId","1");
-    formData.append("prices",values.prices);
-    formData.append("productImage",values.image);
-    formData.append("productStock",values.productStock);  
-    formData.append("productPrice",values.productPrice);
-    formData.append("productCategory",values.productCategory);
-
-    try{
+    console.log("submitting");
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("description", values.description);
+    formData.append("storeId", "1");
+    formData.append("price", values.price);
+    formData.append("productImage", values.image);
+    formData.append("stock", values.stock);
+    formData.append("price", values.price);
+    formData.append("status", values.status);
+    formData.append("productCategory", values.productCategory);
+    console.log("values", values);
+    try {
       const response = await axios.post(
-        "http://localhost:3001/v1/admin/products/",
+        "https://roughagebackend-production.up.railway.app/v1/admin/products/",
         formData
       );
       console.log(response);
-      if (response.status===200) {
+      if (response.status === 200) {
         toast.success("Product Added Successfully", {
           position: "top-right",
           autoClose: 900,
@@ -58,27 +58,17 @@ const AddProduct: FC = () => {
           theme: "light",
         });
         resetForm();
-        values.image=null;
+        values.image = null;
       } else {
-        toast.error("Error while adding the Product the Property")
+        toast.error("Error while adding the Product the Property");
       }
-
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
+  };
 
-  }
+  useEffect(() => {}, []);
 
-
-
-
-  
-
-  useEffect(() => {
-   
-  }, []);
-
- 
   return (
     <div className="card mb-5 mb-xl-10">
       <ToastContainer />
@@ -114,10 +104,10 @@ const AddProduct: FC = () => {
                       type="text"
                       className="form-control form-control-lg"
                       placeholder="Product Name"
-                      name="productName"
+                      name="name"
                     />
                     <ErrorMessage
-                      name="productName"
+                      name="name"
                       component="div"
                       className="fv-plugins-message-container"
                     />
@@ -134,6 +124,9 @@ const AddProduct: FC = () => {
                       <option>Select the Category of the Product</option>
                       <option value="Vegetable">Vegetable</option>
                       <option value="Fruits">Fruits</option>
+                      <option value="Sea Food">Sea Food</option>
+                      <option value="Meat">Meat</option>
+                      <option value="Grains">Grains</option>
                     </Field>
                     <ErrorMessage
                       name="productCategory"
@@ -185,11 +178,11 @@ const AddProduct: FC = () => {
                     <Field
                       type="number"
                       className="form-control form-control-lg"
-                      name="productPrice"
+                      name="price"
                       placeholder="Price of the Product"
                     />
                     <ErrorMessage
-                      name="Saturday Price"
+                      name="Price"
                       component="div"
                       className="fv-plugins-message-container"
                     />
@@ -204,10 +197,10 @@ const AddProduct: FC = () => {
                     <Field
                       type="number"
                       className="form-select form-select-lg"
-                      name="productStock"
+                      name="stock"
                     ></Field>
                     <ErrorMessage
-                      name="productStock"
+                      name="stock"
                       component="div"
                       className="fv-plugins-message-container"
                     />
@@ -220,12 +213,12 @@ const AddProduct: FC = () => {
                     <Field
                       as="select"
                       className="form-select form-select-lg"
-                      name="productStatus"
+                      name="status"
                     >
                       <option>Select the Status of the Product</option>
-                      <option value="Available">Available</option>
-                      <option value="Out of Stock">Out of Stock</option>
-                      <option value="Coming Soon">Coming Soon</option>
+                      <option value="1">Available</option>
+                      <option value="-1">Out of Stock</option>
+                      <option value="0">Coming Soon</option>
                     </Field>
                   </div>
                 </div>
@@ -250,6 +243,6 @@ const AddProduct: FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export { AddProduct };

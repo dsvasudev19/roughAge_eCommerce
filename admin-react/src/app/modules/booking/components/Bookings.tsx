@@ -96,7 +96,7 @@ const Bookings: React.FC<Props> = ({ className }) => {
          });
 
          if (response.status === 204) {
-           setBookings(bookings.filter((booking) => booking.id !== bookingId));
+           setBookings(bookings.filter((booking:any) => booking.id !== bookingId));
            Swal.fire({
              position: "center",
              timer: 1000,
