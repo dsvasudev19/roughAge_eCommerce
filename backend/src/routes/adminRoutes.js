@@ -34,5 +34,8 @@ router.use("/support", supportRoutes);
 const categoryRoutes=require("./admin/categoryRoutes");
 router.use("/category", categoryRoutes);
 
+const orderRoutes=require("./admin/orderRoutes")
+router.use("/orders",orderRoutes);
+
 
 module.exports = router;

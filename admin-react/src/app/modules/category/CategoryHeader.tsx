@@ -5,7 +5,7 @@ import {Dropdown1} from '../../../_metronic/partials'
 import { ToolbarWrapper } from '../../../_metronic/layout/components/toolbar'
 import { Content } from '../../../_metronic/layout/components/content'
 
-const VendorHeader: FC = () => {
+const CategoryHeader: FC = () => {
   const location = useLocation()
 
   return (
@@ -15,4 +15,4 @@ const VendorHeader: FC = () => {
   )
 }
 
-export {VendorHeader}
+export {CategoryHeader}

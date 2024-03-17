@@ -6,9 +6,9 @@ router.get("/", supportController.getAllSupportEnquiries);
 
 router.get("/today/", supportController.getTodayEnquiries);
 
-router.get("/:id",  supportController.getSupportEnquiryById);
+router.get("/:id", supportController.getSupportEnquiryById);
 
-router.put("/:id",  supportController.updateSupportEnquiry);
+router.put("/:id", supportController.updateSupportEnquiry);
 
 router.delete("/:id", supportController.deleteSupportEnquiry);
 

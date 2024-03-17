@@ -6,20 +6,17 @@ import { DashboardWrapper } from "../pages/dashboard/DashboardWrapper";
 import { getCSSVariableValue } from "../../_metronic/assets/ts/_utils";
 import { WithChildren } from "../../_metronic/helpers";
 import BuilderPageWrapper from "../pages/layout-builder/BuilderPageWrapper";
-import VendorPage from "../modules/vendor/VendorPage";
+import CategoryPage from "../modules/category/CategoryPage";
+
 
 import RoomPage from "../modules/Product/ProductPage";
 import BookingPage from "../modules/booking/BookingPage";
-import EnquiryPage from "../modules/enquiry/EnquiryPage";
+
 import SupportPage from '../modules/support/SupportPage';
 
 const PrivateRoutes = () => {
   const ReviewPage = lazy(() => import("../modules/review/ReviewPage"));
   const AmenityPage = lazy(() => import("../modules/amenity/AmenityPage"));
-  const EnquiryPage = lazy(() => import("../modules/enquiry/EnquiryPage"));
-  // const UsersPage = lazy(
-  //   () => import("../modules/apps/user-management/UsersPage")
-  // );
   const UsersPage = lazy(() => import("../modules/user/UserPage"));
 
   return (
@@ -32,10 +29,10 @@ const PrivateRoutes = () => {
         <Route path="builder" element={<BuilderPageWrapper />} />
         {/* Lazy Modules */}
         <Route
-          path="vendor/*"
+          path="category/*"
           element={
             <SuspensedView>
-              <VendorPage />
+              <CategoryPage />
             </SuspensedView>
           }
         />
@@ -72,14 +69,7 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
-        <Route
-          path="enquiry/*"
-          element={
-            <SuspensedView>
-              <EnquiryPage />
-            </SuspensedView>
-          }
-        />
+        
         <Route
           path="apps/user-management/*"
           element={

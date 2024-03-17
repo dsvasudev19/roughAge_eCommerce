@@ -35,7 +35,10 @@ module.exports = (sequelize, DataTypes) => {
         scope:{
           reviewable_type: 'Product'
         },
-        
+      })
+      this.hasMany(models.OrderItem,{
+        foreignKey:'id',
+        constraints:false
       })
     }
   }
