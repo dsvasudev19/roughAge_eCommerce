@@ -38,7 +38,7 @@ function Home() {
     <>
       <Navigationbar />
       <div className="mainpage row">
-        {/* <div className="col leftRow"></div>
+         <div className="col leftRow"></div>
         <div className="col midRow"></div>
         <div className="col">
           <br></br>
@@ -47,11 +47,11 @@ function Home() {
           <br></br>
           <br></br>
           <Dna />
-        </div> */}
-        <div className="carousDiv">
+        </div> 
+{/*         <div className="carousDiv">
           <CarouselRoughAge />
 
-        </div>
+        </div> */}
 
       </div>
       <div className="head">
