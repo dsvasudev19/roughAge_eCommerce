@@ -52,7 +52,7 @@ export function setupAxios(axios: any) {
   axios.defaults.headers.Accept = "application/json";
   axios.defaults.withCredentials = true;
   axios.defaults.baseURL =
-    "https://roughagebackend-production.up.railway.app/v1";
+    "http://localhost:3001/v1";
   axios.interceptors.request.use(
     (config: { headers: { Authorization: string } }) => {
       const auth = getAuth();
